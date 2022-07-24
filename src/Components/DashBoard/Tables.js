@@ -41,6 +41,11 @@ const Tables = ({id,name,val,index}) => {
           })
 
     }
+  let handleEntirecollection=()=>{
+    db.collection('tables').doc(id).delete()
+
+  }
+    
   return (
     <div>
         {id}
@@ -49,6 +54,7 @@ const Tables = ({id,name,val,index}) => {
         <button onClick={handleupdate}>update</button>
       <button onClick={handleDelete}>Delete</button>
       <button onClick={handleAddnew}>Add new</button>
+      <button onClick={handleEntirecollection}>Delete entire collection</button>
       
     </div>
   )
