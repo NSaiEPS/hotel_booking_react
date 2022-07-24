@@ -67,7 +67,7 @@ let handleSignup=(e)=>{
     
    </h2> 
 
-
+<span>SIgnup to procede further</span>
 <form className='Signup_inside_form' onSubmit={handleSignup}>
     <input placeholder='Enter your name here..' required  type='text'
      onChange={store} name='name'  value={users.name}

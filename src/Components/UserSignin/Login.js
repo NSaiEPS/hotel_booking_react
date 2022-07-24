@@ -1,9 +1,11 @@
 import React, { useState } from 'react'
 import './Login.css'
 import {useDispatch} from 'react-redux'
-import { signings } from '../Redux/Redux_Slice'
+import { insidesign, signings, userinfo } from '../Redux/Redux_Slice'
+import { auth } from '../../Firebase'
+import { useAuthState } from 'react-firebase-hooks/auth'
 
-const Login = () => {
+const Login = ({name}) => {
     let dispatch=useDispatch()
 
     let handlegotoSignup=()=>{
@@ -31,31 +33,85 @@ const Login = () => {
 
     let handlelogin=(e)=>{
         e.preventDefault()
+        
     }
+
+
+    let handlenamecncl=()=>{
+      dispatch(
+        insidesign(null)
+      )
+    }
+
+
+
+
+
+
+    const loginToSubmit=(e)=>{
+      e.preventDefault();
+ 
+      auth.signInWithEmailAndPassword(users.email,users.password).then (userAuth=>{
+       
+      })
+ .catch(error=>alert(error))
+     
+ 
+    }
+
+
+    const [userss,loading]=useAuthState(auth)
+  // console.log(userss?.email)
+
+  if (userss) {
+    dispatch(userinfo(
+      userss
+    ))
+  }
+
   return (
     <div className='Login'>
         <div className='Login_inside'>
    
-   <h2 className='Login_name'>  Welcome to the Devi Residencies
+   <h2 className='Login_name'>  Welcome {(name)? (name):''} to the Devi Residencies
     
    </h2> 
+   <span>login to procede further</span>
 <form className='Login_inside_form' onSubmit={handlelogin}>
-    {/* <input placeholder='Enter your name here..' required  type='text' /> */}
-    <input placeholder='Enter your email here..' required type='email'
+    <input placeholder='Enter your email here..' required type='email'  onChange={storeusers}
     name='email' value={users.email}/>
-   <input placeholder='Enter your password' type='password' required
+   <input placeholder='Enter your password' type='password' required onChange={storeusers}
    name='password'  value={users.password} />
-    <button type='submit'
     
-    >Login</button>
-    <span> Not a member ?
+    
+    
+    
+    
+   {(name)? <button type='submit'  onClick={loginToSubmit}
+    
+    >Signin</button> :<button type='submit'  onClick={loginToSubmit}
+    
+    >Login</button>} 
+    
+    
 
-    <button className='Login_inside_form_signup' 
-    onClick={handlegotoSignup}>Signup</button>
 
-    </span>
+
+{(!name) && <span> Not a member ?
+
+<button className='Login_inside_form_signup' 
+onClick={handlegotoSignup}>Signup</button>
+
+     </span> }
+    
 </form>
+{(name)&& <div className='name_cncl_btn'>
+          <button onClick={handlenamecncl}>X</button>
+        </div>}
+
         </div>
+
+       
       {/* Login */}
     </div>
   )

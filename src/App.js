@@ -51,7 +51,7 @@ function App() {
       <div className='App_inside'>
 
        {Userinfo? '':  (seletlogin==='signup')  ? <Signup/> :<Login/> } 
-       {Selectinsidesign ? <InsideSignin/>:''}
+       {Selectinsidesign ? <Login name={Selectinsidesign}/>:''}
       <Header/> 
        
       <Routes>

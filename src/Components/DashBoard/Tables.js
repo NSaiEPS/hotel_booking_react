@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { doc, updateDoc, deleteField } from "firebase/firestore";
 import { db } from '../../Firebase';
 import firebase from 'firebase/compat/app';
@@ -18,7 +18,7 @@ const Tables = ({id,name,val,index}) => {
 
 
    
-
+let [post,setposts]=useState({})
 
     let handleDelete=()=>{
         db.collection('tables').doc(id).update({
@@ -45,7 +45,36 @@ const Tables = ({id,name,val,index}) => {
     db.collection('tables').doc(id).delete()
 
   }
+
+  useEffect(()=>{
+  db.collection('tables').doc(id).collection('orders').onSnapshot((snapshot)=>{
+    setposts(snapshot.docs.map((doc)=>({
+          
+      id:doc.id,
+      data:doc.data(),
     
+  })))
+
+  })
+
+},[])
+
+
+console.log(post)
+
+let handleorder=()=>{
+
+
+  
+    db.collection('tables').doc(id).collection('orders').add({
+      name:'chicken',
+      val:2
+      
+  
+    })
+
+}
+
   return (
     <div>
         {id}
@@ -55,6 +84,8 @@ const Tables = ({id,name,val,index}) => {
       <button onClick={handleDelete}>Delete</button>
       <button onClick={handleAddnew}>Add new</button>
       <button onClick={handleEntirecollection}>Delete entire collection</button>
+      <button  onClick={handleorder}
+      >Add orders</button>
       
     </div>
   )
