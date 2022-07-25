@@ -1,0 +1,133 @@
+.Suppliers {
+    margin-top: 15px;
+    margin-bottom: 15px;
+
+}
+
+.Suppliers_from_div {
+    display: flex;
+justify-content: center;
+/* align-items: center; */
+
+}
+
+.Suppliers_div {
+    position: absolute;
+    background-color: black;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.2);
+    width: 350px;
+   
+
+height: 350px;
+border-radius: 15px;
+/* top: 250px;
+left: 40%; */
+
+    
+}
+
+/* .Suppliers_div_inside {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    background-color: #0000004D;
+    color: white;
+    align-items: center;
+    justify-items: center;
+    position: fixed;
+    z-index: 1 !important;
+} */
+
+.Suppliers_div  form {
+
+
+    display: flex;
+    flex-direction: column;
+    /* margin-top: 15px; */
+    padding-top: 50px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+
+}
+
+.Suplierform_cancelbtn {
+    position: absolute;
+    right: -20px;
+    top:10px;
+    border-radius: 5px;
+}
+
+
+.Suplierform_cancelbtn:hover {
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+
+}
+
+.Suppliers_div  form input{
+
+    border-radius: 5px;
+    margin-bottom: 15px;
+    border: 2px solid white;
+    outline: none;
+    /* background-color: red; */
+    /* color: red; */
+    padding: 5px;
+
+
+}
+
+.Suppliers_div  form input:focus{
+    background-color: black;
+    color: white;
+
+}
+
+
+
+
+.Suppliers_div_submitbtn {
+  width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
+  border: 2px solid white;
+  color: white;
+  border-radius: 5px;
+  margin-top: 10px;
+
+}
+
+.Suppliers_div_submitbtn:hover {
+    background-color: white;
+  border: 2px solid green;
+  color: black;
+
+}
+
+.Suppliers_Data_table th{
+    width: 20%;
+}
+
+.SuppliersData td {
+    width: 20%;
+}
+
+.Suppliers_Data_table {
+    margin-top: 15px;
+    /* margin-bottom: 15px; */
+}
+
+.addsuplierbtn {
+    background-color: white;
+    border-radius: 5px;
+}
+
+.addsuplierbtn:hover {
+    background-color: black;
+    /* border-radius: 5px; */
+    color: white;
+}

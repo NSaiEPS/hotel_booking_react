@@ -52,6 +52,8 @@ const Header = () => {
     let handlegotodashboard=()=>{
 
     }
+
+    console.log(window.location.pathname)
   return (
     <div className='Header'>
         <div className='Header_inside'>
@@ -84,7 +86,12 @@ const Header = () => {
         {(selectuser)&& (selectuser?.email===`deviresidencies@admin.com`) &&   (<div className='Header_inside_dashboard'>
             <button onClick={handlegotodashboard} >
                 
+
+                {window.location.pathname==='/dashboard'? 
+                <Link to={`/`} > Go back  </Link>:
                 <Link to={`dashboard`} > Admin DashBoard  </Link>
+
+            }
                 </button>
         </div>)}
         </div>

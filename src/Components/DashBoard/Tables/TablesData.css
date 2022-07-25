@@ -1,0 +1,55 @@
+table,th,td{
+    border: 1px solid red !important;
+    /* border-collapse: collapse; */
+    /* width: 100%; */
+}
+table {
+    width: 100%;
+}
+/* th,td {
+   
+ 
+    flex: 1;
+} */
+
+/* .TableData_name {
+    width: auto;
+} */
+
+
+/* .TableData th {
+    width: 250px;
+} */
+
+
+.TableData_name {
+    width: 25%;
+}
+
+.TableData_Survedby {
+    width: 25%;
+}
+
+
+.TableData_Active {
+    width: 25%;
+
+}
+
+.TableData_bookedby {
+    width: 25%;
+}
+
+.Tabledata_btn_notbooked {
+    color: white;
+    background-color: #c60000;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+
+.Tabledata_btn_booked {
+    background-color: green;
+    color: white;
+    border-radius: 5px;
+    border: 2px solid white;
+}

@@ -1,0 +1,16 @@
+.Tables_inside_addingtable {
+    background-color: black;
+    color: white;
+    border-radius: 5px;
+    margin-top: 15px;
+
+}
+
+.Tables_inside_addingtable:hover {
+    background-color: white;
+    color: black;
+}
+
+.Tables_Data_table {
+    margin-top: 15px;
+}

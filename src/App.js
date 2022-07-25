@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Components/Header/Header';
 import Signup from './Components/UserSignin/Signup';
 import {useSelector} from 'react-redux'
-import { SelectInsidesign, Selectsigning, SelectUser } from './Components/Redux/Redux_Slice';
+import { SelectInsidesign, Selectsigning, SelectTheme, SelectUser } from './Components/Redux/Redux_Slice';
 import Login from './Components/UserSignin/Login';
 import InsideSignin from './Components/UserSignin/InsideSignin';
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom'
@@ -21,6 +21,7 @@ function App() {
 
   let seletlogin=useSelector(Selectsigning)
   let Selectinsidesign=useSelector(SelectInsidesign)
+  let selecttheme=useSelector(SelectTheme)
   // console.log(seletlogin)
 
 
@@ -45,7 +46,7 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <div className={(selecttheme==='light')? 'App':'App_dark'}>
       {/* Welocme to the Devi Residencies */}
 
       <div className='App_inside'>
@@ -53,6 +54,8 @@ function App() {
        {Userinfo? '':  (seletlogin==='signup')  ? <Signup/> :<Login/> } 
        {Selectinsidesign ? <Login name={Selectinsidesign}/>:''}
       <Header/> 
+       
+
        
       <Routes>
       <Route path='/dashboard' element={<Dashboard/>}/>

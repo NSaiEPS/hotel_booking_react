@@ -1,0 +1,39 @@
+.Users {
+    margin-bottom: 15px;
+}
+table,th,td{
+    border: 1px solid black;
+    /* border-collapse: collapse; */
+    /* width: 100%; */
+}
+
+.UserData_name {
+    width: 20%;
+}
+
+.UserData_Active {
+    width: 20%;
+}
+
+.UserData_bookedby {
+    width: 20%;
+
+}
+
+.UserData_Survedby{
+    width: 20%;
+
+}
+
+.UserData_email {
+    width: 20%;
+
+}
+
+.UserData_table td{
+    width: 20%;
+}
+
+.Users_Data_table {
+    margin-top: 15px;
+}

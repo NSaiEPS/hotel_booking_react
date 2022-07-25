@@ -1,0 +1,47 @@
+.Dashboard {
+    width: 100%;
+    border: 2px solid lightgray;
+    margin-top: 15px;
+    box-shadow:  0px 0px 2px 2px rgba(0,0,0, 0.2);
+}
+
+.dashboard_maincontants {
+    display: flex;
+    /* width: 100%; */
+    margin-top: 15px;
+    padding: 5px 0px;
+    
+}
+
+.dashboard_maincontants div{
+    flex: 1;
+    border: 1px solid lightgray;
+    background-color:  black;
+    border-radius: 5px;
+}
+
+.dashboard_maincontants div button{
+    border-radius: 5px;
+    }
+
+.dashboard_maincontants button{
+    background-color: black;
+    color:white;
+    border: 2px solid white;
+    margin:3px 0px;
+}
+
+.dashboard_maincontants button:hover{
+    color: black;
+    background-color: white;
+}
+
+.dashboard_btn_active {
+    background-color: green !important;
+}
+
+.dashboard_btn_active:hover {
+    background-color: #06f1c6 !important;
+    /* color: white !important; */
+
+}

@@ -4,7 +4,7 @@ import { act } from "react-dom/test-utils";
 export const ReduxSlice=createSlice({
     name:'slice',
     initialState:{
-        theme:null,
+        theme:'dark',
         signing:'signup',
         user:null,
         insidesignin:null,

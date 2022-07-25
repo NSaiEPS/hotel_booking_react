@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import './Signup.css'
 import {useDispatch} from 'react-redux'
 import { signings, userinfo } from '../Redux/Redux_Slice'
-import {auth} from '../../Firebase'
+import {auth, db} from '../../Firebase'
 import {useAuthState} from 'react-firebase-hooks/auth'
 
 
@@ -16,6 +16,10 @@ const Signup = () => {
     dispatch(userinfo(
       userss
     ))
+
+
+  
+
   }
 
   let handlegotoLogin=()=>{
@@ -52,7 +56,20 @@ let handleSignup=(e)=>{
       
     })})
  .catch(error=>alert(error))
+
+if(users.email!=='deviresidencies@admin.com'){
+
+ 
+  db.collection('users').add({
+    name:users.name,
+    email:users.email,
+    table:'',
+    active:false,
+    survedby:''
     
+
+  })
+}
 }
 
 
