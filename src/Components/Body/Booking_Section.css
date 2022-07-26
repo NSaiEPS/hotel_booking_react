@@ -61,3 +61,35 @@ border-radius:5px;
 .Booking_Section_bottom{
     padding: 12px 0px;
 }
+
+.booking_more_options_btn {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    top: 25px;
+    right: 20px;
+    width: 150px;
+    /* background-color: red; */
+    /* height: 100px; */
+    background-color:black;
+    border-radius: 10px;
+
+
+
+}
+
+.booking_more_options_btn button{
+    /* background-color: white; */
+    /* border: 2px solid red; */
+    background-color: black;
+    color: white;
+    border: 2px solid white;
+    margin-top: 5px;
+    margin-bottom: 5px;
+
+}
+
+.booking_more_options_btn button:hover{
+  background-color: white;
+  color: black;
+}

@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Booking_Section.css'
 // import './Body.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -14,6 +14,11 @@ const [userss,loading]=useAuthState(auth)
 let selectuser=useSelector(SelectUser)
 let dispatch=useDispatch()
 let usernobooking=useSelector(SelectUserbookingnum)
+let [moreoption,setMoreoptions]=useState(false)
+
+let handlemoreOption=()=>{
+  setMoreoptions(!moreoption)
+}
 
 let handlebookbtn=()=>{
 
@@ -182,7 +187,18 @@ let handlesaynobook=()=>{
 
 {  active &&
     <div className='booking_more_options'>
-      {(bookerid===selectbookeduserid) && <button onClick={handleunbookbtn}>:</button>}
+      {(bookerid===selectbookeduserid) && <button onClick={handlemoreOption}>:</button>}
+    
+    
+    {(bookerid===selectbookeduserid) && moreoption && <div className='booking_more_options_btn'>
+      <button onClick={handleunbookbtn}
+      >Cancel Booking</button>
+      <button>Orders</button>
+      </div>
+
+    }
+    
+    
     </div>}
 
    </div>
