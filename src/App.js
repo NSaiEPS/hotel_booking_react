@@ -1,16 +1,19 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import './App.css';
 import Header from './Components/Header/Header';
 import Signup from './Components/UserSignin/Signup';
 import {useSelector} from 'react-redux'
-import { SelectInsidesign, Selectsigning, SelectTheme, SelectUser } from './Components/Redux/Redux_Slice';
+import { SelectInsidesign, Selectsigning, Selecttablenumber, SelectTheme, SelectUser, tablenumber,bookedusersid } from './Components/Redux/Redux_Slice';
 import Login from './Components/UserSignin/Login';
 import InsideSignin from './Components/UserSignin/InsideSignin';
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom'
 import Dashboard from './Components/DashBoard/Dashboard';
-import { auth } from './Firebase';
+import { auth, db } from './Firebase';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import Spinner from 'react-spinkit'
+import Body from './Components/Body/Body';
+import {useDispatch} from 'react-redux'
+
 
 
 
@@ -23,6 +26,71 @@ function App() {
   let Selectinsidesign=useSelector(SelectInsidesign)
   let selecttheme=useSelector(SelectTheme)
   // console.log(seletlogin)
+
+  let selecttablenumber=useSelector(Selecttablenumber)
+
+  console.log(selecttablenumber)
+  let dispatch=useDispatch()
+  
+  let [tables,settables]=useState({
+   
+  })
+  let len=tables.length;
+  dispatch(
+    tablenumber(len)
+  )
+  console.log(tables.length)
+  useEffect(()=>{
+    db.collection('tables').onSnapshot((snapshot)=>{
+      settables(snapshot.docs.map((doc)=>({
+          
+          id:doc.id,
+          data:doc.data(),
+        
+      })))
+    }) ;
+let len=tables.length;
+    dispatch(
+      tablenumber(len)
+    )
+  
+   
+
+},[])
+// const [userss,loading]=useAuthState(auth)
+// let dispatch=useDispatch()
+
+  let [user,setUser]=useState({})
+
+useEffect(()=>{
+  db.collection('users').onSnapshot((snapshot)=>{
+    setUser(snapshot.docs.map((doc)=>({
+        
+        id:doc.id,
+        data:doc.data(),
+      
+    })))
+  }) ;
+
+},[])
+
+let requerid;
+if(Array.isArray(user)){
+
+  user?.map((userinformation)=>{
+     if(
+      userinformation?.data?.email===userss?.email
+     )
+     { requerid=userinformation.id;
+      console.log(userinformation.id)
+      dispatch(bookedusersid(
+        requerid
+      ))
+     }
+  })
+}
+
+
 
 
 
@@ -45,6 +113,12 @@ function App() {
     )
   }
 
+
+
+
+
+
+
   return (
     <div className={(selecttheme==='light')? 'App':'App_dark'}>
       {/* Welocme to the Devi Residencies */}
@@ -59,6 +133,7 @@ function App() {
        
       <Routes>
       <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/' element={<Body/>}/>
 
       </Routes>
 

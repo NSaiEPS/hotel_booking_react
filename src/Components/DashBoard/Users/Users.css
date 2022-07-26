@@ -37,3 +37,10 @@ table,th,td{
 .Users_Data_table {
     margin-top: 15px;
 }
+
+.UserData_table button{
+    background-color: green;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+}

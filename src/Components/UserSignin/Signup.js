@@ -11,10 +11,15 @@ const Signup = () => {
 
   const [userss,loading]=useAuthState(auth)
   console.log(userss?.email)
+  let useemail=userss?.email;
+  let useuid=userss?.uid
 
   if (userss) {
     dispatch(userinfo(
-      userss
+      {useemail,useuid
+        
+
+      }
     ))
 
 

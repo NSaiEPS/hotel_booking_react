@@ -2,9 +2,11 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../../../Firebase';
 import UsersData from './UsersData';
 import './Users.css'
+import {useDispatch} from 'react-redux'
+import {usersnumb} from '../../Redux/Redux_Slice'
 
 const Users = () => {
-
+   let dispatch=useDispatch()
 
   let [user,setUser]=useState({})
 
@@ -17,14 +19,21 @@ const Users = () => {
         
       })))
     }) ;
-
-    
+let len=user.length;
+    dispatch( usersnumb(
+      len
+    ))
   
 
 
 },[])
 
-console.log(user)
+// console.log(user.length)
+
+let len=user.length;
+    dispatch( usersnumb(
+      len
+    ))
 
   return (
     <div className='Users'>

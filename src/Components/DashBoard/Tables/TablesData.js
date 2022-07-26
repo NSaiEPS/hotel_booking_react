@@ -18,8 +18,8 @@ const TablesData = ({name,active,survedby,id,bookedby,index}) => {
                 {active ? <button className='Tabledata_btn_booked'>Booked</button>:
                  <button className='Tabledata_btn_notbooked'>Not yet booked</button>}
                 </td>
-            <td className='TableData_bookedby'> {survedby?'': 'empty'}</td>
-            <td className='TableData_Survedby'>{bookedby? '': 'empty'}</td>
+            <td className='TableData_bookedby'> { bookedby? bookedby: '--'}</td>
+            <td className='TableData_Survedby'>{survedby? survedby: '--'}</td>
          </tr>
         
 

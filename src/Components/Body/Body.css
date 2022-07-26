@@ -1,0 +1,108 @@
+.Body_inside {
+    position: relative;
+    width: 100%;
+    /* background-color: red; */
+}
+
+.Offers_dev {
+    /* left: 0px; */
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    /* animation: off; */
+    /* width: 100%; */
+    animation: offers 15s linear infinite  ;
+}
+
+@keyframes offers{
+    0% {    left: 0px;
+
+    }
+    100% {
+        left: 85%;
+    }
+}
+
+
+.Offers_dev span{
+    color: red;
+    animation:offerspan  1s linear infinite alternate-reverse;
+font-size: xx-large;
+
+
+}
+
+@keyframes offerspan{
+    0% {
+        color: red;
+    }
+
+    25% {
+        color: blue;
+    }
+    50% {
+        color: rgb(227, 247, 10);
+    }
+    75% {
+        color: rgb(242, 5, 203);
+    }
+    100% {
+        color: aqua;
+    }
+}
+
+.fuatereditems_dev {
+    margin-top: 25px;
+    padding-top: 35px;
+}
+
+.FuaturedItems {
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+}
+
+
+.FuaturedItems img {
+    width: 450px;
+    height: 450px;
+    justify-self: center;
+    border-radius: 25px;
+}
+
+.Carousel_inner_items {
+    display: flex;
+}
+
+
+.Body_Booking_Section {
+    /* margin-top: 10px; */
+  
+        width:80%;
+        /* background-color:red; */
+        margin-left:auto;
+        margin-right:auto;
+       margin-top:25px;
+       box-shadow:0px 0px 2px 2px rgba(0,0,0,0.3);
+       margin-bottom:15px;
+       /* display:flex; */
+       border-radius:15px
+    
+}
+
+.Body_Booking_Section p  {
+    padding-top: 15px;
+
+}
+
+.Body_Booking_Section_inside {
+    display:flex;
+    flex-wrap: wrap;
+    justify-content:space-around;
+    /* background-color:red; */
+    /* margin-bottom:15px; */
+}

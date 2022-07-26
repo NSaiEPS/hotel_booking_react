@@ -1,6 +1,6 @@
 import React, { useEffect,useState } from 'react'
 import { useSelector } from 'react-redux'
-import { SelectUser } from '../Redux/Redux_Slice'
+import { SelectUser,Selectusersnumb ,SelectSupliernumb,Selecttablenumber} from '../Redux/Redux_Slice'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { db } from '../../Firebase'
 import Tables from './Tables/Tables'
@@ -10,11 +10,16 @@ import Suppliers from './Supplier/Suppliers'
 
 const Dashboard = () => {
   let selectuser=useSelector(SelectUser)
+  let selecttablenumber=useSelector(Selecttablenumber)
+
   const navigate = useNavigate()
+  let selectusersnumb=useSelector(Selectusersnumb)
+  let selectsupliernumb=useSelector(SelectSupliernumb)
+
  
 
 
-  if(selectuser?.email!=='deviresidencies@admin.com')
+  if(selectuser?.useemail!=='deviresidencies@admin.com')
   {
     navigate('/')
   }
@@ -48,7 +53,7 @@ const Dashboard = () => {
 
 },[])
 
-console.log(posts)
+// console.log(posts)
 let [contents,setcontents]=useState({
   table:false},{
   users:false},{
@@ -85,7 +90,7 @@ let contentsupplier=()=>{
   )
 }
 
-console.log(contents.users,contents.suppliers,contents.table)
+// console.log(contents.users,contents.suppliers,contents.table)
 
   return (
     <div className='Dashboard'>
@@ -105,11 +110,11 @@ console.log(contents.users,contents.suppliers,contents.table)
 
        <div className='dashboard_maincontants'>
       <div><button className={contents.table && 'dashboard_btn_active'}
-      onClick={contenttable}>Tables</button></div>  
+      onClick={contenttable}>Tables</button> <span>{contents.table && selecttablenumber}  </span></div>  
       <div><button className={contents.users && 'dashboard_btn_active'}
-       onClick={contentuser}>Users</button></div>  
+       onClick={contentuser}>Users</button> <span>{contents.users && selectusersnumb}</span></div>  
       <div><button  className={contents.suppliers && 'dashboard_btn_active'}
-      onClick={contentsupplier}>Suppliers</button></div>  
+      onClick={contentsupplier}>Suppliers </button> <span>{ contents.suppliers &&selectsupliernumb}</span></div>  
        
         
        </div>

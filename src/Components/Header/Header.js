@@ -8,7 +8,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 const Header = () => {
     let dispatch=useDispatch()
     let selectuser=useSelector(SelectUser)
-    console.log(selectuser?.email)
+    console.log(selectuser?.useemail)
     const navigate = useNavigate()
 
 
@@ -83,7 +83,7 @@ const Header = () => {
             <button onClick={handleDarkTheme}>Dark</button>
         </div>
 
-        {(selectuser)&& (selectuser?.email===`deviresidencies@admin.com`) &&   (<div className='Header_inside_dashboard'>
+        {(selectuser)&& (selectuser?.useemail===`deviresidencies@admin.com`) &&   (<div className='Header_inside_dashboard'>
             <button onClick={handlegotodashboard} >
                 
 

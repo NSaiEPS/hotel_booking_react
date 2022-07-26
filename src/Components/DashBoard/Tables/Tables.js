@@ -4,83 +4,81 @@ import { db } from '../../../Firebase';
 import firebase from 'firebase/compat/app';
 import './Tables.css'
 import TablesData from './TablesData';
+import {useDispatch} from 'react-redux'
+import { tablenumber } from '../../Redux/Redux_Slice';
 
 
 const Tables = ({id,name,val,index}) => {
-    // console.log(id,name,val)
-
-
-    // const cityRef = doc(db, 'tables', 'name:table' , 'val:1');
-    
-    // // Remove the 'capital' field from the document
-    //  updateDoc(cityRef, {
-    //     capital: deleteField()
-    // });
+     
+  let dispatch=useDispatch()
 
 
 
    
-let [post,setposts]=useState({})
+// let [post,setposts]=useState({})
 
-    let handleDelete=()=>{
-        db.collection('tables').doc(id).update({
-            ['name']: firebase.firestore.FieldValue.delete(),
-            ['val']: firebase.firestore.FieldValue.delete()
-          })
+//     let handleDelete=()=>{
+//         db.collection('tables').doc(id).update({
+//             ['name']: firebase.firestore.FieldValue.delete(),
+//             ['val']: firebase.firestore.FieldValue.delete()
+//           })
 
-    }
-    let handleupdate=()=>{
-        db.collection('tables').doc(id).update({
-            ['name']: `table ${index+1}`
-          })
+//     }
+//     let handleupdate=()=>{
+//         db.collection('tables').doc(id).update({
+//             ['name']: `table ${index+1}`
+//           })
 
     
-    }
+//     }
 
-    let handleAddnew=()=>{
-        db.collection('tables').doc(id).update({
-            ['user']: `table ${index+1}`
-          })
+//     let handleAddnew=()=>{
+//         db.collection('tables').doc(id).update({
+//             ['user']: `table ${index+1}`
+//           })
 
-    }
-  let handleEntirecollection=()=>{
-    db.collection('tables').doc(id).delete()
+//     }
+//   let handleEntirecollection=()=>{
+//     db.collection('tables').doc(id).delete()
 
-  }
+//   }
 
-  useEffect(()=>{
-  db.collection('tables').doc(id).collection('orders').onSnapshot((snapshot)=>{
-    setposts(snapshot.docs.map((doc)=>({
+
+
+
+//   useEffect(()=>{
+//   db.collection('tables').doc(id).collection('orders').onSnapshot((snapshot)=>{
+//     setposts(snapshot.docs.map((doc)=>({
           
-      id:doc.id,
-      data:doc.data(),
+//       id:doc.id,
+//       data:doc.data(),
     
-  })))
+//   })))
 
-  })
+//   })
 
-},[])
+// },[])
 
 
-// console.log(post)
+// // console.log(post)
 
-let handleorder=()=>{
+// let handleorder=()=>{
 
 
   
-    db.collection('tables').doc(id).collection('orders').add({
-      name:'chicken',
-      val:2
+//     db.collection('tables').doc(id).collection('orders').add({
+//       name:'chicken',
+//       val:2
       
   
-    })
+//     })
 
-}
+// }
 
 
 let addnewtable=()=>{
   db.collection('tables').add({
-    name:'table',
+    name:'Table',
     active:false,
     bookedby:'',
     survedby:''
@@ -93,6 +91,7 @@ let addnewtable=()=>{
    
   })
 
+  // console.log(tables.length)
   useEffect(()=>{
     db.collection('tables').onSnapshot((snapshot)=>{
       settables(snapshot.docs.map((doc)=>({
@@ -103,12 +102,20 @@ let addnewtable=()=>{
       })))
     }) ;
 
-    
+    // dispatch(
+    //   tablenumber(tables.length)
+    // )
   
-
+    let len=tables.length;
+    dispatch(
+      tablenumber(len)
+    )
 
 },[])
 
+
+let unbooked;
+// console.log(unbooked)
   return (
     <div className='Tables'>
         {/* {id}
@@ -150,10 +157,11 @@ className='Tables_inside_addingtable'>Add new table</button>
 
   { 
     (Array.isArray(tables) && tables?.map((item,indx)=>{
+      {(!item.data.active)&& (unbooked++) }
       return(
         <div key={Math.random()}>
           <TablesData name={item.data.name} active={item.data.active} bookedby={item.data.bookedby}
-           survedby={item.data.bookedby} id={item.id} index={indx}  />
+           survedby={item.data.survedby} id={item.id} index={indx}  />
 
           </div>
       )

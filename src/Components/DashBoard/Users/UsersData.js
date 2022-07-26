@@ -11,7 +11,7 @@ const UsersData = ({id,name,table,active,email,index,survedby}) => {
             <tr>
                 <td>{name}</td>
                 <td>{table?table:'not yet' }</td>
-                <td>{active ? active:'-'}</td>
+                <td>{active ? <button>Yes</button>:'-'}</td>
                 <td>{survedby ? survedby:'-'}</td>
                 <td>{email}</td>
 

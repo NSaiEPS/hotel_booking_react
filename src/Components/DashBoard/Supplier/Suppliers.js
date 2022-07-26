@@ -2,10 +2,17 @@ import React, { useEffect, useState } from 'react'
 import { db } from '../../../Firebase'
 import './Suppliers.css'
 import SuppliersData from './SuppliersData'
+import {suplersnumb,SelectSupliernumb} from '../../Redux/Redux_Slice'
+import {useDispatch,useSelector} from 'react-redux'
+
+
 
 const Suppliers = () => {
   let [suplyform,Setsuplyform]=useState(false)
   let [suplier,setSuplier]=useState({})
+  let dispatch=useDispatch()
+  let selectsupliernumb=useSelector(SelectSupliernumb)
+
 
   let [suplyinfo, setSuplyinfo]=useState([{
     name:'',
@@ -44,12 +51,19 @@ const Suppliers = () => {
         })))
       }) ;
   
-      
+      let len=suplier.length;
+    dispatch( suplersnumb(
+      len
+    ))
     
   
   
   },[])
-  
+
+  let len=suplier.length;
+    dispatch( suplersnumb(
+      len
+    ))
   let nam,val;
 
   let storeusers=(e)=>{
