@@ -8,7 +8,7 @@ import { Link, Navigate, useNavigate } from 'react-router-dom'
 const Header = () => {
     let dispatch=useDispatch()
     let selectuser=useSelector(SelectUser)
-    console.log(selectuser?.useemail)
+    // console.log(selectuser?.useemail)
     const navigate = useNavigate()
 
 
@@ -53,7 +53,7 @@ const Header = () => {
 
     }
 
-    console.log(window.location.pathname)
+    // console.log(window.location.pathname)
   return (
     <div className='Header'>
         <div className='Header_inside'>

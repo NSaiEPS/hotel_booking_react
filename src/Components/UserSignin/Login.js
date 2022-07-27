@@ -29,7 +29,7 @@ const Login = ({name}) => {
         setUsers({...users,[nam]:val})
 
     }
-    console.log(users.email,users.password)
+    // console.log(users.email,users.password)
 
     let handlelogin=(e)=>{
         e.preventDefault()

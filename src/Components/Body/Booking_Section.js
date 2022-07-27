@@ -3,9 +3,12 @@ import './Booking_Section.css'
 // import './Body.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { auth, db } from '../../Firebase'
-import { Selecttablenumber, Selectunbookedtables, unbookedtable,SelectbookeduserID, SelectUser, usernoofbooking, SelectUserbookingnum } from '../Redux/Redux_Slice'
+import { Selecttablenumber, Selectunbookedtables, unbookedtable,SelectbookeduserID, SelectUser, usernoofbooking, SelectUserbookingnum, bookingorderdetails } from '../Redux/Redux_Slice'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import firebase from 'firebase/compat/app';
+import { Link} from 'react-router-dom'
+import { Message } from '@material-ui/icons'
+import Alert from '@material-ui/lab/Alert';
 
 const Booking_Section = ({name,active,bookedby,survedby,id,index,bookerid}) => {
 let selectbookeduserid=useSelector(SelectbookeduserID)
@@ -15,23 +18,28 @@ let selectuser=useSelector(SelectUser)
 let dispatch=useDispatch()
 let usernobooking=useSelector(SelectUserbookingnum)
 let [moreoption,setMoreoptions]=useState(false)
-
+let [booksuccess,setBooksuccess]=useState(false)
+let [bookfailure,setBookfailure]=useState(false)
 let handlemoreOption=()=>{
   setMoreoptions(!moreoption)
+}
+let handlemoreblur=()=>{
+  // setMoreoptions(false)
 }
 
 let handlebookbtn=()=>{
 
-  if(usernobooking===1){
+  if(usernobooking){
     alert(`U can't book more than 1 table!`)
   }
   else {
-    alert('want to book!')
+    // alert('want to book!')
     let name;
    if(selectbookeduserid){
     name=userss.displayName;
    }
-
+   setBooksuccess(true)
+   console.log(booksuccess)
 
 db.collection('tables').doc(id).update({
           ['active']: true,
@@ -44,13 +52,20 @@ db.collection('tables').doc(id).update({
            ['table']:(index+1)
         })
 
-  dispatch(usernoofbooking(1))
+  // dispatch(usernoofbooking(1))
+  
+  
+
+  // Message('Booked successfully!')
+
 }
 
   }
 
   let handleunbookbtn=()=>{
     alert('Are you sure!')
+    setBookfailure(true)
+    console.log(bookfailure)
     db.collection('tables').doc(id).update({
       ['active']: false,
       ['bookedby']:'',
@@ -60,10 +75,11 @@ db.collection('tables').doc(id).update({
       ['active']: '',
        ['table']:''
     })
-    dispatch(usernoofbooking(0))
+    dispatch(usernoofbooking(''))
 
-
-
+   
+    // Message('Cancelled successfully!')
+  
   }
 
   let handlecheck=()=>{
@@ -140,7 +156,36 @@ let handleorder=()=>{
 
 
 
+let onclickingOrders=()=>{
+   //need to dispatch
+  // selectbookeduserid
 
+  //booked user id to add the collection or orders
+
+  //id
+  //table id to add the collection orders
+
+  //table number &
+  
+  //  bookedby booker name
+  let tablenum=`${name}${index+1}`
+
+  dispatch(
+    bookingorderdetails({
+      bookeduserid:bookerid,
+      tableid:id,
+      tablenumb:tablenum,
+      bookername:bookedby
+    }
+
+    )
+
+  )
+
+
+
+
+}
 
 
 
@@ -179,21 +224,27 @@ let handlesaynobook=()=>{
        onClick=   {handlecheck}
        > Booked</button>: 
 
-      <button className='notbooked_btn'
+      <button className='notbooked_btn' 
       onClick={ selectbookeduserid?  handlebookbtn:handlesaynobook}> Book</button>
          }
     
     </div>
 
 {  active &&
-    <div className='booking_more_options'>
-      {(bookerid===selectbookeduserid) && <button onClick={handlemoreOption}>:</button>}
+    <div  className='booking_more_options'>
+      {(bookerid===selectbookeduserid) && <button  onClick={handlemoreOption}
+       onBlur={handlemoreblur}
+      
+      >:</button>}
     
     
     {(bookerid===selectbookeduserid) && moreoption && <div className='booking_more_options_btn'>
-      <button onClick={handleunbookbtn}
+      <button onClick={handleunbookbtn}  
       >Cancel Booking</button>
-      <button>Orders</button>
+      <button  onClick={onclickingOrders}>
+      <Link to={`/user/orders`} > Orders  </Link>
+        
+        </button>
       </div>
 
     }
@@ -207,9 +258,28 @@ let handlesaynobook=()=>{
    <div className='Booking_Section_bottom'>
   
 
-  {active? `Booked by ${bookedby}`: `Not yet booked`}
+  {active?  (bookerid===selectbookeduserid)?
+  <span className='Booking_Section_bottom_youbookeed'> {`You booked this Table ${index+1}`}</span>:  `Booked by ${bookedby}`: `Not yet booked`}
+   {(bookerid===selectbookeduserid)}
    </div>
 
+
+
+{booksuccess && 
+
+<Alert variant="filled" severity="info">
+  Booked successfully
+</Alert>
+}
+
+
+{
+  bookfailure &&
+  <Alert variant="filled" severity="info">
+  unBooked successfully
+</Alert>
+
+}
         </div>
     </div>
   )

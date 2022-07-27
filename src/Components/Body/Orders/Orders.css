@@ -1,0 +1,53 @@
+.Orders {
+    margin-top: 25px;
+    width: 80%;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+    min-height: 150px;
+    /* display: flex;
+    justify-items: center; */
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+}
+
+.Orders >h3 {
+    /* margin-top: 55px; */
+    padding-top: 10px;
+}
+
+.Ordering_input {
+    margin-top: 15px;
+}
+
+.Ordering_input form {
+    display: flex;
+    justify-content: center;
+    width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.Ordering_input form input{
+    /* border:  2px solid white;
+    outline: 2px solid white; */
+
+    border: none;
+    outline: none;
+
+}
+
+
+.Ordering_input button{
+    border: 2px solid white;
+    background-color: #c60000;
+    color: white;
+    border-radius: 10px;
+
+}
+
+
+.Ordering_input form input:nth-child(2){
+    width: 50px;
+
+
+}

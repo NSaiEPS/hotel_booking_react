@@ -10,7 +10,7 @@ const Signup = () => {
   let dispatch=useDispatch()
 
   const [userss,loading]=useAuthState(auth)
-  console.log(userss?.email)
+  // console.log(userss?.email)
   let useemail=userss?.email;
   let useuid=userss?.uid
 

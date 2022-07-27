@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Components/Header/Header';
 import Signup from './Components/UserSignin/Signup';
 import {useSelector} from 'react-redux'
-import { SelectInsidesign, Selectsigning, Selecttablenumber, SelectTheme, SelectUser, tablenumber,bookedusersid } from './Components/Redux/Redux_Slice';
+import { SelectInsidesign, Selectsigning, Selecttablenumber, SelectTheme, SelectUser, tablenumber,bookedusersid, usernoofbooking } from './Components/Redux/Redux_Slice';
 import Login from './Components/UserSignin/Login';
 import InsideSignin from './Components/UserSignin/InsideSignin';
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom'
@@ -13,6 +13,7 @@ import { useAuthState } from 'react-firebase-hooks/auth';
 import Spinner from 'react-spinkit'
 import Body from './Components/Body/Body';
 import {useDispatch} from 'react-redux'
+import Orders from './Components/Body/Orders/Orders';
 
 
 
@@ -29,7 +30,7 @@ function App() {
 
   let selecttablenumber=useSelector(Selecttablenumber)
 
-  console.log(selecttablenumber)
+  // console.log(selecttablenumber)
   let dispatch=useDispatch()
   
   let [tables,settables]=useState({
@@ -39,7 +40,7 @@ function App() {
   dispatch(
     tablenumber(len)
   )
-  console.log(tables.length)
+  // console.log(tables.length)
   useEffect(()=>{
     db.collection('tables').onSnapshot((snapshot)=>{
       settables(snapshot.docs.map((doc)=>({
@@ -82,10 +83,17 @@ if(Array.isArray(user)){
       userinformation?.data?.email===userss?.email
      )
      { requerid=userinformation.id;
-      console.log(userinformation.id)
+      // console.log(userinformation.id)
       dispatch(bookedusersid(
         requerid
       ))
+     
+      dispatch
+        (usernoofbooking(
+          userinformation?.data?.table
+          )
+      )
+
      }
   })
 }
@@ -134,6 +142,7 @@ if(Array.isArray(user)){
       <Routes>
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path='/' element={<Body/>}/>
+      <Route path='/user/orders' element={<Orders/>}/>
 
       </Routes>
 
