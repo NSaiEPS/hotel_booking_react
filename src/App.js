@@ -140,7 +140,7 @@ if(Array.isArray(user)){
 
        
       <Routes>
-      <Route path='/dashboard' element={<Dashboard/>}/>
+      <Route path='/admindashboard' element={<Dashboard/>}/>
       <Route path='/' element={<Body/>}/>
       <Route path='/user/orders' element={<Orders/>}/>
 

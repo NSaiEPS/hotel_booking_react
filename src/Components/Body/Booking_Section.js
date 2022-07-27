@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './Booking_Section.css'
 // import './Body.css'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,9 +10,17 @@ import { Link} from 'react-router-dom'
 import { Message } from '@material-ui/icons'
 import Alert from '@material-ui/lab/Alert';
 
+import MoreVertIcon from '@mui/icons-material/MoreVert';
+// <MoreVertIcon /> 
+// import UpgradeIcon from '@mui/icons-material/Upgrade';
+// import EditIcon from '@mui/icons-material/Edit';
+
+
 const Booking_Section = ({name,active,bookedby,survedby,id,index,bookerid}) => {
 let selectbookeduserid=useSelector(SelectbookeduserID)
 const [userss,loading]=useAuthState(auth)
+
+
 
 let selectuser=useSelector(SelectUser)
 let dispatch=useDispatch()
@@ -26,6 +34,28 @@ let handlemoreOption=()=>{
 let handlemoreblur=()=>{
   // setMoreoptions(false)
 }
+
+
+
+// if( userss && bookerid===selectbookeduserid) {
+// let tablenum=`${name}${index+1}`
+
+// dispatch(
+//   bookingorderdetails({
+//     bookeduserid:bookerid,
+//     tableid:id,
+//     tablenumb:tablenum,
+//     bookername:bookedby
+//   }
+
+//   )
+
+// )
+
+// }
+
+
+
 
 let handlebookbtn=()=>{
 
@@ -69,6 +99,7 @@ db.collection('tables').doc(id).update({
     db.collection('tables').doc(id).update({
       ['active']: false,
       ['bookedby']:'',
+      ['bookeduserid']:''
     })
 
     db.collection('users').doc(selectbookeduserid).update({
@@ -79,12 +110,21 @@ db.collection('tables').doc(id).update({
 
    
     // Message('Cancelled successfully!')
+    // db.collection('tables').doc(id).collection('orders').delete()
+
+    db.collection("tables").doc(id).collection('orders')
+  .get()
+  .then(res => {
+    res.forEach(element => {
+      element.ref.delete();
+    });
+  });
   
   }
 
   let handlecheck=()=>{
 
-    alert('clicken')
+    // alert('clicken')
   }
 
 
@@ -93,31 +133,31 @@ db.collection('tables').doc(id).update({
    
   // let [post,setposts]=useState({})
 
-  let handleDelete=()=>{
-      db.collection('tables').doc(id).update({
-          ['name']: firebase.firestore.FieldValue.delete(),
-          ['val']: firebase.firestore.FieldValue.delete()
-        })
+//   let handleDelete=()=>{
+//       db.collection('tables').doc(id).update({
+//           ['name']: firebase.firestore.FieldValue.delete(),
+//           ['val']: firebase.firestore.FieldValue.delete()
+//         })
 
-  }
-  let handleupdate=()=>{
-      db.collection('tables').doc(id).update({
-          ['name']: `table ${index+1}`
-        })
+//   }
+//   let handleupdate=()=>{
+//       db.collection('tables').doc(id).update({
+//           ['name']: `table ${index+1}`
+//         })
 
   
-  }
+//   }
 
-  let handleAddnew=()=>{
-      db.collection('tables').doc(id).update({
-          ['user']: `table ${index+1}`
-        })
+//   let handleAddnew=()=>{
+//       db.collection('tables').doc(id).update({
+//           ['user']: `table ${index+1}`
+//         })
 
-  }
-let handleEntirecollection=()=>{
-  db.collection('tables').doc(id).delete()
+//   }
+// let handleEntirecollection=()=>{
+//   db.collection('tables').doc(id).delete()
 
-}
+// }
 
 
 
@@ -138,18 +178,18 @@ let handleEntirecollection=()=>{
 
 // console.log(post)
 
-let handleorder=()=>{
+// let handleorder=()=>{
 
 
 
-  db.collection('tables').doc(id).collection('orders').add({
-    name:'chicken',
-    val:2
+//   db.collection('tables').doc(id).collection('orders').add({
+//     name:'chicken',
+//     val:2
     
 
-  })
+//   })
 
-}
+// }
 
 
 
@@ -188,6 +228,22 @@ let onclickingOrders=()=>{
 }
 
 
+// useEffect(()=>{
+//   let tablenum=`${name}${index+1}`
+
+//   dispatch(
+//     bookingorderdetails({
+//       bookeduserid:bookerid,
+//       tableid:id,
+//       tablenumb:tablenum,
+//       bookername:bookedby
+//     }
+
+//     )
+
+//   )
+// },[window.location.reload])
+
 
 
 
@@ -219,10 +275,13 @@ let handlesaynobook=()=>{
     >
       {/* <button className={active? 'booked_btn':'notbooked_btn'}>{active? 'Booked':'Book'}</button> */}
       {active?  
-       <button className='booked_btn'
+       <button className={(bookerid===selectbookeduserid)? 'booked_btn_you':'booked_btn'}
        
        onClick=   {handlecheck}
-       > Booked</button>: 
+       > 
+      { (bookerid===selectbookeduserid)? `It's your table enjoy!`:'Booked'}
+       
+       </button>: 
 
       <button className='notbooked_btn' 
       onClick={ selectbookeduserid?  handlebookbtn:handlesaynobook}> Book</button>
@@ -235,16 +294,22 @@ let handlesaynobook=()=>{
       {(bookerid===selectbookeduserid) && <button  onClick={handlemoreOption}
        onBlur={handlemoreblur}
       
-      >:</button>}
+      >
+        :
+ <MoreVertIcon /> 
+
+        </button>}
     
     
     {(bookerid===selectbookeduserid) && moreoption && <div className='booking_more_options_btn'>
-      <button onClick={handleunbookbtn}  
-      >Cancel Booking</button>
-      <button  onClick={onclickingOrders}>
+      
+    <button  onClick={onclickingOrders}>
       <Link to={`/user/orders`} > Orders  </Link>
         
         </button>
+      <button onClick={handleunbookbtn}  
+      >Cancel Booking</button>
+      
       </div>
 
     }
@@ -259,19 +324,25 @@ let handlesaynobook=()=>{
   
 
   {active?  (bookerid===selectbookeduserid)?
-  <span className='Booking_Section_bottom_youbookeed'> {`You booked this Table ${index+1}`}</span>:  `Booked by ${bookedby}`: `Not yet booked`}
+  <span className='Booking_Section_bottom_youbookeed'> {`You booked this Table ${index+1}`}</span>
+  : <span>Booked by <b>{bookedby}</b></span>
+    // `Booked by ${bookedby}`
+  : `ready to book`
+  }
+
    {(bookerid===selectbookeduserid)}
    </div>
 
 
 
-{booksuccess && 
+{/* {booksuccess && 
 
-<Alert variant="filled" severity="info">
+
+<Alert onClose={() => {}}>This is a success alert — check it out!</Alert>
+} */}
+{/* <Alert variant="filled" severity="info">
   Booked successfully
-</Alert>
-}
-
+</Alert> */}
 
 {
   bookfailure &&

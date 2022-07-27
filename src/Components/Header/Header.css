@@ -114,7 +114,7 @@ flex-direction: column;}
     position: absolute;
     display: flex;
     top: 18px;
-    right: 75px;
+    right: 155px;
     cursor: pointer;
     border-radius: 5px;
     height: 35px;
@@ -206,3 +206,20 @@ flex-direction: column;}
 /* Link {
     text-decoration: none !important;
 } */
+
+
+.Logout_btn_div {
+    position: absolute;
+    right: 75px;
+    top:20px;
+    /* background-color: blue !important;
+    border: 2px solid white;
+    color: white; */
+}
+
+.Logout_btn_div button {
+background-color: blue !important;
+    border: 2px solid white;
+    color: white;
+    border-radius: 5px;
+}

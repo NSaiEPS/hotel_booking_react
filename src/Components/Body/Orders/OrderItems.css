@@ -1,0 +1,33 @@
+.OrderItems{
+    /* margin-top: 15px; */
+    /* background-color: blue; */
+    padding-top: 10px;
+
+}
+
+.OrderItems_inside {
+    background-color: white;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 5px;
+    padding: 5px;
+
+}
+
+.OrderItems_inside {
+    display: flex;
+    justify-content: space-between;
+}
+
+.OrderItems_inside div{
+    flex: 1;
+    background-color: blanchedalmond;
+
+}
+
+.OrderItems_inside div:nth-child(4){
+    color: red;
+    cursor: pointer;
+
+}

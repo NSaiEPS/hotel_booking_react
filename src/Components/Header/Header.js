@@ -3,6 +3,7 @@ import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { insidesign, SelectUser, themes } from '../Redux/Redux_Slice'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
+import { auth } from '../../Firebase'
 
 
 const Header = () => {
@@ -52,7 +53,11 @@ const Header = () => {
     let handlegotodashboard=()=>{
 
     }
+let handleLogout=()=>{
+    auth.signOut()
+    window.location.reload()
 
+}
     // console.log(window.location.pathname)
   return (
     <div className='Header'>
@@ -69,7 +74,8 @@ const Header = () => {
    </h2> </div>
      </div>
      <div className='Header_inside_right'>
-        <button className='Signin_btn'>SIgnin</button>
+        <button className='Signin_btn'>Signin</button>
+       
 
         <div className='Header_inside_right_extra'>
             <button onClick={handleSignuser}>Signin as User</button>
@@ -87,13 +93,17 @@ const Header = () => {
             <button onClick={handlegotodashboard} >
                 
 
-                {window.location.pathname==='/dashboard'? 
+                {window.location.pathname==='/admindashboard'? 
                 <Link to={`/`} > Go back  </Link>:
-                <Link to={`dashboard`} > Admin DashBoard  </Link>
+                <Link to={`admindashboard`} > Admin DashBoard  </Link>
 
             }
                 </button>
         </div>)}
+
+        <div className='Logout_btn_div'>
+        <button className='logout_btn'
+           onClick={handleLogout} >Logout</button></div>
         </div>
       
     </div>

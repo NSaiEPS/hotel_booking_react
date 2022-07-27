@@ -46,18 +46,28 @@ const Login = ({name}) => {
 
 
 
-
+let [signinagin,setSigninagain]=useState(false)
 
     const loginToSubmit=(e)=>{
       e.preventDefault();
  
       auth.signInWithEmailAndPassword(users.email,users.password).then (userAuth=>{
+        setSigninagain(true)
        
       })
  .catch(error=>alert(error))
+
+//  if(signinagin){
+//   //need to add welcome message
      
- 
+//     window.location.reload()}
+
+
     }
+    if(signinagin){
+        //need to add welcome message
+           
+          window.location.reload()}
 
 
     const [userss,loading]=useAuthState(auth)
