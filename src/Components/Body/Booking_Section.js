@@ -291,20 +291,21 @@ let handlesaynobook=()=>{
 
 {  active &&
     <div  className='booking_more_options'>
-      {(bookerid===selectbookeduserid) && <button  onClick={handlemoreOption}
-       onBlur={handlemoreblur}
+      {(bookerid===selectbookeduserid) &&
       
-      >
-        :
- <MoreVertIcon /> 
+      // <button  onClick={handlemoreOption}
+      //  onBlur={handlemoreblur} >
+        
+ <MoreVertIcon  onClick={handlemoreOption} /> 
 
-        </button>}
+        // </button>
+        }
     
     
     {(bookerid===selectbookeduserid) && moreoption && <div className='booking_more_options_btn'>
       
     <button  onClick={onclickingOrders}>
-      <Link to={`/user/orders`} > Orders  </Link>
+      <Link to={`/userorders`} > Orders  </Link>
         
         </button>
       <button onClick={handleunbookbtn}  

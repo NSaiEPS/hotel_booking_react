@@ -6,8 +6,9 @@ import './Orders.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
 import OrderItems from './OrderItems'
-
-
+import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
+import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
+import MicOffIcon from '@mui/icons-material/MicOff';
 
 const Orders = () => {
 let orderdetails=useSelector(Selectbookingorderdetails)
@@ -60,35 +61,88 @@ let handleinput=(e)=>{
     // console.log(input.ordername, input.ordervalue)
 }
 
-let handleaddOrders=(e)=>{
-    e.preventDefault()
 
-    db.collection('tables').doc(tableid).collection('orders').add({
-        name:input.ordername,
-        noofitems:input.ordervalue,
-        price:''
-        
-    
-      })
-      setInput({
-        ...input,ordername:'',ordervalue:''
-      })
 
-}
 // console.log(window.location.pathname)
 // if(window.location.pathname==='/user/orders') {
 // if(!bookername){
-//     // alert('reloadeed')
-//     // navigate('/')
-//     alert('Oops some thing went wrong go back & click your orders')
-
-// }
-// }
+//     alert('reloadeed')
+//     navigate('/')
+//     alert('Oops some thing went wrong go back & click your orders')}}
 
 
 
 if(!tableid){
     navigate('/')
+}
+
+// window.location.reload(false)
+// if(window.location.reload(false)){
+//     navigate('/')
+// }
+
+let [micopen,setMicopen]=useState(true)
+
+let {
+    transcript,
+    interimTranscript,
+    finalTranscript,
+    resetTranscript,
+    listening,
+    } = useSpeechRecognition();
+
+let handlemiconclicked=()=>{
+    alert('Mic is on, please speck to record')
+    setMicopen(false)
+
+    let lang='en'
+        SpeechRecognition.startListening({
+          continuous: true,
+          language: lang,
+        })
+
+        
+
+}
+
+let handlemicoffclicked=()=>{
+    alert('Mic is off now')
+    setMicopen(true)
+    SpeechRecognition.stopListening()
+}
+// const { transcript } = useSpeechRecognition()
+
+
+
+
+let handleaddOrders=(e)=>{
+    e.preventDefault()
+  if(input.ordername && transcript){
+    alert('please clear the mic or typed input to order the items')
+  }
+  else{
+    let ordername;
+
+  if(input.ordername) {
+
+    ordername=input.ordername
+  }
+  if(transcript) {
+    ordername=transcript
+  }
+    db.collection('tables').doc(tableid).collection('orders').add({
+        name:ordername,
+        noofitems:input.ordervalue,
+        price:''
+        
+    
+      })
+      SpeechRecognition.stopListening()
+      resetTranscript()
+      setInput({
+        ...input,ordername:'',ordervalue:''
+      })
+    }
 }
 
   return (
@@ -98,7 +152,7 @@ if(!tableid){
 </Alert>
 }
     
-        <h3>Hello {bookername} this is your order booking page {tablenumb}</h3>
+        <h3>Hello {bookername? bookername: 'user'} this is your order booking page {tablenumb}</h3>
         <div className={(!tableid)? 'Orders_goback_div_message': 'Orders_goback_div'}>
        <button> <Link to='/'>Go back</Link></button></div>
 
@@ -108,16 +162,46 @@ if(!tableid){
 
 
            <div className='Ordering_input'>
-            <form onSubmit={handleaddOrders}>
-                <input placeholder='type your orders here...' type='text' value={input.ordername} name='ordername'
+           <div><form onSubmit={handleaddOrders}>
+                <input placeholder='Enter your orders here...' type='text'
+                // value={(!micopen) ? transcript:input.ordername } name='ordername'
+                value={input.ordername } name='ordername'
                 onChange={handleinput}
                 />
                 <input placeholder='no.of items' type='number'   value={input.ordervalue} name='ordervalue' onChange={handleinput}/>
-               { (input.ordername && input.ordervalue>0)&& (tableid)&& <button  type='submit'
+               { ((input.ordername || transcript) && input.ordervalue>0)&& (tableid)&& <button  type='submit'
                >Add</button>
 
                } 
-            </form>
+            </form></div> 
+
+
+
+          <div className='mic_part'>
+         <div> {
+        //  <p>{transcript}</p>
+         <input placeholder='Order through Mic' value={transcript}/>
+         }</div>
+        
+       <div>   {(!micopen)? <span className='micoofficon'>
+        <MicOffIcon onClick={handlemicoffclicked} /></span>
+             : <span className='micoonicon'> <MicOutlinedIcon onClick={handlemiconclicked} /></span>}
+         
+         
+
+        { transcript &&  <button onClick={()=>{resetTranscript()
+
+         }}>Clear</button>}</div>
+         <div>
+            <select>
+                <option>dvfhd</option>
+                <option>dvfhd</option>
+                <option>dvfhd</option>
+                <option>dvfhd</option>
+            </select>
+         </div>
+         
+          </div>
 
            </div>
 
@@ -126,6 +210,15 @@ if(!tableid){
         price:'' */}
            {orders?.length>0 &&
            <div className='Orders_OrderItems'>
+            <table>
+                <th>Name</th>
+                <th>No.of items</th>
+                <th>Update</th>
+
+                <th>Delete</th>
+                <th>Price</th>
+
+            </table>
             { Array.isArray(orders) && 
             orders?.map((items,indx)=>{
                 return(
@@ -139,6 +232,7 @@ if(!tableid){
             })
 
             }
+            <p>Total price <small className='rupeicon'>₹</small> </p>
 
            </div>}
 

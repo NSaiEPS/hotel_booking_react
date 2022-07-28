@@ -113,3 +113,7 @@ border-radius:5px;
     font-size: large;
     font-weight: 500;
 }
+
+.booking_more_options:hover {
+    cursor: pointer;
+}

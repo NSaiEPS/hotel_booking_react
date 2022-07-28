@@ -17,7 +17,7 @@ const FuaturedItems = () => {
        src="https://foodfinger.in/wp-content/uploads/2021/04/Tandoori-Chicken-Biryani-scaled.jpg" class="d-block w-100" alt="..."/>
       <div class="carousel-caption d-none d-md-block">
         <h5 class="bg-primary">Tandoori chicken biryani</h5>
-        <p class="bg-success">Some representative placeholder content for the first slide.</p>
+        <p class="bg-success">Special Tandoori chicken biryani with extra spicy</p>
       </div>
     </div>
     <div class="carousel-item" data-bs-interval="2000">
@@ -26,7 +26,7 @@ const FuaturedItems = () => {
       src="https://imgk.timesnownews.com/story/veg-thali.gif" class="d-block w-100" alt="..."/>
       <div class="carousel-caption d-none d-md-block">
         <h5 class="bg-primary">Special South Indian Thali</h5>
-        <p class="bg-success">Some representative placeholder content for the second slide.</p>
+        <p class="bg-success">Special South Indian Thali which consists of delicious curries</p>
       </div>
     </div>
     <div class="carousel-item">
@@ -34,7 +34,7 @@ const FuaturedItems = () => {
        src="https://i0.wp.com/www.nandanmsd.com/wp-content/uploads/2020/08/Paper-Sada-Dosa.jpg?fit=720%2C405&ssl=1" class="d-block w-100" alt="..."/>
       <div class="carousel-caption d-none d-md-block">
         <h5 class="bg-primary">Special Dosa</h5>
-        <p class="bg-success">Some representative placeholder content for the third slide.</p>
+        <p class="bg-success">Special Dosa which can fill your stomack!</p>
       </div>
     </div>
     <div class="carousel-item">
@@ -42,14 +42,14 @@ const FuaturedItems = () => {
        src="https://www.licious.in/blog/wp-content/uploads/2022/06/shutterstock_1660752256.jpg" class="d-block w-100" alt="..."/>
       <div class="carousel-caption d-none d-md-block">
         <h5 class="bg-primary">Special Curries</h5>
-        <p class="bg-success">Some representative placeholder content for the third slide.</p>
+        <p class="bg-success">Special Curries with diffrent tastes!</p>
       </div>
     </div>
     <div class="carousel-item">
       <img src="https://www.thillaismasala.com/wp-content/uploads/2022/04/Fish-Biryani-1200x900.webp" class="d-block w-100" alt="..."/>
       <div class="carousel-caption d-none d-md-block">
         <h5 class="bg-primary" >Special Fish Biryani</h5>
-        <p class="bg-success">Some representative placeholder content for the third slide.</p>
+        <p class="bg-success">Special Fish Biryani the taste you never going to forget!</p>
       </div>
     </div>
   </div>

@@ -55,7 +55,7 @@ const Dashboard = () => {
 
 // console.log(posts)
 let [contents,setcontents]=useState({
-  table:false},{
+  table:true},{
   users:false},{
   suppliers:false
 

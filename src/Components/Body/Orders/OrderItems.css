@@ -2,6 +2,7 @@
     /* margin-top: 15px; */
     /* background-color: blue; */
     padding-top: 10px;
+    position: relative;
 
 }
 
@@ -12,7 +13,7 @@
     margin-right: auto;
     border-radius: 5px;
     padding: 5px;
-
+    position: relative;
 }
 
 .OrderItems_inside {
@@ -23,11 +24,62 @@
 .OrderItems_inside div{
     flex: 1;
     background-color: blanchedalmond;
+    padding: 5px;
 
 }
 
-.OrderItems_inside div:nth-child(4){
-    color: red;
+.OrderItems_inside div:nth-child(4) span{
+    color: red !important;
     cursor: pointer;
 
 }
+
+.OrderItems_inside div:nth-last-child(3) span{
+    color: green;
+    cursor: pointer;
+
+}
+
+.OrderItems_inside {
+    box-sizing: border-box;
+
+}
+
+.OrderItems_inside input {
+
+    border: none;
+    outline: none;
+    font-size: large;
+    padding: 3px;
+    border-radius: 3px;
+    width:100%;
+    padding-left: 13px;
+}
+
+.OrderItems_inside div:nth-last-child(1){
+    position: relative;
+
+}
+
+.OrderItems_inside div:nth-last-child(1) span{
+ /* color: red; */
+ position: absolute;
+ left: 7px;
+ top: 10px;
+ font-size: large;
+}
+
+.showing_index {
+    position: absolute;
+    left: 17px;
+    top: 22px;
+    font-size: larger;
+    font-weight: 500;
+    color: red;
+}
+
+.update_icon {
+    color: blue;
+}
+
+/* .showing_index */
