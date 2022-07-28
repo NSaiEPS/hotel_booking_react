@@ -91,14 +91,20 @@ let {
     listening,
     } = useSpeechRecognition();
 
+let [language,setLanguage]=useState(
+    {
+        code:'te',
+        name:'telugu'
+    })
+
 let handlemiconclicked=()=>{
     alert('Mic is on, please speck to record')
     setMicopen(false)
 
-    let lang='en'
+    // let language='en'
         SpeechRecognition.startListening({
           continuous: true,
-          language: lang,
+          language: language.code,
         })
 
         
@@ -145,6 +151,21 @@ let handleaddOrders=(e)=>{
     }
 }
 
+
+let handlelanguagechange=(e)=>{
+    console.log(e.target.value)
+    let targeted=(e.target.value)
+   console.log(targeted.split(' '))
+   let targetteddata=targeted.split(' ');
+   console.log(targetteddata);
+   setLanguage({
+    ...input,
+    code:targetteddata[1],
+    name:targetteddata[0]
+   })
+
+
+}
   return (
     <div className='Orders'>
         {(!tableid)&& <Alert variant="filled" severity="error">
@@ -180,7 +201,7 @@ let handleaddOrders=(e)=>{
           <div className='mic_part'>
          <div> {
         //  <p>{transcript}</p>
-         <input placeholder='Order through Mic' value={transcript}/>
+         <input placeholder={`Use Mic to enter in ${language.name}`} value={transcript}/>
          }</div>
         
        <div>   {(!micopen)? <span className='micoofficon'>
@@ -193,11 +214,12 @@ let handleaddOrders=(e)=>{
 
          }}>Clear</button>}</div>
          <div>
-            <select>
-                <option>dvfhd</option>
-                <option>dvfhd</option>
-                <option>dvfhd</option>
-                <option>dvfhd</option>
+            <select onChange={handlelanguagechange}>
+            <option>Telugu te</option>
+                <option>English en</option>
+                <option>Hindi hi</option>
+                <option>Tamil ta</option>
+                <option>Kannada kn</option>
             </select>
          </div>
          
