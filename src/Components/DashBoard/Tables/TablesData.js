@@ -8,10 +8,11 @@ import { SelectbookeduserID } from '../../Redux/Redux_Slice';
 import { useSelector } from 'react-redux';
 
 
-const TablesData = ({name,active,survedby,id,bookedby,index,bookeremail,bookeduserid}) => {
+const TablesData = ({name,active,survedby,id,bookedby,index,bookeremail,survedid,bookeduserid}) => {
 
   let [editsurvemail,setEditsurvemail]=useState(false)
-  let [survingemail,setSurvingemail]=useState(survedby)
+  let [survingemail,setSurvingemail]=useState('')
+  let [suplierid,setSuplierid]=useState()
 let selectbookeduserid=useSelector(SelectbookeduserID)
 
 
@@ -62,7 +63,12 @@ useEffect(()=>{
     if(!editsurvemail){
       alert('Please click edit button to edit')
     }
-    setSurvingemail(e.target.value)
+    else {
+    let emailoption=(e.target.value).split(' ')
+    console.log(emailoption)
+    setSurvingemail(emailoption[0])
+    setSuplierid(emailoption[1])
+  }
 
   }
   let onsurvedeit=()=>{
@@ -71,15 +77,18 @@ useEffect(()=>{
   }
 
   let onsurveupgrade=()=>{
+    console.log(survingemail)
+    
     setEditsurvemail(false)
     let checkemail=survingemail.split('@')
     if(checkemail[1]!=='deviresidenciessupliers.com'){
-      alert(`input must contain  "deviresidenciessupliers.com"` )
+      alert(`input must contain  "deviresidenciessupliers.com" or click the option correctly` )
     }
 
     else {
       db.collection('tables').doc(id).update({
         ['survedby']: survingemail,
+        ['survedid']:suplierid,
         
 
       })
@@ -89,6 +98,12 @@ useEffect(()=>{
 
       })
 
+      db.collection('suppliers').doc(suplierid).update({
+        ['survingTable']:`${name} ${index+1}`,
+      })
+        
+      
+      
 
 
     }
@@ -100,12 +115,17 @@ useEffect(()=>{
     alert(' are you sure to delete email !')
     db.collection('tables').doc(id).update({
       ['survedby']: '',
+      ['survedid']:'',
       
 
     })
     db.collection('users').doc(bookeduserid).update({
       ['survedby']: '',
 
+    })
+
+    db.collection('suppliers').doc(survedid).update({
+      ['survingTable']:``,
     })
   }
   return (
@@ -125,15 +145,33 @@ useEffect(()=>{
                  <button className='Tabledata_btn_notbooked'>Not yet booked</button>}
                 </td>
             <td className='TableData_bookedby'> { bookedby? bookedby: '--'}</td>
-            <td className='TableData_Survedby'>{survedby? 
+            <td className='TableData_Survedby'>
+              { bookedby?
             
 
             <div className='emailafter_edit'> 
               
                {/* {survedby}  */}
-            <input placeholder='Yet to bedecided by you' onChange={handlesurvingemail} type='email' value={editsurvemail ? survingemail:survedby}/>
+            {/* <input placeholder='Yet to bedecided by you' onChange={handlesurvingemail} type='email' value={editsurvemail ? survingemail:survedby}/> */}
 
-               {/* <span>Click edit button to select the user</span> */}
+              {!editsurvemail? <span> { survedby? survedby:
+
+`Click edit button to select the supler`
+
+                }
+                
+                </span> :
+              
+              <select onChange={handlesurvingemail}>
+                {Array.isArray(suplier) && suplier?.map((item)=>{
+                  return(
+                <option key={Math.random()}>{`${item.data.email}  ${item.id} `}</option>
+
+                  )
+                })}
+                
+              </select>
+              }
                
                {editsurvemail ?<span><UpgradeIcon onClick={onsurveupgrade} className='update_icon'/></span>:
               <span> <EditIcon  className='edit_icon' onClick={onsurvedeit}/> </span>
@@ -146,17 +184,23 @@ useEffect(()=>{
                  </div>
           
             
-            :
-            active? 
-            <div className='surveddata_edit'>
-            <input placeholder='Yet to bedecided by you' onChange={handlesurvingemail} type='email' value={editsurvemail ? survingemail:''}/>
+           
 
-            {editsurvemail? <span><UpgradeIcon onClick={onsurveupgrade} className='update_icon'/></span>: 
-            <span><EditIcon  className='edit_icon' onClick={onsurvedeit}/> </span>} 
+          // :
+          // active? 
+          // <div className='surveddata_edit'>
+          // <input placeholder='Yet to bedecided by you' onChange={handlesurvingemail} type='email' value={editsurvemail ? survingemail:''}/>
 
-            </div>
+          // {editsurvemail? <span><UpgradeIcon onClick={onsurveupgrade} className='update_icon'/></span>: 
+          // <span><EditIcon  className='edit_icon' onClick={onsurvedeit}/> </span>} 
+
+          // </div>
+
+
+
+:''
             
-            :'--'}</td>
+            }</td>
          </tr>
         
 

@@ -82,3 +82,9 @@ cursor: pointer;}
 .email_deleteicon {
     color: red;
 }
+
+.emailafter_edit select{
+    max-width: 250px ;
+    color: green;
+    /* background-color: red; */
+}
