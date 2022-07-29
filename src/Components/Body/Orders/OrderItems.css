@@ -56,6 +56,14 @@
     padding-left: 13px;
 }
 
+.OrderItems_inside div:nth-last-child(1) input {
+    color: red;
+    padding-left: 18px;
+
+
+
+}
+
 .OrderItems_inside div:nth-last-child(1){
     position: relative;
 
@@ -65,7 +73,7 @@
  /* color: red; */
  position: absolute;
  left: 7px;
- top: 10px;
+ top: 8.5px;
  font-size: large;
 }
 

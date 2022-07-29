@@ -103,6 +103,10 @@ let handleLogout=()=>{
             }
                 </button>
         </div>)}
+        { supliername && <div className='Header_inside_dashboard'>
+
+           <span className='supliername_header'>Suplier {supliername}</span>
+            </div> }
 
         <div className='Logout_btn_div'>
         <button className='logout_btn'

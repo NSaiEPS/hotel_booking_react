@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../../../Firebase'
-import { Selectbookingorderdetails, Selectloginsuplier, SelectUserbookingnum } from '../../Redux/Redux_Slice'
+import { Selectbookingorderdetails, Selectchek, Selectloginsuplier, Selectorderprice} from '../../Redux/Redux_Slice'
 import './Orders.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
@@ -13,14 +13,19 @@ import MicOffIcon from '@mui/icons-material/MicOff';
 const Orders = () => {
 let orderdetails=useSelector(Selectbookingorderdetails)
 let supliername=useSelector(Selectloginsuplier)
+// let selectorderprice=useSelector(Selectchek)
+
 let{bookeduserid,tableid,tablenumb,bookername}=orderdetails;
 const navigate = useNavigate()
+let dispatch=useDispatch()
+
 
 // console.log(bookeduserid,tableid,tablenumb,bookername)
     let [orders,setOrders]=useState({
 
     })
 
+    let len=0;
     useEffect(()=>{
         db.collection('tables').doc(tableid).collection('orders').onSnapshot((snapshot)=>{
         setOrders(snapshot.docs.map((doc)=>({
@@ -29,14 +34,32 @@ const navigate = useNavigate()
             data:doc.data(),
           
         })))
+
+        console.log(len)
       }) ;
     
-      let len=orders.length;
-    
+      len=1;
   
   },[])
 
-
+  // let itemprice=0;
+  // console.log(len)
+  // if(len===1){
+  //  orders?.map((items,indx)=>{
+  //  console.log(items.data.price)
+       
+  //      itemprice=(+(items.data.price)+itemprice)
+  //      dispatch(
+ 
+  //        totalorderprice(
+  //          itemprice
+ 
+  //        ))
+       
+  //  })
+  //  len=0;
+  
+  // }
 
 
 let [input,setInput]=useState({
@@ -145,6 +168,8 @@ let handleaddOrders=(e)=>{
     
       })
       SpeechRecognition.stopListening()
+    setMicopen(true)
+
       resetTranscript()
       setInput({
         ...input,ordername:'',ordervalue:''
@@ -167,6 +192,35 @@ let handlelanguagechange=(e)=>{
 
 
 }
+
+
+
+
+// let [totalprice,setTotalprice]=useState(0)
+
+// let itemprice=0;
+// { Array.isArray(orders) && 
+//   orders?.map((items,indx)=>{
+//   console.log(items.data.price)
+      
+//       itemprice=(+(items.data.price)+itemprice)
+//       dispatch(
+
+//         totalorderprice(
+//           itemprice
+
+//         ))
+      
+//   })
+
+//   }
+
+  // console.log(itemprice)
+  // setTotalprice(itemprice)
+
+
+
+
   return (
     <div className='Orders'>
         {(!tableid)&& <Alert variant="filled" severity="error">
@@ -258,7 +312,11 @@ let handlelanguagechange=(e)=>{
             })
 
             }
-            <p>Total price <small className='rupeicon'>₹</small> </p>
+            
+            {/* <p>Total price <small className='rupeicon'>₹</small> <span><b> */}
+              {/* {selectorderprice && selectorderprice} */}
+               {/* totla price here
+              </b></span> </p> */}
 
            </div>}
 

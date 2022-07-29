@@ -16,7 +16,10 @@ export const ReduxSlice=createSlice({
         suppliersnumber:'',
         usertablebookingnum:0,
         orderdetails:'',
-        supierloginname:''
+        supierloginname:'',
+        totalprice:[],
+        
+
 
     },
 
@@ -61,7 +64,10 @@ export const ReduxSlice=createSlice({
         supliername:(state,action)=>{
             state.supierloginname=action.payload
 
-        }
+        },
+        totalorderprice:(state,action)=>{
+            state.totalprice.push(action.payload)
+        },
 
     }
 })
@@ -69,7 +75,7 @@ export const ReduxSlice=createSlice({
 
 export const {themes,signings,userinfo,insidesign,tablenumber,
     unbookedtable,bookedtable,bookedusersid,suplersnumb,usersnumb,
-    usernoofbooking,bookingorderdetails,supliername}=ReduxSlice.actions;
+    usernoofbooking,bookingorderdetails,supliername,totalorderprice}=ReduxSlice.actions;
 
 export const SelectTheme=(state)=>state.reduxstore.theme
 export const Selectsigning=(state)=>state.reduxstore.signing
@@ -84,5 +90,8 @@ export const SelectSupliernumb=(state)=>state.reduxstore.suppliersnumber
 export const SelectUserbookingnum=(state)=>state.reduxstore.usertablebookingnum
 export const Selectbookingorderdetails=(state)=>state.reduxstore.orderdetails
 export const Selectloginsuplier=(state)=>state.reduxstore.supierloginname
+export const Selectorderprice=(state)=>state.reduxstore.totalprice
+// export const Selectchek=(state)=>state.reduxstore.chw
+
 
 export default ReduxSlice.reducer

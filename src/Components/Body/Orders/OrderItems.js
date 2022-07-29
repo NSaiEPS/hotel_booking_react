@@ -1,12 +1,28 @@
-import { Delete } from '@material-ui/icons'
 import React, { useState } from 'react'
 import { db } from '../../../Firebase'
 import './OrderItems.css'
+import { Delete } from '@material-ui/icons'
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import EditIcon from '@mui/icons-material/Edit';
+import { useDispatch, useSelector } from 'react-redux';
+import { Selectloginsuplier, totalorderprice } from '../../Redux/Redux_Slice';
 
 
 const OrderItems = ({orderid,ordername,noofitems,price,index,tableid}) => {
+ let dispatch=useDispatch()
+
+  dispatch(
+
+            totalorderprice({
+              price
+            }
+              
+    
+            ))
+ 
+ 
+  let supliername=useSelector(Selectloginsuplier)
+  let [itemprice,setItemprice]=useState(0)
 
 let [input,setInput]=useState({
   ordersname:`${ordername}`,
@@ -55,16 +71,76 @@ let onordereditask=()=>{
 
 
 
+  if(supliername){
+  
+    if(itemprice>0){
+
+        db.collection('tables').doc(tableid).collection('orders').doc(orderid).update({
+          ['price']: itemprice,
+         
+  
+        })
+        // alert('editted successfully')
+        setUpdate(false)
+  
+  
+  
+      }
+      else{
+        alert( 'Price must be greater than ₹ 0')
+      }
+  
+  
+  }
+
     }
 
     else {
       alert('Not able to edit!  No.of items must be greater than 0')
     }
+
+
+
+
+
   }
 
 
-let handleprice=()=>{
-  alert(`U can't edit the price, only the supplier can edit the price`)
+let handleprice=(e)=>{
+  if(supliername){
+    if(update){
+
+  setItemprice(e.target.value)
+   
+      // if(itemprice>0){
+
+      //   db.collection('tables').doc(tableid).collection('orders').doc(orderid).update({
+      //     ['price']: itemprice,
+         
+  
+      //   })
+      //   alert('editted successfully')
+      //   setUpdate(false)
+  
+  
+  
+      // }
+      // else{
+      //   alert( 'Price must be greater than ₹ 0')
+      // }
+
+
+
+
+     }
+     else {
+      alert('please click edit button to edit')
+     }
+  }
+ else {
+
+  alert(`U can't edit the price, only the supplier can edit the price`)}
+
 }
 
 
@@ -122,7 +198,7 @@ let handleprice=()=>{
     
       <div >  
       {/* {price}  */}
-      <input type='number' value={price} onChange={handleprice}/>
+      <input type='number' value={ (update && supliername)? itemprice: price} onChange={handleprice}/>
 
       <span>₹</span>
       </div>

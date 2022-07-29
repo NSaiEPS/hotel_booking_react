@@ -73,3 +73,12 @@ table {
 
 
 cursor: pointer;}
+
+.emailafter_edit span {
+    cursor: pointer;
+
+}
+
+.email_deleteicon {
+    color: red;
+}

@@ -3,7 +3,7 @@ import './App.css';
 import Header from './Components/Header/Header';
 import Signup from './Components/UserSignin/Signup';
 import {useSelector} from 'react-redux'
-import { SelectInsidesign, Selectsigning, Selecttablenumber, SelectTheme, SelectUser, tablenumber,bookedusersid, usernoofbooking } from './Components/Redux/Redux_Slice';
+import { SelectInsidesign, Selectsigning, Selecttablenumber, SelectTheme, SelectUser, tablenumber,bookedusersid, usernoofbooking, Selectorderprice } from './Components/Redux/Redux_Slice';
 import Login from './Components/UserSignin/Login';
 import InsideSignin from './Components/UserSignin/InsideSignin';
 import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-router-dom'
@@ -22,6 +22,8 @@ function App() {
   let [login,setlogin]=useState(false)
   let Userinfo=useSelector(SelectUser)
   const [userss,loading]=useAuthState(auth)
+// let selectorderprice=useSelector(Selectorderprice)
+
 
   let seletlogin=useSelector(Selectsigning)
   let Selectinsidesign=useSelector(SelectInsidesign)

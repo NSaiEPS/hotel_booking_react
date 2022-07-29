@@ -1,13 +1,63 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import './TablesData.css'
 import UpgradeIcon from '@mui/icons-material/Upgrade';
 import EditIcon from '@mui/icons-material/Edit';
 import { db } from '../../../Firebase';
+import { Delete } from '@material-ui/icons'
+import { SelectbookeduserID } from '../../Redux/Redux_Slice';
+import { useSelector } from 'react-redux';
 
-const TablesData = ({name,active,survedby,id,bookedby,index,bookeremail}) => {
+
+const TablesData = ({name,active,survedby,id,bookedby,index,bookeremail,bookeduserid}) => {
 
   let [editsurvemail,setEditsurvemail]=useState(false)
-  let [survingemail,setSurvingemail]=useState('')
+  let [survingemail,setSurvingemail]=useState(survedby)
+let selectbookeduserid=useSelector(SelectbookeduserID)
+
+
+let [suplier,setSuplier]=useState({})
+
+useEffect(()=>{
+
+ 
+  db.collection('suppliers').onSnapshot((snapshot)=>{
+    setSuplier(snapshot.docs.map((doc)=>({
+        
+        id:doc.id,
+        data:doc.data(),
+      
+    })))
+  }) ;
+
+
+
+},[])
+
+// let ide=''
+// let [suplierid,setSuplierid]=useState('')
+
+// if(Array.isArray(suplier)){
+//  suplier?.map((item,indx)=>{
+  
+//   if(item?.doc?.email===survingemail){
+//     console.log(survingemail)
+//     ide=item.id
+//     setSuplierid(ide)
+
+//   }
+  
+  
+// })}
+
+
+// console.log(suplierid)
+
+
+
+
+
+
+
   let handlesurvingemail=(e)=>{
     if(!editsurvemail){
       alert('Please click edit button to edit')
@@ -16,6 +66,7 @@ const TablesData = ({name,active,survedby,id,bookedby,index,bookeremail}) => {
 
   }
   let onsurvedeit=()=>{
+    // alert('clicked')
     setEditsurvemail(true)
   }
 
@@ -32,9 +83,30 @@ const TablesData = ({name,active,survedby,id,bookedby,index,bookeremail}) => {
         
 
       })
+    
+      db.collection('users').doc(bookeduserid).update({
+        ['survedby']: survingemail,
+
+      })
+
+
+
     }
 
 
+  }
+
+  let handlemialdelete=()=>{
+    alert(' are you sure to delete email !')
+    db.collection('tables').doc(id).update({
+      ['survedby']: '',
+      
+
+    })
+    db.collection('users').doc(bookeduserid).update({
+      ['survedby']: '',
+
+    })
   }
   return (
     <div>
@@ -53,7 +125,28 @@ const TablesData = ({name,active,survedby,id,bookedby,index,bookeremail}) => {
                  <button className='Tabledata_btn_notbooked'>Not yet booked</button>}
                 </td>
             <td className='TableData_bookedby'> { bookedby? bookedby: '--'}</td>
-            <td className='TableData_Survedby'>{survedby? survedby:
+            <td className='TableData_Survedby'>{survedby? 
+            
+
+            <div className='emailafter_edit'> 
+              
+               {/* {survedby}  */}
+            <input placeholder='Yet to bedecided by you' onChange={handlesurvingemail} type='email' value={editsurvemail ? survingemail:survedby}/>
+
+               {/* <span>Click edit button to select the user</span> */}
+               
+               {editsurvemail ?<span><UpgradeIcon onClick={onsurveupgrade} className='update_icon'/></span>:
+              <span> <EditIcon  className='edit_icon' onClick={onsurvedeit}/> </span>
+                }  
+      <span className='email_deleteicon'>
+
+      <Delete onClick={handlemialdelete} />
+      </span>
+                
+                 </div>
+          
+            
+            :
             active? 
             <div className='surveddata_edit'>
             <input placeholder='Yet to bedecided by you' onChange={handlesurvingemail} type='email' value={editsurvemail ? survingemail:''}/>

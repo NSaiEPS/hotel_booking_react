@@ -3,7 +3,7 @@ import './Booking_Section.css'
 // import './Body.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { auth, db } from '../../Firebase'
-import { Selecttablenumber, Selectunbookedtables, unbookedtable,SelectbookeduserID, SelectUser, usernoofbooking, SelectUserbookingnum, bookingorderdetails } from '../Redux/Redux_Slice'
+import { Selecttablenumber, Selectunbookedtables, unbookedtable,SelectbookeduserID, SelectUser, usernoofbooking, SelectUserbookingnum, bookingorderdetails, Selectloginsuplier } from '../Redux/Redux_Slice'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import firebase from 'firebase/compat/app';
 import { Link} from 'react-router-dom'
@@ -20,7 +20,8 @@ const Booking_Section = ({name,active,bookedby,survedby,bookeremail,id,index,boo
 let selectbookeduserid=useSelector(SelectbookeduserID)
 const [userss,loading]=useAuthState(auth)
 
-console.log(survedby)
+
+// console.log(survedby)
 
 let selectuser=useSelector(SelectUser)
 let dispatch=useDispatch()
@@ -281,11 +282,15 @@ let handlesaynobook=()=>{
     >
       {/* <button className={active? 'booked_btn':'notbooked_btn'}>{active? 'Booked':'Book'}</button> */}
       {active?  
-       <button className={(bookerid===selectbookeduserid)? 'booked_btn_you':'booked_btn'}
+       <button className={((bookerid===selectbookeduserid)|| (survedby===selectuser.useemail))? 'booked_btn_you':'booked_btn'}
        
        onClick=   {handlecheck}
        > 
-      { (bookerid===selectbookeduserid)? `It's your table enjoy!`:'Booked'}
+      { (bookerid===selectbookeduserid)? `It's your table enjoy!`:
+      
+      (survedby===selectuser.useemail)? `It's your suplying table!`:
+      
+      'Booked'}
        
        </button>: 
 
