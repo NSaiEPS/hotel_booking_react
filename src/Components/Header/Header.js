@@ -1,7 +1,7 @@
 import React from 'react'
 import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
-import { insidesign, SelectUser, themes } from '../Redux/Redux_Slice'
+import { insidesign, Selectloginsuplier, SelectUser, themes } from '../Redux/Redux_Slice'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import { auth } from '../../Firebase'
 
@@ -11,6 +11,7 @@ const Header = () => {
     let selectuser=useSelector(SelectUser)
     // console.log(selectuser?.useemail)
     const navigate = useNavigate()
+    let supliername=useSelector(Selectloginsuplier)
 
 
     let handleDarkTheme=()=>{
@@ -69,9 +70,11 @@ let handleLogout=()=>{
             src='https://img.freepik.com/premium-vector/initial-dr-letter-logo-with-script-typography-vector-template-creative-script-letter-dr-logo-design_616200-715.jpg' alt='Devi restarent'/>
         </div>
         <div>
-   <h2 className='Header_Login_name'>  Welcome to the Devi Residencies
+   <h2 className='Header_Login_name'>  Welcome to the Devi Residencies 
+
     
-   </h2> </div>
+   </h2>
+    </div>
      </div>
      <div className='Header_inside_right'>
         <button className='Signin_btn'>Signin</button>

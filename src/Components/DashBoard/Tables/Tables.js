@@ -81,7 +81,8 @@ let addnewtable=()=>{
     name:'Table',
     active:false,
     bookedby:'',
-    survedby:''
+    survedby:'',
+    bookeremail:''
     
 
   })}
@@ -161,7 +162,9 @@ className='Tables_inside_addingtable'>Add new table</button>
       return(
         <div key={Math.random()}>
           <TablesData name={item.data.name} active={item.data.active} bookedby={item.data.bookedby}
-           survedby={item.data.survedby} id={item.id} index={indx}  />
+           survedby={item.data.survedby} id={item.id} index={indx} 
+    bookeremail={item.data.bookeremail}
+    />
 
           </div>
       )

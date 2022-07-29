@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { db } from '../../../Firebase'
-import { Selectbookingorderdetails, SelectUserbookingnum } from '../../Redux/Redux_Slice'
+import { Selectbookingorderdetails, Selectloginsuplier, SelectUserbookingnum } from '../../Redux/Redux_Slice'
 import './Orders.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
@@ -12,6 +12,7 @@ import MicOffIcon from '@mui/icons-material/MicOff';
 
 const Orders = () => {
 let orderdetails=useSelector(Selectbookingorderdetails)
+let supliername=useSelector(Selectloginsuplier)
 let{bookeduserid,tableid,tablenumb,bookername}=orderdetails;
 const navigate = useNavigate()
 
@@ -173,7 +174,10 @@ let handlelanguagechange=(e)=>{
 </Alert>
 }
     
-        <h3>Hello {bookername? bookername: 'user'} this is your order booking page {tablenumb}</h3>
+        <h3>Hello {supliername?
+         <span>Suplier {supliername} </span> 
+        : bookername? bookername: 'user'} this is your  
+           {supliername?  ` supliying  ${tablenumb} `:`order booking page ${tablenumb}`} </h3>
         <div className={(!tableid)? 'Orders_goback_div_message': 'Orders_goback_div'}>
        <button> <Link to='/'>Go back</Link></button></div>
 

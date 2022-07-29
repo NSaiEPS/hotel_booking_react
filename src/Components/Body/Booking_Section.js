@@ -16,15 +16,17 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 // import EditIcon from '@mui/icons-material/Edit';
 
 
-const Booking_Section = ({name,active,bookedby,survedby,id,index,bookerid}) => {
+const Booking_Section = ({name,active,bookedby,survedby,bookeremail,id,index,bookerid}) => {
 let selectbookeduserid=useSelector(SelectbookeduserID)
 const [userss,loading]=useAuthState(auth)
 
-
+console.log(survedby)
 
 let selectuser=useSelector(SelectUser)
 let dispatch=useDispatch()
 let usernobooking=useSelector(SelectUserbookingnum)
+// let suplieremailk=useSelector(SelectUserbookingnum)
+
 let [moreoption,setMoreoptions]=useState(false)
 let [booksuccess,setBooksuccess]=useState(false)
 let [bookfailure,setBookfailure]=useState(false)
@@ -67,6 +69,7 @@ let handlebookbtn=()=>{
     let name;
    if(selectbookeduserid){
     name=userss.displayName;
+
    }
    setBooksuccess(true)
    console.log(booksuccess)
@@ -74,7 +77,8 @@ let handlebookbtn=()=>{
 db.collection('tables').doc(id).update({
           ['active']: true,
           ['bookedby']:name,
-          ['bookeduserid']:selectbookeduserid
+          ['bookeduserid']:selectbookeduserid,
+          ['bookeremail']:selectuser.useemail,
         })
 
         db.collection('users').doc(selectbookeduserid).update({
@@ -99,7 +103,9 @@ db.collection('tables').doc(id).update({
     db.collection('tables').doc(id).update({
       ['active']: false,
       ['bookedby']:'',
-      ['bookeduserid']:''
+      ['bookeduserid']:'',
+      ['survedby']:'',
+      ['bookeremail']:''
     })
 
     db.collection('users').doc(selectbookeduserid).update({
@@ -291,7 +297,7 @@ let handlesaynobook=()=>{
 
 {  active &&
     <div  className='booking_more_options'>
-      {(bookerid===selectbookeduserid) &&
+      {((bookerid===selectbookeduserid) || (survedby===selectuser.useemail)) &&
       
       // <button  onClick={handlemoreOption}
       //  onBlur={handlemoreblur} >
@@ -302,7 +308,7 @@ let handlesaynobook=()=>{
         }
     
     
-    {(bookerid===selectbookeduserid) && moreoption && <div className='booking_more_options_btn'>
+    {((bookerid===selectbookeduserid) || (survedby===selectuser.useemail)) && moreoption && <div className='booking_more_options_btn'>
       
     <button  onClick={onclickingOrders}>
       <Link to={`/userorders`} > Orders  </Link>

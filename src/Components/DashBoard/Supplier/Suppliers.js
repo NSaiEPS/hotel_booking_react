@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { db } from '../../../Firebase'
+import { auth, db } from '../../../Firebase'
 import './Suppliers.css'
 import SuppliersData from './SuppliersData'
 import {suplersnumb,SelectSupliernumb} from '../../Redux/Redux_Slice'
@@ -12,6 +12,9 @@ const Suppliers = () => {
   let [suplier,setSuplier]=useState({})
   let dispatch=useDispatch()
   let selectsupliernumb=useSelector(SelectSupliernumb)
+
+   
+
 
 
   let [suplyinfo, setSuplyinfo]=useState([{
@@ -27,17 +30,46 @@ const Suppliers = () => {
 
   }
 
+  
+
   let addnewsupplier=(e)=>{
     e.preventDefault()
+    let emailcheck=(suplyinfo.email).split('@')
+    if(emailcheck[1]!=='deviresidenciessupliers.com'){
+     alert(`supliers email must contain "@deviresidenciessupliers.com" for the sake of ease `)
+  
+    }
+
+else {
+
     db.collection('suppliers').add({
    name:suplyinfo.name,
    email:suplyinfo.email,
    password:suplyinfo.password,
    active:true,
    survingTable:''
-      
+        
+
+   
   
-    })}
+    })
+    Setsuplyform(false)
+
+  
+  }}
+    // fb.Auth auth = fb.auth();
+    //  await auth.signInAnonymously();
+
+  //   auth.createUserWithEmailAndPassword(suplyinfo.email,suplyinfo.password).then((userAuth)=>{
+  //     userAuth.user.updateProfile({
+  //       displayName:suplyinfo.name,
+        
+  //     })})
+  //  .catch(error=>alert(error))
+
+
+
+
 
     useEffect(()=>{
 

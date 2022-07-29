@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import './Signup.css'
 import {useDispatch} from 'react-redux'
-import { signings, userinfo } from '../Redux/Redux_Slice'
+import { signings, supliername, userinfo } from '../Redux/Redux_Slice'
 import {auth, db} from '../../Firebase'
 import {useAuthState} from 'react-firebase-hooks/auth'
 
@@ -21,6 +21,16 @@ const Signup = () => {
 
       }
     ))
+
+ let emailcheck=(userss?.email).split('@')
+ if(emailcheck[1]==='deviresidenciessupliers.com'){
+  dispatch(
+    supliername(
+      emailcheck[0]
+    )
+  )
+ }
+
 
 
   
@@ -62,7 +72,25 @@ let handleSignup=(e)=>{
     })})
  .catch(error=>alert(error))
 
-if(users.email!=='deviresidencies@admin.com'){
+ let emailcheck=(users.email).split('@')
+// if(emailcheck[1]!=='deviresidenciessupliers.com')
+console.log(emailcheck)
+console.log(emailcheck[1])
+if(emailcheck[1]==='deviresidenciessupliers.com'){
+  alert('u r a supplier!')
+
+}
+
+if(users.email==='deviresidencies@admin.com' || emailcheck[1]==='deviresidenciessupliers.com' ){
+  if(users.email==='deviresidencies@admin.com'){
+    alert('you are the admin')
+  }
+  else {
+    alert('you are thesupplier!')
+  }
+}
+
+ else {
 
  
   db.collection('users').add({

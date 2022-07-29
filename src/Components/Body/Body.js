@@ -109,18 +109,19 @@ useEffect(()=>{
         <div className='Body_Booking_Section'>
           {/* Booking section */}
 
-       <p> <span>We have </span> <b>{selecttablenumber}</b> tables in which
+       <p> <span>We have </span> <b>{selecttablenumber? selecttablenumber:'...'}</b> tables in which
         <b> {(selecttablenumber-selectunbookedtables)}</b> tables are booked, remaing <b>{selectunbookedtables}</b> tables are are avilable for booking </p>
          
         <div className='Body_Booking_Section_inside'>
          
         { 
     (Array.isArray(tables) && tables?.map((item,indx)=>{
-        'dw'
+     
       return(
         <div key={Math.random()}>
           <Booking_Section name={item.data.name} active={item.data.active} bookedby={item.data.bookedby}
-           survedby={item.data.bookedby} id={item.id} index={indx} bookerid={item.data.bookeduserid} />
+           survedby={item.data.survedby} id={item.id} index={indx} bookerid={item.data.bookeduserid}
+           bookeremail={item.data.bookeremail} />
            
         {/* {!item.data.active ? unbooked1++ :''} */}
 

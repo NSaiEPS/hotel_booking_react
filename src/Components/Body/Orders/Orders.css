@@ -200,4 +200,35 @@ border: none !important;
 
 select {
     direction:ltr;
+ 
+}
+
+.Orders h3 span{
+    color: green;
+    animation: supliercolor 2s ease infinite;
+    border:  2px solid white;
+}
+
+@keyframes supliercolor {
+    0% {
+        color: #c60000;
+        border-bottom: 2px solid salmon;
+    }
+    25% {
+        color: green;
+        border-right: 2px solid salmon;
+
+    }
+   
+    50% {
+        color: aqua;
+        border-top: 2px solid salmon;
+    }
+
+
+    100% {
+        color: blue;
+        border-left: 2px solid salmon;
+
+    }
 }

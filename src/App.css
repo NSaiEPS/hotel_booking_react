@@ -54,3 +54,13 @@
     margin-bottom:40px;
     /* border-radius: 15px; */
   }
+
+  /* .loading_spin_app {
+    width: 50px !important;
+  } */
+
+  .Logo_App {
+    border-radius: 50%;
+    width: 300px !important;
+    height: 300px !important;
+  }
