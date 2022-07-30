@@ -110,6 +110,12 @@ align-self: center;
 display: flex;
 flex-direction: column;}
 
+
+
+
+
+
+
 .Header_inside_themes {
     position: absolute;
     display: flex;
@@ -229,3 +235,350 @@ background-color: blue !important;
     color: white;
     
 }
+
+
+
+.navbar_togle {
+position: absolute;
+display: none;
+/* left: 0px; */
+
+}
+
+
+
+
+
+@media (max-width:1060px){
+
+
+    .Header_inside {
+        display: flex;
+        /* justify-content: space-between; */
+        /* flex-wrap: wrap; */
+        flex-direction: column;
+        /* background-color: red; */
+
+    }
+
+    .Header_inside_right {
+        /* background-color: red; */
+        /* justify-self: left; */
+        /* left: 0px; */
+        position: absolute;
+        left: 10px;
+        top: 70px;
+
+        /* justify-self: start; */
+    }
+
+    .navbar_togle {
+        position: absolute;
+        /* display: none; */
+        /* left: 0px; */
+        right: 10px;
+        color: red;
+        display: inline;
+    
+    }
+    .Header_inside_themes {
+        position: absolute;
+
+    top: 120px;
+    left: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 35px;
+    }  
+    
+    .Header_inside_right_extra {
+        position: absolute;
+        display: none;
+        top: 35px;
+        right: -90px;
+        z-index: 1;
+    
+    }
+
+    .Logout_btn_div {
+        position: absolute;
+    left: 45px;
+    top:75px;
+    display: none;
+
+    }
+
+    /* .Signin_btn {
+        background-color: rgb(9, 231, 79);
+        cursor: pointer !important;
+        border-radius: 10px;
+        height: 35px;
+        
+    }
+    .Header_inside_right:hover 
+    .Header_inside_right_extra {
+    
+    display: flex;
+    flex-direction: column;} */
+
+    .Header_inside_dashboard {
+        
+       
+        display: none;
+        
+
+       
+    
+    }
+    .Header_inside_themes{
+        display: none;
+    }
+    .Header_inside_themes_nav {
+        position: absolute;
+        display: flex;
+        top: 110px !important;
+        left: 10px;
+        cursor: pointer;
+        border-radius: 5px;
+        height: 35px;
+    }
+    .Logout_btn_div_nav  {
+        position: absolute;
+        left: 75px;
+        top:70px !important;
+    
+    
+    }
+
+
+
+}
+
+
+.Header_navicon {
+    height: 200px;
+    position: sticky;
+    top: 0px;
+    /* height: 75px; */
+    background-color: rgb(32, 31, 31);
+    box-sizing: border-box;
+    padding: 10px;
+    z-index: 1;
+
+}
+
+@media (min-width:1060px){
+.Header_navicon {
+    height: 75px;
+
+
+}
+
+.Header_inside_right_navicon {
+    display: inline-block !important;
+    position: relative;
+    top: 5px;
+
+}
+
+
+.Header_inside_dashboard_nav {
+
+    position: absolute;
+   
+    display: flex;
+    top: 20px !important;
+    
+    left: 600px !important;
+        }
+
+
+
+
+
+
+}
+
+
+.Header_inside_right_navicon {
+    display: none;
+}
+
+
+.Header_inside_right_navicon button {
+    cursor: pointer;
+
+
+}
+
+
+
+.Header_inside_right_navicon:hover 
+.Header_inside_right_extra {
+
+display: flex;
+flex-direction: column;} 
+
+
+
+
+
+
+
+
+
+.Header_inside_themes_nav {
+    position: absolute;
+    display: flex;
+    top: 18px;
+    right: 155px;
+    cursor: pointer;
+    border-radius: 5px;
+    height: 35px;
+    
+}
+
+.Header_inside_themes_nav button {
+    width: 65px;
+    border-radius: 10px;
+}
+
+.Header_inside_themes_nav button:nth-child(1) {
+    background-color: white;
+    margin-right: 5px;
+}
+
+.Header_inside_themes_nav button:nth-child(1):hover {
+    background-color: black;
+    color: white;
+    border:  1px solid white;
+}
+
+.Header_inside_themes_nav button:nth-child(2) { 
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+}
+
+
+.Header_inside_themes_nav button:nth-child(2):hover { 
+    background-color: white;
+    color: black;
+    border:  1px solid black;
+
+
+}
+
+
+.Logout_btn_div_nav  {
+    position: absolute;
+    right: 75px;
+    top:20px;
+
+
+}
+
+.Logout_btn_div_nav button {
+    background-color: blue !important;
+        border: 2px solid white;
+        color: white;
+        border-radius: 5px;
+    }
+
+
+
+    .Header_inside_dashboard_nav {
+
+position: absolute;
+    
+    display: flex;
+    top: 155px;
+    
+    left: 10px;
+    }
+
+
+    .Header_inside_dashboard_nav button {
+        background-color: white;
+        color: white !important;
+        text-decoration: none !important;
+        border:1px solid white ;
+            border-radius: 5px;
+        height: 32px;
+        /* animation: dashboard 2s ease-in infinite ; */
+        /* color: wheat; */
+        width: 150px;
+        right: 0px;
+    
+        /* justify-self: center; */
+        /* margin-left: auto;
+        margin-right: auto; */
+    
+    
+    }
+
+
+   
+   
+ @media (max-width:550px){
+        .Header_inside_left {
+            flex-direction: column;
+        }
+
+.Header {
+
+    height: 100px;
+
+}
+
+.Header_inside_right{
+  top: 108px ;
+  /* background-color: red; */
+}
+
+.Header_inside_themes_nav {
+    top: 145px !important;
+}
+.Header_inside_dashboard_nav {
+    top: 185px;
+}
+.Header_navicon {
+    height: 220px ;
+}
+.Logout_btn_div_nav {
+    top: 110px !important;
+    /* left: -10px; */
+}
+
+
+    }
+
+    @media (max-width:425px){
+    
+        .Header {
+
+            height: 130px;
+        
+        }
+        
+.Header_inside_right{
+    top: 118px ;
+    /* background-color: red; */
+  }
+  
+  .Header_inside_themes_nav {
+      top: 155px !important;
+  }
+  .Header_inside_dashboard_nav {
+      top: 195px;
+  }
+  .Header_navicon {
+      height: 230px ;
+  }
+  .Logout_btn_div_nav {
+      top: 120px !important;
+      /* left: -10px; */
+  }
+     
+
+    }

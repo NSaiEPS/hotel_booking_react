@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Header.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { insidesign, Selectloginsuplier, SelectUser, themes } from '../Redux/Redux_Slice'
@@ -12,6 +12,8 @@ const Header = () => {
     // console.log(selectuser?.useemail)
     const navigate = useNavigate()
     let supliername=useSelector(Selectloginsuplier)
+
+    let [navicon,setNavicon]=useState(false)
 
 
     let handleDarkTheme=()=>{
@@ -59,9 +61,25 @@ let handleLogout=()=>{
     window.location.reload()
 
 }
+let clickednavicon=()=>{
+    // alert('clciked')
+    setNavicon(!navicon)
+
+}
+
+
+useEffect(()=>{
+    
+
+
+
+},[])
+
+
     // console.log(window.location.pathname)
+    // Header_navicon
   return (
-    <div className='Header'>
+    <div className=   { navicon?'Header_navicon': 'Header'}>
         <div className='Header_inside'>
 
      <div className='Header_inside_left'>
@@ -76,23 +94,38 @@ let handleLogout=()=>{
    </h2>
     </div>
      </div>
-     <div className='Header_inside_right'>
+     <div className=  {!navicon? 'Header_inside_right_navicon':'Header_inside_right'}>
         <button className='Signin_btn'>Signin</button>
-       
 
-        <div className='Header_inside_right_extra'>
+       
+       {/* <span class="navbar-toggler-icon  bg-red">oio</span> */}
+        <div className= {'Header_inside_right_extra'}>
             <button onClick={handleSignuser}>Signin as User</button>
             <button onClick={handlesupplier}>Signin as Supplier</button>
             <button onClick={handleAdmin}>Signin as Admin</button>
         </div>
        
      </div>
-     <div className='Header_inside_themes'>
+     {/* <div className={'Header_inside_themes'}> */}
+     <div className={ !navicon? 'Header_inside_themes':'Header_inside_themes_nav'}>
             <button onClick={handleLighttheme}>Light</button>
             <button onClick={handleDarkTheme}>Dark</button>
         </div>
 
-        {(selectuser)&& (selectuser?.useemail===`deviresidencies@admin.com`) &&   (<div className='Header_inside_dashboard'>
+        <div className='navbar_togle' onClick={clickednavicon} >
+        <nav class="navbar navbar-dark bg-dark">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggleExternalContent" aria-controls="navbarToggleExternalContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  </nav></div>
+
+
+
+
+            
+
+        {(selectuser)&& (selectuser?.useemail===`deviresidencies@admin.com`) && 
+          (<div className= { !navicon? 'Header_inside_dashboard':'Header_inside_dashboard_nav'}>
             <button onClick={handlegotodashboard} >
                 
 
@@ -108,7 +141,7 @@ let handleLogout=()=>{
            <span className='supliername_header'>Suplier {supliername}</span>
             </div> }
 
-        <div className='Logout_btn_div'>
+        <div className={ !navicon ? 'Logout_btn_div':'Logout_btn_div_nav'}>
         <button className='logout_btn'
            onClick={handleLogout} >Logout</button></div>
         </div>
