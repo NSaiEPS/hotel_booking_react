@@ -235,28 +235,6 @@ let onclickingOrders=()=>{
 }
 
 
-// useEffect(()=>{
-//   let tablenum=`${name}${index+1}`
-
-//   dispatch(
-//     bookingorderdetails({
-//       bookeduserid:bookerid,
-//       tableid:id,
-//       tablenumb:tablenum,
-//       bookername:bookedby
-//     }
-
-//     )
-
-//   )
-// },[window.location.reload])
-
-
-
-
-
-
-
 let handlesaynobook=()=>{
   if(selectuser.useemail==='deviresidencies@admin.com')
   alert(`Admin can't book the table! , u can login with different mail & book the table!`)

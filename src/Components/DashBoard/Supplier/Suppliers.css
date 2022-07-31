@@ -131,3 +131,48 @@ left: 40%; */
     /* border-radius: 5px; */
     color: white;
 }
+
+
+@media (max-width:1285px){
+
+    .Supliers_name,.Supliers_Active{
+        width: 10% !important; 
+/* background-color: red; */
+    }
+   .Supliers_Survedby {
+    width: 50% !important;
+/* background-color: red; */
+
+    /* background-color: red; */
+   }
+   .Supliers_tablenumb {
+    width: 20%;
+   }
+
+}
+
+@media (max-width:480px){
+
+    .Supliers_name,.Supliers_Active,
+    .Supliers_Survedby,.Supliers_tablenumb{
+        /* width: 10% !important;  */
+    font-size: small;
+/* background-color: red; */
+    }
+ 
+
+}
+
+
+@media (max-width:400px){
+
+    .Supliers_name,.Supliers_Active,
+    .Supliers_Survedby,.Supliers_tablenumb{
+        /* width: 10% !important;  */
+    font-size: xx-small;
+/* background-color: red; */
+    }
+ 
+
+}
+

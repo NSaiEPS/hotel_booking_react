@@ -11,7 +11,7 @@ table,th,td{
     width: 20%;
 }
 
-.UserData_Active {
+.UserData_tablenumb {
     width: 20%;
 }
 
@@ -43,4 +43,74 @@ table,th,td{
     color: white;
     border: 2px solid white;
     border-radius: 5px;
+}
+
+
+@Media (max-width:1285px){
+
+    .UserData_name,.UserData_tablenumb,.UserData_Active {
+        width: 15% !important;
+        /* background-color: red; */
+    }
+    .UserData_Survedby {
+        width: 35% !important;
+    }
+  
+
+
+}
+
+@Media (max-width:725px){
+
+    .UserData_name,.UserData_tablenumb,.UserData_Active {
+        width: 12% !important;
+        /* background-color: red; */
+    }
+    .UserData_Survedby {
+        width: 44% !important;
+    }
+
+}
+
+
+@Media (max-width:630px){
+
+    .UserData_Survedby,.UserData_email,
+    
+        .UserData_name,.UserData_tablenumb,.UserData_Active {
+        /* width: 12% !important; */
+        font-size: small;
+        /* background-color: red; */
+    }
+       
+    }
+
+    @Media (max-width:515px){
+
+        .UserData_name,.UserData_tablenumb,.UserData_Active {
+            width: 10% !important;
+        font-size: xx-small;
+
+            /* background-color: red; */
+        }
+        .UserData_Survedby {
+            width: 50% !important;
+        font-size: xx-small;
+
+        }
+        .UserData_email{
+        font-size: xx-small;
+
+        }
+    
+    }
+
+@Media (max-width:360px){
+
+.Users {
+    width: 350px;
+    /* overflow-x: scroll; */
+}
+
+
 }

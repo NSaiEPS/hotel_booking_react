@@ -58,7 +58,7 @@
 
 .OrderItems_inside div:nth-last-child(1) input {
     color: red;
-    padding-left: 18px;
+    padding-left: 18px !important;
 
 
 

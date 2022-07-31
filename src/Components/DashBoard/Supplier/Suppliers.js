@@ -137,11 +137,11 @@ else {
 
 
        <table className='Suppliers_Data_table'>
-  <th >Name</th>
-        <th >email</th>
-        <th >password</th>
-        <th >active</th>
-        <th >survingTable</th>
+  <th className='Supliers_name'>Name</th>
+        <th className='Supliers_Survedby'>email</th>
+        {/* <th className='Supliers_Survedby'>password</th> */}
+        <th className='Supliers_Active'>active</th>
+        <th className='Supliers_tablenumb'>survingTable</th>
   </table>
 
 

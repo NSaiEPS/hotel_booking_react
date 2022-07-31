@@ -151,7 +151,7 @@ className='Tables_inside_addingtable'>Add new table</button>
 <div className='Tables_Data'>
   <table className='Tables_Data_table'>
   <th className='TableData_name'>Name</th>
-        <th className='TableData_Active'>Active</th>
+        <th className='TableData_Active'>Status</th>
         <th className='TableData_bookedby'>Bookedby</th>
         <th className='TableData_Survedby'>Survedby</th>
   </table>

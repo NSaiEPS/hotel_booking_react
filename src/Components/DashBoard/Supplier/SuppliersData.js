@@ -6,14 +6,14 @@ const SuppliersData = ({id,index,name,email,password,active,survingTable}) => {
        <table className='SuppliersData'>
   
   <tr>
-     <td className='TableData_name'>{name} </td>
-     <td className='TableData_Survedby'>{email}</td>
-     <td className='TableData_Survedby'>{password}</td>
-     <td className='TableData_Active'>
+     <td className='Supliers_name'>{name} </td>
+     <td className='Supliers_Survedby'>{email}</td>
+     {/* <td className='Supliers_Survedby'>{password}</td> */}
+     <td className='Supliers_Active'>
          {active ? <button className='Tabledata_btn_booked'>Active</button>:
           <button className='Tabledata_btn_notbooked'>not Active</button>}
          </td>
-     <td className='TableData_bookedby'> {survingTable? survingTable: '--'}</td>
+     <td className='Supliers_tablenumb'> {survingTable? survingTable: '--'}</td>
      
      
   </tr>

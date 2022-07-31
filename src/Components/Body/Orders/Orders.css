@@ -232,3 +232,95 @@ select {
 
     }
 }
+
+@media (max-width:1150px){
+.Orders {
+  
+    width: 85%;
+
+}
+.Orders_OrderItems {
+
+    width: 90%;
+
+}
+}
+
+@media (max-width:900px){
+    .Orders_OrderItems {
+
+        width: 95%;
+    
+    }
+    .Orders_goback_div {
+        /* position: absolute; */
+        top: 60px;
+        /* right: 10px;  */
+    }
+
+}
+
+@media (max-width:800px){
+    .Ordering_input {
+
+        width: 95%;
+        
+        display: flex;
+        
+        flex-direction: column;
+    }
+    .Ordering_input div form {
+        padding-left:10%;
+    }
+   .mic_part {
+    padding-top: 10px;
+   }
+   
+
+
+
+}
+
+@media (max-width:700px){
+    .Orders {
+        width: 90%;
+    
+    }
+}
+
+@media (max-width:620px){
+    .Orders {
+        width: 95%;
+
+    
+    }
+.OrderItems_inside input {
+ padding-left: 1px !important;
+}
+.showing_index {
+    left: 10px !important;
+
+}
+}
+
+
+@media (max-width:500px){
+   .Orders_inside,.OrderItems input {
+    font-size: small !important;
+   } 
+
+}
+
+
+@media (max-width:400px){
+
+    .Orders {
+    
+    min-width: 400px;
+    margin: 5px;
+    }
+    .showing_index {
+        left: 5px !important;
+    
+    }
+}

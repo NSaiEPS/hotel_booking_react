@@ -42,10 +42,9 @@ let len=user.length;
 
       <table className='Users_Data_table'>
   <th className='UserData_name'>Name</th>
-        <th className='UserData_Active'>Table booked</th>
-        <th className='UserData_Survedby'>active</th>
-        <th className='UserData_bookedby'>survedby</th>
-
+        <th className='UserData_tablenumb'>Table booked</th>
+        <th className='UserData_Active'>active</th>
+        <th className='UserData_Survedby'>survedby</th>
         <th className='UserData_email'>email</th>
   </table>
       {

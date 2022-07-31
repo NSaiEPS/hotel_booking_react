@@ -1,4 +1,5 @@
 import React from 'react'
+import './Users.css'
 
 const UsersData = ({id,name,table,active,email,index,survedby}) => {
   return (
@@ -9,11 +10,11 @@ const UsersData = ({id,name,table,active,email,index,survedby}) => {
 
         <table className='UserData_table'>
             <tr>
-                <td>{name}</td>
-                <td>{table?table:'not yet' }</td>
-                <td>{active ? <button>Yes</button>:'-'}</td>
-                <td>{survedby ? survedby:'Yet to be decided by you'}</td>
-                <td>{email}</td>
+                <td className='UserData_name'>{name}</td>
+                <td className='UserData_tablenumb'>{table?table:'not yet' }</td>
+                <td className='UserData_Active'>{active ? <button>Yes</button>:'-'}</td>
+                <td className='UserData_Survedby'>{survedby ? survedby:'Yet to be decided by you'}</td>
+                <td className='UserData_email'>{email}</td>
 
                 </tr>
         </table>

@@ -11,10 +11,7 @@
     border-radius:5px;
 }
 
-/* .Booking_Section:hover
-{
-width: 320px;
-} */
+
 
 .Booking_Section_top_img {
     width:80%;
@@ -117,3 +114,16 @@ border-radius:5px;
 .booking_more_options:hover {
     cursor: pointer;
 }
+
+
+@media (max-width:350px) {
+.Booking_Section {
+
+    width: 92%;
+    margin-left: auto;
+    margin-right: auto;
+
+}
+    
+}
+

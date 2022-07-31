@@ -46,7 +46,7 @@ const FuaturedItems = () => {
       </div>
     </div>
     <div class="carousel-item">
-      <img src="https://www.thillaismasala.com/wp-content/uploads/2022/04/Fish-Biryani-1200x900.webp" class="d-block w-100" alt="..."/>
+      <img src="https://i.pinimg.com/736x/6a/5b/5d/6a5b5d5405918a904b87183fce1a4e0b.jpg" class="d-block w-100" alt="..."/>
       <div class="carousel-caption d-none d-md-block">
         <h5 class="bg-primary" >Special Fish Biryani</h5>
         <p class="bg-success">Special Fish Biryani the taste you never going to forget!</p>

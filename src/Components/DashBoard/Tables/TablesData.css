@@ -28,6 +28,8 @@ table {
 
 .TableData_Survedby {
     width: 25%;
+    /* background-color: red; */
+
 }
 
 
@@ -87,4 +89,153 @@ cursor: pointer;}
     max-width: 250px ;
     color: green;
     /* background-color: red; */
+}
+
+
+
+
+@media (max-width:1285px){
+
+
+    
+.TableData_name {
+    width: 20%;
+}
+
+.TableData_Survedby {
+    width: 40%;
+    /* background-color: red; */
+    
+
+}
+
+
+
+
+
+.TableData_Active {
+    width: 20%;
+
+}
+
+.TableData_bookedby {
+    width: 20%;
+}
+}
+
+
+
+
+@media (max-width:815px){
+
+
+    
+    .TableData_name {
+        width: 15%;
+    }
+    
+    .TableData_Survedby {
+        width: 50%;
+        /* background-color: red; */
+    
+    }
+    
+    
+    .TableData_Active {
+        width: 20%;
+    
+    }
+    
+    .TableData_bookedby {
+        width: 15%;
+    }
+    }
+
+
+    @media (max-width:670px){
+
+
+    
+        .TableData_name {
+            width: 15%;
+        }
+        
+        .TableData_Survedby {
+            width: 52%;
+            /* background-color: red; */
+        
+        }
+        
+        .TableData_Active{
+            width: 18%;
+        }
+        
+        .TableData_Active .Tabledata_btn_notbooked{
+            width: 75%;
+            /* height: 30px ; */
+        
+        }
+        
+        .TableData_bookedby {
+            width: 15%;
+        }
+        }
+
+
+        @media (max-width:550px){
+
+            .TableData_Active .Tabledata_btn_notbooked{
+                /* width: 75%; */
+                font-size: small;
+                /* height: 30px ; */
+            
+            }
+            .TableData {
+                font-size: small;
+
+            }
+            .emailafter_edit select{
+                max-width: 200px ;
+                
+            }
+
+        }
+
+
+        @media (max-width:475px){
+
+            .TableData_Active .Tabledata_btn_notbooked{
+                /* width: 75%; */
+                font-size:xx-small;
+                /* height: 30px ; */
+            
+            }
+            .Tabledata_btn_booked {
+                font-size:xx-small;
+
+            }
+        }
+
+
+@media (max-width:425px){
+
+.TableData .TableData_Survedby {
+                    
+                    
+ font-size:xx-small;
+                    
+}
+.emailafter_edit select{
+max-width: 150px ;                    
+}
+            
+}
+
+
+@media (max-width:350px){
+
+    .Tables_Data {
+        width: 325px;
+    overflow-x: scroll;
+}
 }
