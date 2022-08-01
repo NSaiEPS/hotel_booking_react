@@ -250,6 +250,7 @@ max-width: 100px ;
     .Tables_Data {
         /* width: 325px; */
     overflow-x: scroll;
+    scrollbar-color: red;
 }
 }
 
@@ -258,3 +259,6 @@ max-width: 100px ;
 .emailafter_edit_name {
     display: none;
 }
+
+
+

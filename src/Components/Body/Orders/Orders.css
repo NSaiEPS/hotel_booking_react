@@ -399,13 +399,32 @@ select {
         padding: 2px 6px;
 
      }
-
-     .OrderItems_inside {
-        width: 98% !important;
-     }
+    
+    
      .Orders_OrderItems {
         font-size: xx-small;
      }
 
+
+     /* Added for scrolling */
+
+     .OrderItems_inside {
+        width: 95% !important;
+     }
+     /* .OrderItems_inside {
+        width: 98% !important;
+     } */
+
+
+}
+
+/* Added for scrolling these 2 lines */
+
+.Orders_OrderItems {
+    min-width: 400px;
+}
+
+.Orders_OrderItems_scrollbar {
+    overflow-x: scroll;
 
 }

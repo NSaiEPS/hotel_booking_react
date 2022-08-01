@@ -294,6 +294,7 @@ let handlelanguagechange=(e)=>{
         noofitems:input.ordervalue,
         price:'' */}
            {orders?.length>0 &&
+           <div className='Orders_OrderItems_scrollbar'>
            <div className='Orders_OrderItems'>
             <table>
                 <th>Name</th>
@@ -323,6 +324,7 @@ let handlelanguagechange=(e)=>{
                {/* totla price here
               </b></span> </p> */}
 
+           </div>
            </div>}
 
         </div>
