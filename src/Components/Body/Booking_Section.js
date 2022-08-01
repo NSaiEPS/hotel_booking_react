@@ -79,7 +79,7 @@ db.collection('tables').doc(id).update({
           ['active']: true,
           ['bookedby']:name,
           ['bookeduserid']:selectbookeduserid,
-          ['bookeremail']:selectuser.useemail,
+          ['bookeremail']:(selectuser?.useemail),
         })
 
         db.collection('users').doc(selectbookeduserid).update({
@@ -236,7 +236,7 @@ let onclickingOrders=()=>{
 
 
 let handlesaynobook=()=>{
-  if(selectuser.useemail==='deviresidencies@admin.com')
+  if((selectuser?.useemail)==='deviresidencies@admin.com')
   alert(`Admin can't book the table! , u can login with different mail & book the table!`)
   else {
     alert(`Oppps! Some thing went wrong`)
@@ -260,13 +260,13 @@ let handlesaynobook=()=>{
     >
       {/* <button className={active? 'booked_btn':'notbooked_btn'}>{active? 'Booked':'Book'}</button> */}
       {active?  
-       <button className={((bookerid===selectbookeduserid)|| (survedby===selectuser.useemail))? 'booked_btn_you':'booked_btn'}
+       <button className={((bookerid===selectbookeduserid)|| (survedby===selectuser?.useemail))? 'booked_btn_you':'booked_btn'}
        
        onClick=   {handlecheck}
        > 
       { (bookerid===selectbookeduserid)? `It's your table enjoy!`:
       
-      (survedby===selectuser.useemail)? `It's your suplying table!`:
+      (survedby===selectuser?.useemail)? `It's your suplying table!`:
       
       'Booked'}
        
@@ -280,7 +280,7 @@ let handlesaynobook=()=>{
 
 {  active &&
     <div  className='booking_more_options'>
-      {((bookerid===selectbookeduserid) || (survedby===selectuser.useemail)) &&
+      {((bookerid===selectbookeduserid) || (survedby===selectuser?.useemail)) &&
       
       // <button  onClick={handlemoreOption}
       //  onBlur={handlemoreblur} >
@@ -291,7 +291,7 @@ let handlesaynobook=()=>{
         }
     
     
-    {((bookerid===selectbookeduserid) || (survedby===selectuser.useemail)) && moreoption && <div className='booking_more_options_btn'>
+    {((bookerid===selectbookeduserid) || (survedby===selectuser?.useemail)) && moreoption && <div className='booking_more_options_btn'>
       
     <button  onClick={onclickingOrders}>
       <Link to={`/userorders`} > Orders  </Link>
