@@ -92,3 +92,17 @@
 
 /* .showing_index */
 
+
+
+
+
+@media (max-width:500px){
+
+
+.OrderItems_inside div:nth-last-child(1) span{
+
+   
+    top: 5.5px;
+
+
+}}

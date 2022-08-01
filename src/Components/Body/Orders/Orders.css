@@ -419,7 +419,7 @@ select {
 }
 
 /* Added for scrolling these 2 lines */
-
+@media (max-width:425px){
 .Orders_OrderItems {
     min-width: 400px;
 }
@@ -427,4 +427,4 @@ select {
 .Orders_OrderItems_scrollbar {
     overflow-x: scroll;
 
-}
+}}
