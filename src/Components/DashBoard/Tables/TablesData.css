@@ -154,6 +154,18 @@ cursor: pointer;}
 
     @media (max-width:670px){
 
+        .emailafter_edit_email{
+            display: none;
+        }
+.emailafter_edit_name {
+display: block !important;
+
+}
+.emailafter_edit{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
     
         .TableData_name {
@@ -161,17 +173,17 @@ cursor: pointer;}
         }
         
         .TableData_Survedby {
-            width: 52%;
+            width: 50%;
             /* background-color: red; */
         
         }
         
         .TableData_Active{
-            width: 18%;
+            width: 25%;
         }
         
         .TableData_Active .Tabledata_btn_notbooked{
-            width: 75%;
+            width: 80%;
             /* height: 30px ; */
         
         }
@@ -219,14 +231,15 @@ cursor: pointer;}
 
 @media (max-width:425px){
 
-.TableData .TableData_Survedby {
+.TableData .TableData_Survedby,.TableData_name,.TableData_Active,.TableData_bookedby,
+.TableData_Survedby {
                     
                     
- font-size:xx-small;
+ font-size:x-small;
                     
 }
 .emailafter_edit select{
-max-width: 150px ;                    
+max-width: 100px ;                    
 }
             
 }
@@ -235,7 +248,13 @@ max-width: 150px ;
 @media (max-width:350px){
 
     .Tables_Data {
-        width: 325px;
+        /* width: 325px; */
     overflow-x: scroll;
 }
+}
+
+/* emailafter_edit */
+
+.emailafter_edit_name {
+    display: none;
 }

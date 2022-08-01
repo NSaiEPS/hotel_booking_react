@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../../../Firebase'
-import { Selectbookingorderdetails, Selectchek, Selectloginsuplier, Selectorderprice} from '../../Redux/Redux_Slice'
+import { Selectbookingorderdetails, Selectchek, Selectloginsuplier, Selectorderprice, SelectTheme} from '../../Redux/Redux_Slice'
 import './Orders.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
@@ -18,6 +18,8 @@ let supliername=useSelector(Selectloginsuplier)
 let{bookeduserid,tableid,tablenumb,bookername}=orderdetails;
 const navigate = useNavigate()
 let dispatch=useDispatch()
+let selecttheme=useSelector(SelectTheme)
+
 
 
 // console.log(bookeduserid,tableid,tablenumb,bookername)
@@ -222,7 +224,7 @@ let handlelanguagechange=(e)=>{
 
 
   return (
-    <div className='Orders'>
+    <div className= {(selecttheme==='light'?'Orders':'Orders Orders_dark' )} >
         {(!tableid)&& <Alert variant="filled" severity="error">
   Some thing went wrong please go back & come again
 </Alert>
@@ -231,7 +233,7 @@ let handlelanguagechange=(e)=>{
         <h3>Hello {supliername?
          <span>Suplier {supliername} </span> 
         : bookername? bookername: 'user'} this is your  
-           {supliername?  ` supliying  ${tablenumb} `:`order booking page ${tablenumb}`} </h3>
+           {supliername?  ` supliying  ${tablenumb} `:` order booking page ${tablenumb}`} </h3>
         <div className={(!tableid)? 'Orders_goback_div_message': 'Orders_goback_div'}>
        <button> <Link to='/'>Go back</Link></button></div>
 
@@ -240,15 +242,18 @@ let handlelanguagechange=(e)=>{
 
 
 
-           <div className='Ordering_input'>
+           <div className= {selecttheme==='light'?'Ordering_input':'Ordering_input Ordering_input_dark'}>
            <div><form onSubmit={handleaddOrders}>
                 <input placeholder='Enter your orders here...' type='text'
                 // value={(!micopen) ? transcript:input.ordername } name='ordername'
                 value={input.ordername } name='ordername'
                 onChange={handleinput}
                 />
+
+               
                 <input placeholder='no.of items' type='number'   value={input.ordervalue} name='ordervalue' onChange={handleinput}/>
-               { ((input.ordername || transcript) && input.ordervalue>0)&& (tableid)&& <button  type='submit'
+               { ((input.ordername || transcript) && input.ordervalue>0)&& (tableid)&&
+                <button  type='submit'
                >Add</button>
 
                } 

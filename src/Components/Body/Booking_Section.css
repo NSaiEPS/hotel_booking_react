@@ -9,7 +9,21 @@
    margin-bottom:15px;
    box-shadow:0px 0px 2px 2px rgba(0,0,0,0.3);
     border-radius:5px;
+    transition: 0.3s;
 }
+
+.Booking_Section:hover {
+transform: scale(1.1);
+/* transform:scaleZ(3); */
+cursor: pointer;
+
+}
+
+.Booking_Section_dark {
+    box-shadow:0px 0px 2px 2px white ;
+
+}
+
 
 
 
@@ -17,6 +31,15 @@
     width:80%;
     border-radius:15px
 }
+
+
+/* .Booking_Section_top_img */
+/* .Booking_Section:hover  {
+    
+    width:120%;
+height: 242px;
+
+} */
 
 .Booking_Section_top_img_dev {
     position:relative;
@@ -55,6 +78,7 @@ border-radius:5px;
     position:absolute;
     top:-30px;
     right:15px;
+    /* color: red; */
 }
 
 .booking_more_options button {

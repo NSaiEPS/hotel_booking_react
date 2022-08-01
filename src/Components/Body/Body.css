@@ -11,7 +11,7 @@
     top: 0px;
     /* animation: off; */
     /* width: 100%; */
-    animation: offers 15s linear infinite  ;
+    animation: offers 12s linear infinite  ;
 }
 
 @keyframes offers{
@@ -82,22 +82,33 @@ font-size: xx-large;
 .Body_Booking_Section {
     /* margin-top: 10px; */
   
-        width:80%;
+        width:85%;
         /* background-color:red; */
         margin-left:auto;
         margin-right:auto;
        margin-top:25px;
        box-shadow:0px 0px 2px 2px rgba(0,0,0,0.3);
+       /* box-shadow:0px 0px 2px 2px white; */
        margin-bottom:15px;
        /* display:flex; */
        border-radius:15px
     
 }
 
+.Body_Booking_Section_dark{
+       box-shadow:0px 0px 2px 2px white !important;
+   
+
+
+}
 .Body_Booking_Section p  {
     padding-top: 15px;
 
 }
+/* .Body_Booking_Section_dark p {
+    padding-top: 15px;
+
+} */
 
 .Body_Booking_Section_inside {
     display:flex;
@@ -175,6 +186,16 @@ font-size: xx-large;
         padding: 12px;
         
         }
+/* .Body_Booking_Section_dark{
+
+    width: 85%;
+
+}
+.Body_Booking_Section_dark p{
+    padding: 12px;
+
+} */
+
         
     }
 
@@ -183,6 +204,10 @@ font-size: xx-large;
             width: 92%;
         
         }
+/* .Body_Booking_Section_dark{
+    width: 92%;
+
+} */
        
         
     }
@@ -192,6 +217,96 @@ font-size: xx-large;
             width: 95%;
         
         }
+        /* .Body_Booking_Section_dark{
+            width: 95%;
+        
+        } */
+        
+        @keyframes offers{
+            0% {    left: 0px;
+        
+            }
+            100% {
+                left: 35%;
+            }
+    }
        
         
     }
+
+    @media (max-width:1285px){
+        @keyframes offers{
+            0% {    left: 0px;
+        
+            }
+            100% {
+                left: 70%;
+            }
+    }}
+
+    @media (max-width:715px){
+        @keyframes offers{
+            0% {    left: 0px;
+        
+            }
+            100% {
+                left: 65%;
+            }
+    }}
+
+@media (max-width:615px){
+        @keyframes offers{
+            0% {    left: 0px;
+        
+            }
+            100% {
+                left: 55%;
+            }
+ }}
+
+ @media (max-width:480px){
+.Offers_dev,.Offers_dev span {
+    font-size: medium;
+
+}
+    @keyframes offers{
+        0% {    left: 0px;
+    
+        }
+        100% {
+            left: 55%;
+        }
+}}
+
+@media (max-width:415px){
+    
+        @keyframes offers{
+            0% {    left: 0px;
+        
+            }
+            100% {
+                left: 50%;
+            }
+    }}
+
+ @media (max-width:370px){
+    
+        @keyframes offers{
+            0% {    left: 0px;
+        
+            }
+            100% {
+                left: 43%;
+            }
+}}
+
+@media (max-width:330px){
+    
+    @keyframes offers{
+        0% {    left: 0px;
+    
+        }
+        100% {
+            left: 35%;
+        }
+}}

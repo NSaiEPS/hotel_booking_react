@@ -9,7 +9,15 @@
     margin-right: auto;
     border-radius: 15px;
     position: relative;
-    padding-bottom: 20px;
+    padding-bottom: 30px;
+    /* padding-top: 30px; */
+    /* margin-top: 115px; */
+}
+
+.Orders_dark {
+    box-shadow: 0px 0px 2px 2px white;
+
+
 }
 
 .Orders >h3 {
@@ -26,6 +34,14 @@
     /* justify-content: center; */
     margin-left: auto;
     margin-right: auto;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+    padding: 5px;
+    border-radius: 5px;
+}
+
+.Ordering_input_dark {
+    box-shadow: 0px 0px 2px 2px white;
+
 }
 
 .Ordering_input form {
@@ -47,6 +63,11 @@
 
 
 }
+.mic_part input{
+    padding: 2px 4px;
+    border-radius: 5px;
+
+}
 
 .mic_part div:nth-child(1){
     /* background-color: green; */
@@ -65,8 +86,9 @@
 
     border: none;
     outline: none;
-    padding: 2px 2px;
+    padding: 2px 6px;
     height: 30px;
+    border-radius: 5px;
 
 }
 
@@ -132,11 +154,13 @@
 }
 
 .Orders_OrderItems {
-    background-color: salmon;
+    background-color: white;
+    box-shadow: 0px 0px 2px 2px rgba(0,0,0,0.3);
+    color: black;
     width: 80%;
     margin-left: auto;
     margin-right: auto;
-    padding-bottom: 30px;
+    padding-bottom: 50px;
     border-radius: 5px;
     margin-top: 15px;
     padding-top: 15px;
@@ -200,6 +224,7 @@ border: none !important;
 
 select {
     direction:ltr;
+    border-radius: 5px;
  
 }
 
@@ -257,6 +282,8 @@ select {
         top: 60px;
         /* right: 10px;  */
     }
+    .Ordering_input div form {
+        padding-left:25px;}
 
 }
 
@@ -270,7 +297,7 @@ select {
         flex-direction: column;
     }
     .Ordering_input div form {
-        padding-left:10%;
+        padding-left:25px;
     }
    .mic_part {
     padding-top: 10px;
@@ -316,11 +343,69 @@ select {
 
     .Orders {
     
-    min-width: 400px;
+    /* min-width: 400px; */
     margin: 5px;
     }
     .showing_index {
         left: 5px !important;
     
     }
+    .Ordering_input div form {
+        padding-left:10px;
+    }
+.OrderItems_inside {
+   width: 90% !important;
+}
+}
+
+@media (max-width:360px){
+    .Orders h3 {
+        font-size: medium !important;
+    }
+
+    .Orders_goback_div {
+        top: 45px;
+
+    }
+    .Orders_goback_div button{
+        font-size: small !important;
+    }
+
+}
+
+@media (max-width:320px){
+
+    .Ordering_input div form {
+
+        padding-left: 0px !important;
+    }
+
+  
+    .Ordering_input div form {
+            flex-direction: column;
+
+            /* width: 75%; */
+    }
+
+    .Ordering_input div form input {
+    /* padding:10px; */
+    margin-top: 4px;
+    padding: 2px 6px;
+
+     }
+     .mic_part {
+        flex-direction: column;
+        text-align: start;
+        padding: 2px 6px;
+
+     }
+
+     .OrderItems_inside {
+        width: 98% !important;
+     }
+     .Orders_OrderItems {
+        font-size: xx-small;
+     }
+
+
 }

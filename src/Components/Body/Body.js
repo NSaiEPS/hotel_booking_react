@@ -2,7 +2,7 @@ import { dblClick } from '@testing-library/user-event/dist/click'
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../../Firebase'
-import { Selecttablenumber, Selectunbookedtables, unbookedtable } from '../Redux/Redux_Slice'
+import { Selecttablenumber, SelectTheme, Selectunbookedtables, unbookedtable } from '../Redux/Redux_Slice'
 import './Body.css'
 import Booking_Section from './Booking_Section'
 import FuaturedItems from './FuaturedItems'
@@ -19,7 +19,8 @@ const Body = () => {
 
   // let [remaintables,setRemainTables]=useState(0)
 
-  let bookedtables=4;
+  let selecttheme=useSelector(SelectTheme)
+
   
 
   let [tables,settables]=useState({
@@ -106,7 +107,7 @@ useEffect(()=>{
 
         </div>
 
-        <div className='Body_Booking_Section'>
+        <div className={(selecttheme==='light')? 'Body_Booking_Section':'Body_Booking_Section Body_Booking_Section_dark' } >
           {/* Booking section */}
 
        <p> <span>We have </span> <b>{selecttablenumber? selecttablenumber:'...'}</b> tables in which

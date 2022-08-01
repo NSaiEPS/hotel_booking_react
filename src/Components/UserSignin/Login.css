@@ -136,3 +136,11 @@ font-size:medium;
         height: 460px;
     }
 }
+
+
+@media (max-width:525px){
+.name_cncl_btn {
+    top: -29px;
+    right: 10px;
+    }
+}

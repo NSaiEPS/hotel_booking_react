@@ -14,7 +14,7 @@ const TablesData = ({name,active,survedby,id,bookedby,index,bookeremail,survedid
   let [survingemail,setSurvingemail]=useState('')
   let [suplierid,setSuplierid]=useState()
 let selectbookeduserid=useSelector(SelectbookeduserID)
-
+let survedname=survedby.split('@')
 
 let [suplier,setSuplier]=useState({})
 
@@ -154,7 +154,10 @@ useEffect(()=>{
                {/* {survedby}  */}
             {/* <input placeholder='Yet to bedecided by you' onChange={handlesurvingemail} type='email' value={editsurvemail ? survingemail:survedby}/> */}
 
-              {!editsurvemail? <span> { survedby? survedby:
+              {!editsurvemail? <span> { survedby? 
+              <div>
+             <span className='emailafter_edit_name'> {survedname[0]} </span>
+             <span className='emailafter_edit_email'> {survedname} </span></div>:
 
 `Click edit button to select the supler`
 

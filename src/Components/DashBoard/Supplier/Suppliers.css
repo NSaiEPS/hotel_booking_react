@@ -7,7 +7,7 @@
 .Suppliers_from_div {
     display: flex;
 justify-content: center;
-/* align-items: center; */
+
 
 }
 
@@ -20,8 +20,7 @@ justify-content: center;
 
 height: 350px;
 border-radius: 15px;
-/* top: 250px;
-left: 40%; */
+
 
     
 }
@@ -43,7 +42,7 @@ left: 40%; */
 
     display: flex;
     flex-direction: column;
-    /* margin-top: 15px; */
+  
     padding-top: 50px;
     width: 80%;
     margin-left: auto;
@@ -73,8 +72,7 @@ left: 40%; */
     margin-bottom: 15px;
     border: 2px solid white;
     outline: none;
-    /* background-color: red; */
-    /* color: red; */
+    
     padding: 5px;
 
 
@@ -118,7 +116,7 @@ left: 40%; */
 
 .Suppliers_Data_table {
     margin-top: 15px;
-    /* margin-bottom: 15px; */
+    
 }
 
 .addsuplierbtn {
@@ -128,7 +126,7 @@ left: 40%; */
 
 .addsuplierbtn:hover {
     background-color: black;
-    /* border-radius: 5px; */
+    
     color: white;
 }
 
@@ -137,13 +135,11 @@ left: 40%; */
 
     .Supliers_name,.Supliers_Active{
         width: 10% !important; 
-/* background-color: red; */
+
     }
    .Supliers_Survedby {
     width: 50% !important;
-/* background-color: red; */
 
-    /* background-color: red; */
    }
    .Supliers_tablenumb {
     width: 20%;
@@ -155,9 +151,8 @@ left: 40%; */
 
     .Supliers_name,.Supliers_Active,
     .Supliers_Survedby,.Supliers_tablenumb{
-        /* width: 10% !important;  */
+       
     font-size: small;
-/* background-color: red; */
     }
  
 
@@ -168,9 +163,8 @@ left: 40%; */
 
     .Supliers_name,.Supliers_Active,
     .Supliers_Survedby,.Supliers_tablenumb{
-        /* width: 10% !important;  */
+       
     font-size: xx-small;
-/* background-color: red; */
     }
  
 

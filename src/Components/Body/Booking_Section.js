@@ -3,7 +3,7 @@ import './Booking_Section.css'
 // import './Body.css'
 import { useDispatch, useSelector } from 'react-redux'
 import { auth, db } from '../../Firebase'
-import { Selecttablenumber, Selectunbookedtables, unbookedtable,SelectbookeduserID, SelectUser, usernoofbooking, SelectUserbookingnum, bookingorderdetails, Selectloginsuplier } from '../Redux/Redux_Slice'
+import { Selecttablenumber, Selectunbookedtables, unbookedtable,SelectbookeduserID, SelectUser, usernoofbooking, SelectUserbookingnum, bookingorderdetails, Selectloginsuplier, SelectTheme } from '../Redux/Redux_Slice'
 import { useAuthState } from 'react-firebase-hooks/auth'
 import firebase from 'firebase/compat/app';
 import { Link} from 'react-router-dom'
@@ -19,6 +19,7 @@ import MoreVertIcon from '@mui/icons-material/MoreVert';
 const Booking_Section = ({name,active,bookedby,survedby,bookeremail,id,index,bookerid}) => {
 let selectbookeduserid=useSelector(SelectbookeduserID)
 const [userss,loading]=useAuthState(auth)
+let selecttheme=useSelector(SelectTheme)
 
 
 // console.log(survedby)
@@ -34,9 +35,9 @@ let [bookfailure,setBookfailure]=useState(false)
 let handlemoreOption=()=>{
   setMoreoptions(!moreoption)
 }
-let handlemoreblur=()=>{
-  // setMoreoptions(false)
-}
+// let handlemoreblur=()=>{
+//   // setMoreoptions(false)
+// }
 
 
 
@@ -116,8 +117,7 @@ db.collection('tables').doc(id).update({
     dispatch(usernoofbooking(''))
 
    
-    // Message('Cancelled successfully!')
-    // db.collection('tables').doc(id).collection('orders').delete()
+  
 
     db.collection("tables").doc(id).collection('orders')
   .get()
@@ -247,7 +247,7 @@ let handlesaynobook=()=>{
 
 
   return (
-    <div className='Booking_Section'>
+    <div className={(selecttheme==='light')? 'Booking_Section': 'Booking_Section Booking_Section_dark'}>
       {/* Booking_Section */}
       <div className='Booking_Section_inside'>
    <div className='Booking_Section_top'>

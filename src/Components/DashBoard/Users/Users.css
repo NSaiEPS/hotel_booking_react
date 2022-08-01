@@ -70,6 +70,13 @@ table,th,td{
         width: 44% !important;
     }
 
+.UserData_Survedby_email {
+    display: none;
+}
+.UserData_Survedby_name {
+     display: block !important;
+}
+
 }
 
 
@@ -88,29 +95,37 @@ table,th,td{
     @Media (max-width:515px){
 
         .UserData_name,.UserData_tablenumb,.UserData_Active {
-            width: 10% !important;
+            width: 15% !important;
         font-size: xx-small;
 
             /* background-color: red; */
         }
         .UserData_Survedby {
-            width: 50% !important;
+            width: 25% !important;
         font-size: xx-small;
 
         }
         .UserData_email{
         font-size: xx-small;
+        width: 30% !important;
+
 
         }
     
     }
 
-@Media (max-width:360px){
 
-.Users {
-    width: 350px;
+
+/* @Media (max-width:360px){ */
+
+/* .Users { */
+    /* width: 350px; */
     /* overflow-x: scroll; */
-}
+/* }
 
 
+} */
+
+.UserData_Survedby_name {
+    display: none;
 }
