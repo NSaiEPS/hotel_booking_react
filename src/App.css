@@ -66,3 +66,12 @@
     width: 300px !important;
     height: 300px !important;
   }
+
+
+
+  @media (max-width:400px){
+    .Logo_App {
+      width: 100% !important;
+    height: 250px !important;
+    }
+  }

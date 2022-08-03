@@ -104,7 +104,7 @@ if(Array.isArray(user)){
 
 
 
-  if (loading) {
+  if (true) {
 
     return (
       <div className='loading_app'>
