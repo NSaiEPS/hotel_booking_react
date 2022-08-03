@@ -231,29 +231,29 @@ select {
 .Orders h3 span{
     color: green;
     animation: supliercolor 2s ease infinite;
-    border:  2px solid white;
+    /* border:  2px solid white; */
 }
 
 @keyframes supliercolor {
     0% {
         color: #c60000;
-        border-bottom: 2px solid salmon;
+        /* border-bottom: 2px solid salmon; */
     }
     25% {
         color: green;
-        border-right: 2px solid salmon;
+        /* border-right: 2px solid salmon; */
 
     }
    
     50% {
         color: aqua;
-        border-top: 2px solid salmon;
+        /* border-top: 2px solid salmon; */
     }
 
 
     100% {
         color: blue;
-        border-left: 2px solid salmon;
+        /* border-left: 2px solid salmon; */
 
     }
 }
@@ -339,24 +339,6 @@ select {
 }
 
 
-@media (max-width:400px){
-
-    .Orders {
-    
-    /* min-width: 400px; */
-    margin: 5px;
-    }
-    .showing_index {
-        left: 5px !important;
-    
-    }
-    .Ordering_input div form {
-        padding-left:10px;
-    }
-.OrderItems_inside {
-   width: 90% !important;
-}
-}
 
 @media (max-width:360px){
     .Orders h3 {
@@ -373,24 +355,24 @@ select {
 
 }
 
-@media (max-width:320px){
+@media (max-width:550px){
 
-    .Ordering_input div form {
-
-        padding-left: 0px !important;
-    }
-
+   
   
     .Ordering_input div form {
             flex-direction: column;
 
             /* width: 75%; */
+            /* background-color:red; */
+        padding-left: 0px !important;
+
     }
 
     .Ordering_input div form input {
     /* padding:10px; */
     margin-top: 4px;
     padding: 2px 6px;
+    margin-left:4.5px;
 
      }
      .mic_part {
@@ -412,7 +394,68 @@ select {
         width: 95% !important;
      } */
     
+     .Ordering_input {
+        background-color:#f75282;
+        margin-top:25px;
+        /* width:75%; */
+     }
 
+     .Orders_goback_div {
+        top: 57px;
+
+    }
+    .Orders {
+    
+        /* min-width: 400px; */
+        margin: 5px;
+        }
+        .showing_index {
+            left: 5px !important;
+        
+        }
+        .Ordering_input div form {
+            padding-left:10px;
+        }
+    .OrderItems_inside {
+       width: 90% !important;
+    }
+
+    .Ordering_input input {
+        width:75%;
+        padding:2px 6px ;
+        /* margin:4px 0px 0px 3px; */
+    }
+    .Ordering_input div form input {
+        width:70%;
+
+    }
+    .mic_part input {
+        padding:4px 6px !important;
+    
+    }
+    .mic_part div {
+        margin-top:5px;
+    
+    }
+select {
+    padding: 6px;
+    font-size: small ;
+    border:none;
+
+}
+
+.mic_part_mic {
+    display:none;
+}
+
+.mic_part_mic_same {
+  display:inline !important;
+}
+
+.mic_part_mic_same button {
+margin-top:3px;
+}
+    
 }
 
 /* Added for scrolling these 2 lines */
@@ -435,7 +478,7 @@ select {
 
 
 
-@media (max-width:400px){
+@media (max-width:550px){
     .OrderItems_inside {
         width: 98% !important;
         display: flex;
@@ -480,3 +523,6 @@ select {
    }
 }
 
+.mic_part_mic_same {
+    display:none;
+}

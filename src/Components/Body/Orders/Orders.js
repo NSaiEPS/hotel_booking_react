@@ -282,12 +282,30 @@ const Orders = () => {
 
 
           <div className='mic_part'>
-            <div> {
-              //  <p>{transcript}</p>
+            <div> 
+             
               <input placeholder={`Use Mic to enter in ${language.name}`} value={transcript} />
-            }</div>
 
-            <div>   {(!micopen) ? <span className='micoofficon'>
+
+
+            
+            <div className='mic_part_mic_same'>   {(!micopen) ? <span className='micoofficon'>
+              <MicOffIcon onClick={handlemicoffclicked} /></span>
+              : <span className='micoonicon'> <MicOutlinedIcon onClick={handlemiconclicked} /></span>}
+
+
+
+              {transcript && <button onClick={() => {
+                resetTranscript()
+
+              }}>Clear</button>}</div>
+            
+
+
+            </div>
+
+
+            <div className='mic_part_mic'>   {(!micopen) ? <span className='micoofficon'>
               <MicOffIcon onClick={handlemicoffclicked} /></span>
               : <span className='micoonicon'> <MicOutlinedIcon onClick={handlemiconclicked} /></span>}
 
@@ -298,6 +316,7 @@ const Orders = () => {
 
               }}>Clear</button>}</div>
             <div>
+
               <select onChange={handlelanguagechange}>
                 <option>Telugu te</option>
                 <option>English en</option>

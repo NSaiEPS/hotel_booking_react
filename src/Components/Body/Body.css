@@ -1,7 +1,7 @@
 .Body_inside {
     position: relative;
     width: 100%;
-    /* background-color: red; */
+    /* background-color: white; */
 }
 
 .Offers_dev {
@@ -116,6 +116,7 @@ font-size: xx-large;
     justify-content:space-around;
     /* background-color:red; */
     /* margin-bottom:15px; */
+    /* background-color:white; */
 }
 
 
@@ -215,6 +216,7 @@ font-size: xx-large;
     @media (max-width:375px){
         .Body_Booking_Section  {
             width: 95%;
+            /* background-color:red!important; */
         
         }
         /* .Body_Booking_Section_dark{
@@ -310,3 +312,7 @@ font-size: xx-large;
             left: 35%;
         }
 }}
+
+.Body_Booking_Section {
+    background-color: #e4f7e9 ;
+}

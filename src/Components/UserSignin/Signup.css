@@ -8,7 +8,7 @@
     align-items: center;
     justify-items: center;
     position: fixed;
-    z-index: 1 !important;
+    z-index: 4 !important;
 
 }
 
@@ -20,6 +20,7 @@
     border-radius: 15px;
     
         background-image: linear-gradient(rgb(0, 255, 195), rgb(200, 0, 255));
+        /* z-index: 999 !important; */
     
    
 }

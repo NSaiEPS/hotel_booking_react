@@ -46,29 +46,33 @@ height: 242px;
 }
 .Booking_Section_top_img_dev_showing {
     position:absolute;
-    top:50%;
+    top:65%;
     margin-left:10%;
     width:80%;
 }
 .Booking_Section_top_img_dev_showing button {
-width:100%;
+width:90%;
 color:white;
 border:2px solid white;
-border-radius:5px;
+/* border-radius:5px; */
+padding:5px
+
 }
 
 .booked_btn {
-    background-color: #c60000;
+    background-color: #ed094b;
     cursor:not-allowed !important;
         /* cursor: wait; */
 }
 
 .booked_btn_you {
     background-color: blue;
+    width:95% !important;
 }
 
 .notbooked_btn {
-    background-color:green;
+    /* background-color:green; */
+    background-color:#07eb75;
     
 
 
@@ -151,3 +155,21 @@ border-radius:5px;
     
 }
 
+
+
+
+.Booking_Section {
+  background-color:lightblue;
+
+}
+.Booking_Section:hover {
+   background-color:lightgreen;
+}
+
+@media (max-width:550px){
+.Booking_Section_top_img_dev_showing button {
+
+    width:50%;
+
+}
+}

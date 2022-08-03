@@ -51,12 +51,14 @@
 .dashboard_maincontants span{
     color:white;
 }
-@media (max-width:375px){
+@media (max-width:550px){
     .dashboard_maincontants {
         flex-direction: column;
         width: 110px;
         margin-left: auto;
         margin-right: auto;
+ font-size:small;
+        
     }
 
 

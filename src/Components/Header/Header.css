@@ -72,6 +72,8 @@ align-self: center;
     border-radius: 10px;
     height: 35px;
     /* color: whi; */
+    border: 2px solid white;
+
 }
 
 .Signin_btn:hover {
@@ -139,6 +141,8 @@ flex-direction: column;}
 .Header_inside_themes button:nth-child(1) {
     background-color: white;
     margin-right: 5px;
+    /* border:  2px solid white !important; */
+
 }
 
 .Header_inside_themes button:nth-child(1):hover {
@@ -221,7 +225,7 @@ flex-direction: column;}
 .Logout_btn_div {
     position: absolute;
     right: 75px;
-    top:20px;
+    top:17px;
     /* background-color: blue !important;
     border: 2px solid white;
     color: white; */
@@ -231,7 +235,10 @@ flex-direction: column;}
 background-color: blue !important;
     border: 2px solid white;
     color: white;
+    height:34px;
     border-radius: 5px;
+    /* padding:2.
+    px; */
 }
 
 .supliername_header {
@@ -488,6 +495,9 @@ flex-direction: column;}
     position: absolute;
     right: 75px;
     top:20px;
+    /* align-items:start !important; */
+    text-align:start !important;
+    
 
 
 }
@@ -497,6 +507,8 @@ flex-direction: column;}
         border: 2px solid white;
         color: white;
         border-radius: 5px;
+        height:34px;
+        /* width:25px; */
     }
 
 
@@ -561,6 +573,7 @@ position: absolute;
 }
 .Logout_btn_div_nav {
     top: 110px !important;
+    margin-left:4px;
     /* left: -10px; */
 }
 
@@ -597,5 +610,40 @@ position: absolute;
       /* left: -10px; */
   }
      
+.Header_Login_name {
+    font-size:larger !important;
+    margin-top:5px;
+   }
+   .Header {
 
+    height: 95px;
+
+}
+   
     }
+
+    /* .Logout_btn_div_nav */
+
+ 
+  @media (max-width:335px){
+    .Header_Login_name {
+        font-size:medium !important;
+        margin-top:10px;
+       }
+       .Header {
+
+        height: 100px;
+    
+    }
+     
+  }
+
+
+
+  @media (max-width:290px){
+    
+       .Header {
+
+        height: 110px;
+    
+    }}
