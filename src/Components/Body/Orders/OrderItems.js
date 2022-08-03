@@ -167,13 +167,14 @@ let handleprice=(e)=>{
       {/* {index+1}   */}
      {/* {ordername} */}
 
-
+    <small>Name</small>
     <input value={input.ordersname} type='text' name='ordersname' onChange={handlechaneinput}/>
     </div>
 
 
     <div>
       {/* {noofitems} */}
+      <small>no.ofitems</small>
 
    <input value={input.ordersvalue} type='number' name='ordersvalue' onChange={handlechaneinput}/>
        </div>
@@ -181,6 +182,8 @@ let handleprice=(e)=>{
 
     
        <div>
+      <small>update</small>
+
       <span>
 
        {update? <UpgradeIcon onClick={onorderedit} className='update_icon'/>: <EditIcon  onClick={onordereditask}/>} 
@@ -192,12 +195,16 @@ let handleprice=(e)=>{
 
 
 
-    <div onClick={handleorderdelete}>
+    <div >
+    <small>Delete</small>
+
       <span>
-      <Delete /></span></div>
+      <Delete onClick={handleorderdelete}/></span></div>
     
       <div >  
       {/* {price}  */}
+      <small>Price</small>
+
       <input type='number' value={ (update && supliername)? itemprice: price} onChange={handleprice}/>
 
       <span>₹</span>

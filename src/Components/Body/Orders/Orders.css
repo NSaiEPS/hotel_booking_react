@@ -408,18 +408,16 @@ select {
 
      /* Added for scrolling */
 
-     .OrderItems_inside {
-        width: 95% !important;
-     }
      /* .OrderItems_inside {
-        width: 98% !important;
+        width: 95% !important;
      } */
-
+    
 
 }
 
 /* Added for scrolling these 2 lines */
-@media (max-width:425px){
+
+/* @media (max-width:425px){
 .Orders_OrderItems {
     min-width: 400px;
 }
@@ -427,4 +425,58 @@ select {
 .Orders_OrderItems_scrollbar {
     overflow-x: scroll;
 
-}}
+}} */
+
+
+.OrderItems_inside small{
+    display: none;
+
+}
+
+
+
+@media (max-width:400px){
+    .OrderItems_inside {
+        width: 98% !important;
+        display: flex;
+        flex-direction: column;
+     }
+
+     /* For responcive dashboard columns */
+
+     .OrderItems_inside {
+       
+        display: flex;
+        flex-direction: column;
+     }
+     .Orders_OrderItems table {
+        display: none;
+     }
+     .OrderItems_inside small{
+        display: inline !important;
+        font-size:small;
+        font-weight: 700;
+        /* z-index: 1; */
+    
+    }
+
+.OrderItems_inside div {
+    display: flex;
+    justify-content: space-between;
+}
+.OrderItems_inside input {
+    width: 60% !important;
+}
+
+.OrderItems_inside div:nth-last-child(1) span{
+    /* color: red; */
+    left: 42% !important;
+    font-size: medium !important;
+    /* color: red !important; */
+   }
+   .OrderItems_inside input{
+    padding-left: 5px !important;
+
+   }
+}
+

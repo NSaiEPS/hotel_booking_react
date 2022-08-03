@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../../../Firebase'
-import { Selectbookingorderdetails, Selectchek, Selectloginsuplier, Selectorderprice, SelectTheme} from '../../Redux/Redux_Slice'
+import { Selectbookingorderdetails, Selectchek, Selectloginsuplier, Selectorderprice, SelectTheme } from '../../Redux/Redux_Slice'
 import './Orders.css'
 import { Link, Navigate, useNavigate } from 'react-router-dom'
 import Alert from '@material-ui/lab/Alert';
@@ -11,211 +11,231 @@ import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
 import MicOffIcon from '@mui/icons-material/MicOff';
 
 const Orders = () => {
-let orderdetails=useSelector(Selectbookingorderdetails)
-let supliername=useSelector(Selectloginsuplier)
-// let selectorderprice=useSelector(Selectchek)
+  let orderdetails = useSelector(Selectbookingorderdetails)
+  let supliername = useSelector(Selectloginsuplier)
+  // let selectorderprice=useSelector(Selectchek)
 
-let{bookeduserid,tableid,tablenumb,bookername}=orderdetails;
-const navigate = useNavigate()
-let dispatch=useDispatch()
-let selecttheme=useSelector(SelectTheme)
+  let { bookeduserid, tableid, tablenumb, bookername } = orderdetails;
+  const navigate = useNavigate()
+  let dispatch = useDispatch()
+  let selecttheme = useSelector(SelectTheme)
 
 
 
-// console.log(bookeduserid,tableid,tablenumb,bookername)
-    let [orders,setOrders]=useState({
+  // console.log(bookeduserid,tableid,tablenumb,bookername)
+  let [orders, setOrders] = useState({
 
-    })
+  })
 
-    let len=0;
-    useEffect(()=>{
-        db.collection('tables').doc(tableid).collection('orders').onSnapshot((snapshot)=>{
-        setOrders(snapshot.docs.map((doc)=>({
-            
-            id:doc.id,
-            data:doc.data(),
-          
-        })))
+  let len = 0;
+  useEffect(() => {
+    db.collection('tables').doc(tableid).collection('orders').onSnapshot((snapshot) => {
+      setOrders(snapshot.docs.map((doc) => ({
 
-        console.log(len)
-      }) ;
-    
-      len=1;
-  
-  },[])
+        id: doc.id,
+        data: doc.data(),
 
+      })))
+
+      console.log(len)
+    });
+
+    len = 1;
+
+  }, [])
+
+
+//   let a1 = [1, [5, 8, 3], 7];
+//   let a2 = [1, 5, 8, 3, 7, 896, 89];
+//   let b = [...a1, ...a2]
+//   console.log(b)
+//   let a3=a1.flat(1)
+//   console.log(a3)
+
+//   let myname='Nsai'
+//   let name=()=>{
+//     //  myname='Sai'
+//     let fulname=()=>{
+//       console.log(myname)
+//     }
+//     fulname()
+//   } name()
+
+// let a=[{s:'dsd',fd:'dfds'}]
+// let [as,afd]=[{...a}]
+// console.log(as,afd)
   // let itemprice=0;
   // console.log(len)
   // if(len===1){
   //  orders?.map((items,indx)=>{
   //  console.log(items.data.price)
-       
+
   //      itemprice=(+(items.data.price)+itemprice)
   //      dispatch(
- 
+
   //        totalorderprice(
   //          itemprice
- 
+
   //        ))
-       
+
   //  })
   //  len=0;
-  
+
   // }
 
 
-let [input,setInput]=useState({
-    ordername:'',
-    ordervalue:''
-})
+  let [input, setInput] = useState({
+    ordername: '',
+    ordervalue: ''
+  })
 
 
-let handleinput=(e)=>{
-    
-    let nam,val;
-    nam=e.target.name;
-    val=e.target.value
+
+  let handleinput = (e) => {
+
+    let nam, val;
+    nam = e.target.name;
+    val = e.target.value
     setInput({
-        ...input,
-        [nam]:val
+      ...input,
+      [nam]: val
     })
-    if(nam==='ordervalue'){
-        if(val<1){
-            alert('order value must be atleast 1!')
-        }
+    if (nam === 'ordervalue') {
+      if (val < 1) {
+        alert('order value must be atleast 1!')
+      }
     }
     // console.log(input.ordername, input.ordervalue)
-}
+  }
 
 
 
-// console.log(window.location.pathname)
-// if(window.location.pathname==='/user/orders') {
-// if(!bookername){
-//     alert('reloadeed')
-//     navigate('/')
-//     alert('Oops some thing went wrong go back & click your orders')}}
+  // console.log(window.location.pathname)
+  // if(window.location.pathname==='/user/orders') {
+  // if(!bookername){
+  //     alert('reloadeed')
+  //     navigate('/')
+  //     alert('Oops some thing went wrong go back & click your orders')}}
 
 
 
-if(!tableid){
+  if (!tableid) {
     navigate('/')
-}
+  }
 
-// window.location.reload(false)
-// if(window.location.reload(false)){
-//     navigate('/')
-// }
+  // window.location.reload(false)
+  // if(window.location.reload(false)){
+  //     navigate('/')
+  // }
 
-let [micopen,setMicopen]=useState(true)
+  let [micopen, setMicopen] = useState(true)
 
-let {
+  let {
     transcript,
     interimTranscript,
     finalTranscript,
     resetTranscript,
     listening,
-    } = useSpeechRecognition();
+  } = useSpeechRecognition();
 
-let [language,setLanguage]=useState(
+  let [language, setLanguage] = useState(
     {
-        code:'te',
-        name:'telugu'
+      code: 'te',
+      name: 'telugu'
     })
 
-let handlemiconclicked=()=>{
+  let handlemiconclicked = () => {
     alert('Mic is on, please speck to record')
     setMicopen(false)
 
     // let language='en'
-        SpeechRecognition.startListening({
-          continuous: true,
-          language: language.code,
-        })
+    SpeechRecognition.startListening({
+      continuous: true,
+      language: language.code,
+    })
 
-        
 
-}
 
-let handlemicoffclicked=()=>{
+  }
+
+  let handlemicoffclicked = () => {
     alert('Mic is off now')
     setMicopen(true)
     SpeechRecognition.stopListening()
-}
-// const { transcript } = useSpeechRecognition()
+  }
+  // const { transcript } = useSpeechRecognition()
 
 
 
 
-let handleaddOrders=(e)=>{
+  let handleaddOrders = (e) => {
     e.preventDefault()
-  if(input.ordername && transcript){
-    alert('please clear the mic or typed input to order the items')
-  }
-  else{
-    let ordername;
+    if (input.ordername && transcript) {
+      alert('please clear the mic or typed input to order the items')
+    }
+    else {
+      let ordername;
 
-  if(input.ordername) {
+      if (input.ordername) {
 
-    ordername=input.ordername
-  }
-  if(transcript) {
-    ordername=transcript
-  }
-    db.collection('tables').doc(tableid).collection('orders').add({
-        name:ordername,
-        noofitems:input.ordervalue,
-        price:''
-        
-    
+        ordername = input.ordername
+      }
+      if (transcript) {
+        ordername = transcript
+      }
+      db.collection('tables').doc(tableid).collection('orders').add({
+        name: ordername,
+        noofitems: input.ordervalue,
+        price: ''
+
+
       })
       SpeechRecognition.stopListening()
-    setMicopen(true)
+      setMicopen(true)
 
       resetTranscript()
       setInput({
-        ...input,ordername:'',ordervalue:''
+        ...input, ordername: '', ordervalue: ''
       })
     }
-}
+  }
 
 
-let handlelanguagechange=(e)=>{
+  let handlelanguagechange = (e) => {
     console.log(e.target.value)
-    let targeted=(e.target.value)
-   console.log(targeted.split(' '))
-   let targetteddata=targeted.split(' ');
-   console.log(targetteddata);
-   setLanguage({
-    ...input,
-    code:targetteddata[1],
-    name:targetteddata[0]
-   })
+    let targeted = (e.target.value)
+    console.log(targeted.split(' '))
+    let targetteddata = targeted.split(' ');
+    console.log(targetteddata);
+    setLanguage({
+      ...input,
+      code: targetteddata[1],
+      name: targetteddata[0]
+    })
 
 
-}
+  }
 
 
 
 
-// let [totalprice,setTotalprice]=useState(0)
+  // let [totalprice,setTotalprice]=useState(0)
 
-// let itemprice=0;
-// { Array.isArray(orders) && 
-//   orders?.map((items,indx)=>{
-//   console.log(items.data.price)
-      
-//       itemprice=(+(items.data.price)+itemprice)
-//       dispatch(
+  // let itemprice=0;
+  // { Array.isArray(orders) && 
+  //   orders?.map((items,indx)=>{
+  //   console.log(items.data.price)
 
-//         totalorderprice(
-//           itemprice
+  //       itemprice=(+(items.data.price)+itemprice)
+  //       dispatch(
+  //         totalorderprice(
+  //           itemprice'
 
-//         ))
-      
-//   })
+  //         ))
 
-//   }
+  //   })
+
+  //   }
 
   // console.log(itemprice)
   // setTotalprice(itemprice)
@@ -224,79 +244,80 @@ let handlelanguagechange=(e)=>{
 
 
   return (
-    <div className= {(selecttheme==='light'?'Orders':'Orders Orders_dark' )} >
-        {(!tableid)&& <Alert variant="filled" severity="error">
-  Some thing went wrong please go back & come again
-</Alert>
-}
-    
-        <h3>Hello {supliername?
-         <span>Suplier {supliername} </span> 
-        : bookername? bookername: 'user'} this is your  
-           {supliername?  ` supliying  ${tablenumb} `:` order booking page ${tablenumb}`} </h3>
-        <div className={(!tableid)? 'Orders_goback_div_message': 'Orders_goback_div'}>
-       <button> <Link to='/'>Go back</Link></button></div>
+    <div className={(selecttheme === 'light' ? 'Orders' : 'Orders Orders_dark')} >
+      {(!tableid) && <Alert variant="filled" severity="error">
+        Some thing went wrong please go back & come again
+      </Alert>
+      }
+
+      <h3>Hello {supliername ?
+        <span>Suplier {supliername} </span>
+        : bookername ? bookername : 'user'} this is your
+        {supliername ? ` supliying  ${tablenumb} ` : ` order booking page ${tablenumb}`} </h3>
+      <div className={(!tableid) ? 'Orders_goback_div_message' : 'Orders_goback_div'}>
+        <button> <Link to='/'>Go back</Link></button></div>
 
 
-        <div className='Orders_inside'>
+      <div className='Orders_inside'>
 
 
 
-           <div className= {selecttheme==='light'?'Ordering_input':'Ordering_input Ordering_input_dark'}>
-           <div><form onSubmit={handleaddOrders}>
-                <input placeholder='Enter your orders here...' type='text'
-                // value={(!micopen) ? transcript:input.ordername } name='ordername'
-                value={input.ordername } name='ordername'
-                onChange={handleinput}
-                />
+        <div className={selecttheme === 'light' ? 'Ordering_input' : 'Ordering_input Ordering_input_dark'}>
+          <div><form onSubmit={handleaddOrders}>
+            <input placeholder='Enter your orders here...' type='text'
+              // value={(!micopen) ? transcript:input.ordername } name='ordername'
+              value={input.ordername} name='ordername'
+              onChange={handleinput}
+            />
 
-               
-                <input placeholder='no.of items' type='number'   value={input.ordervalue} name='ordervalue' onChange={handleinput}/>
-               { ((input.ordername || transcript) && input.ordervalue>0)&& (tableid)&&
-                <button  type='submit'
-               >Add</button>
 
-               } 
-            </form></div> 
+            <input placeholder='no.of items' type='number' value={input.ordervalue} name='ordervalue' onChange={handleinput} />
+            {((input.ordername || transcript) && input.ordervalue > 0) && (tableid) &&
+              <button type='submit'
+              >Add</button>
+
+            }
+          </form></div>
 
 
 
           <div className='mic_part'>
-         <div> {
-        //  <p>{transcript}</p>
-         <input placeholder={`Use Mic to enter in ${language.name}`} value={transcript}/>
-         }</div>
-        
-       <div>   {(!micopen)? <span className='micoofficon'>
-        <MicOffIcon onClick={handlemicoffclicked} /></span>
-             : <span className='micoonicon'> <MicOutlinedIcon onClick={handlemiconclicked} /></span>}
-         
-         
+            <div> {
+              //  <p>{transcript}</p>
+              <input placeholder={`Use Mic to enter in ${language.name}`} value={transcript} />
+            }</div>
 
-        { transcript &&  <button onClick={()=>{resetTranscript()
+            <div>   {(!micopen) ? <span className='micoofficon'>
+              <MicOffIcon onClick={handlemicoffclicked} /></span>
+              : <span className='micoonicon'> <MicOutlinedIcon onClick={handlemiconclicked} /></span>}
 
-         }}>Clear</button>}</div>
-         <div>
-            <select onChange={handlelanguagechange}>
-            <option>Telugu te</option>
+
+
+              {transcript && <button onClick={() => {
+                resetTranscript()
+
+              }}>Clear</button>}</div>
+            <div>
+              <select onChange={handlelanguagechange}>
+                <option>Telugu te</option>
                 <option>English en</option>
                 <option>Hindi hi</option>
                 <option>Tamil ta</option>
                 <option>Kannada kn</option>
-            </select>
-         </div>
-         
+              </select>
+            </div>
+
           </div>
 
-           </div>
+        </div>
 
-           {/* name:input.ordername,
+        {/* name:input.ordername,
         noofitems:input.ordervalue,
         price:'' */}
-           {orders?.length>0 &&
-           <div className='Orders_OrderItems_scrollbar'>
-           <div className='Orders_OrderItems'>
-            <table>
+        {orders?.length > 0 &&
+          <div className='Orders_OrderItems_scrollbar'>
+            <div className='Orders_OrderItems'>
+              <table>
                 <th>Name</th>
                 <th>No.of items</th>
                 <th>Update</th>
@@ -304,35 +325,35 @@ let handlelanguagechange=(e)=>{
                 <th>Delete</th>
                 <th>Price</th>
 
-            </table>
-            { Array.isArray(orders) && 
-            orders?.map((items,indx)=>{
-                return(
+              </table>
+              {Array.isArray(orders) &&
+                orders?.map((items, indx) => {
+                  return (
                     <div key={Math.random()}>
-                        <OrderItems  orderid={items.id} ordername={items.data.name}
+                      <OrderItems orderid={items.id} ordername={items.data.name}
                         noofitems={items.data.noofitems} price={items.data.price} index={indx}
                         tableid={tableid}
-                        />
-                        </div>
-                )
-            })
+                      />
+                    </div>
+                  )
+                })
 
-            }
-            
-            {/* <p>Total price <small className='rupeicon'>₹</small> <span><b> */}
+              }
+
+              {/* <p>Total price <small className='rupeicon'>₹</small> <span><b> */}
               {/* {selectorderprice && selectorderprice} */}
-               {/* totla price here
+              {/* totla price here
               </b></span> </p> */}
 
-           </div>
-           </div>}
+            </div>
+          </div>}
 
-        </div>
+      </div>
 
-        {/* <div className='reload_info'>
+      {/* <div className='reload_info'>
             <span>{`Oops something we wrong please go back & come again`}</span>
         </div> */}
-      
+
     </div>
   )
 }
