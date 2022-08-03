@@ -6,11 +6,12 @@
 .Header {
     position: sticky;
     top: 0px;
-    height: 75px;
-    background-color: rgb(32, 31, 31);
+    height: 90px;
+    /* background-color: rgb(32, 31, 31); */
+    background-color: #e5e6eb;
     box-sizing: border-box;
     padding: 10px;
-    z-index: 1;
+    z-index: 3 !important;
 }
 
 .Header_inside_left img {
@@ -37,10 +38,11 @@
 
 
 .Header_Login_name {
-    animation: Head_name 2s ease-in-out infinite;
+    /* animation: Head_name 2s ease-in-out infinite; */
     margin-left: 10px;
     margin-top: 3px;
     /* align-items: center; */
+    
 }
     @keyframes Head_name{
         0%{
@@ -241,10 +243,16 @@ background-color: blue !important;
 .navbar_togle {
 position: absolute;
 display: none;
+
 /* left: 0px; */
 
 }
 
+
+.navbar_togle nav{
+
+/* height:50px; */
+border-radius:15px;}
 
 
 
@@ -360,7 +368,11 @@ display: none;
     position: sticky;
     top: 0px;
     /* height: 75px; */
-    background-color: rgb(32, 31, 31);
+    /* background-color: rgb(32, 31, 31); */
+    background-color: #e5e6eb;
+    z-index: 3 !important;
+
+
     box-sizing: border-box;
     padding: 10px;
     z-index: 1;
@@ -550,7 +562,9 @@ position: absolute;
     /* left: -10px; */
 }
 
-
+.Header_inside_left {
+    text-align:start !important;
+}
     }
 
     @media (max-width:425px){
