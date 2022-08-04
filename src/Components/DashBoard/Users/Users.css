@@ -92,13 +92,12 @@ table,th,td{
        
     }
 
-    @Media (max-width:515px){
+    /* @Media (max-width:515px){
 
         .UserData_name,.UserData_tablenumb,.UserData_Active {
             width: 15% !important;
         font-size: xx-small;
 
-            /* background-color: red; */
         }
         .UserData_Survedby {
             width: 25% !important;
@@ -112,7 +111,7 @@ table,th,td{
 
         }
     
-    }
+    } */
 
 
 
@@ -127,5 +126,108 @@ table,th,td{
 } */
 
 .UserData_Survedby_name {
+    display: none;
+}
+
+@media (max-width:550px){
+    .usersData_inside .UserData_table {
+        display: none;
+
+    }
+    .Users_Data_table {
+        display: none;
+    }
+    .UserData_forphones {
+        display: block !important;
+        /* background-color: red; */
+
+    }
+    .UserData_forphones tr {
+        /* background-color: white; */
+        width: 90% !important ;
+        
+    
+    }
+
+    .UserData_forphones tr td {
+        border: 1px solid red;
+        border-collapse: collapse;
+    }
+
+    .UserData_forphones div {
+        display: flex;
+
+        /* note
+         */
+        /* justify-content: space-between; */
+        padding: 5px;
+        /* background-color: blue; */
+        /* width: 80% !important; */
+        background-color: white;
+        margin-top: 1px;
+    
+     }
+    .UserData_forphones div td{
+        flex: 1;
+        width: 50%;
+    
+    }
+
+     /* Note */
+
+
+
+    /* .UserData_forphones div td{ */
+        /* background-color: white; */
+    
+    /* } */
+
+    /* .UserData_Survedby_name { */
+        /* height: fit-content; */
+    /* } */
+     /* Look at */
+     .UserData_Survedby {
+        /* width: 44% !important; */
+  width: fit-content !important;
+
+    }
+.UserData_email {
+  width: fit-content !important;
+
+ }
+
+
+.UserData_name {
+  width: fit-content !important;
+}
+.UserData_Survedby {
+    text-align:end;
+}
+
+.UserData_forphones div td:nth-last-child(1){
+    /* color: red ; */
+    /* padding-right: 5px; */
+    margin-right:5px ;
+    text-align: left;
+}
+
+.UserData_forphones div td:nth-last-child(2){
+    font-weight: 500;
+    margin-left:5px ;
+    text-align: left;
+
+
+
+}
+
+.UserData_forphones button{
+    background-color: green;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+}
+}
+
+.UserData_forphones {
     display: none;
 }

@@ -75,7 +75,23 @@
 
   @media (max-width:400px){
     .Logo_App {
-      width: 100% !important;
+      width: 75% !important;
     height: 250px !important;
+    }
+  }
+
+  @media (max-width:300px){
+    .Logo_App {
+      height: 200px !important;
+    
+    
+    }
+  }
+
+  @media (max-width:300px){
+    .Logo_App {
+      height: 150px !important;
+    
+    
     }
   }
