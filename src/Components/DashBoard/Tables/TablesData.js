@@ -130,11 +130,7 @@ useEffect(()=>{
   }
   return (
     <div>
-      {/* TablesData */}
-      {/* {name} {index+1}
-      {active}
-      {survedby}
-      {bookedby} */}
+  
 
       <table className='TableData'>
   
@@ -208,6 +204,111 @@ useEffect(()=>{
         
 
       </table>
+
+
+
+
+
+
+
+
+
+     <div className='TableData_phones'>
+
+
+    <table>
+    <tr>
+    
+    <div>
+      <td>Name</td>
+      <td className='TableData_name'>{name} {index+1}</td>
+
+    </div>
+
+
+
+    <div>
+      <td>
+        Status
+      </td>
+
+      <td className='TableData_Active'>
+                {active ? <button className='Tabledata_btn_booked'>Booked</button>:
+                 <button className='Tabledata_btn_notbooked'>Not yet booked</button>}
+                </td>
+    </div>
+
+   <div>
+     <td>
+      Bookedby
+     </td>
+     <td className='TableData_bookedby'> { bookedby? bookedby: '--'}</td>
+
+    </div> 
+ 
+
+
+
+
+<div>
+  <td>Survedby</td>
+
+  <td className='TableData_Survedby'>
+              { bookedby?
+            
+
+            <div className='emailafter_edit'> 
+              
+
+              {!editsurvemail? <span> { survedby? 
+              <div>
+             <span className='emailafter_edit_name'> {survedname[0]} </span>
+             <span className='emailafter_edit_email'> {survedname} </span></div>:
+
+`Click edit button to select the supler`
+
+                }
+                
+                </span> :
+              
+              <select onChange={handlesurvingemail}>
+                {Array.isArray(suplier) && suplier?.map((item)=>{
+                  return(
+                <option key={Math.random()}>{`${item.data.email}  ${item.id} `}</option>
+
+                  )
+                })}
+                
+              </select>
+              }
+               
+               {editsurvemail ?<span><UpgradeIcon onClick={onsurveupgrade} className='update_icon'/></span>:
+              <span> <EditIcon  className='edit_icon' onClick={onsurvedeit}/> </span>
+                }  
+      <span className='email_deleteicon'>
+
+      <Delete onClick={handlemialdelete} />
+      </span>
+                
+                 </div>
+
+:'--'   }</td>
+
+
+</div>
+    </tr>
+    </table>
+
+
+
+     </div>
+
+
+
+
+
+
+
     </div>
   )
 }
