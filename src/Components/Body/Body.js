@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { db } from '../../Firebase'
 import { Selecttablenumber, SelectTheme, Selectunbookedtables, unbookedtable } from '../Redux/Redux_Slice'
 import './Body.css'
+import Bookingsection_Mui from './Bookingsection_Mui'
 import Booking_Section from './Booking_Section'
 import FuaturedItems from './FuaturedItems'
 
@@ -125,6 +126,10 @@ useEffect(()=>{
            bookeremail={item.data.bookeremail} />
            
         {/* {!item.data.active ? unbooked1++ :''} */}
+
+        {/* <div>
+          <Bookingsection_Mui/>
+          </div> */}
 
           </div>
       )

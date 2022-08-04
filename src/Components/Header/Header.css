@@ -43,6 +43,7 @@
     /* animation: Head_name 2s ease-in-out infinite; */
     margin-left: 10px;
     margin-top: 3px;
+    color: black;
     /* align-items: center; */
     
 }
@@ -647,3 +648,7 @@ position: absolute;
         height: 110px;
     
     }}
+
+.Header_inside_dashboard span {
+  color: salmon ;
+}

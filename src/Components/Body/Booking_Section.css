@@ -8,6 +8,8 @@
    margin-top:15px;
    margin-bottom:15px;
    box-shadow:0px 0px 2px 2px rgba(0,0,0,0.3);
+   box-shadow:0px 0px 2px 2px white ;
+
     border-radius:5px;
     transition: 0.3s;
     position: relative;
@@ -34,8 +36,9 @@ cursor: pointer;
 
 
 .Booking_Section_top_img {
-    width:80%;
-    border-radius:15px
+    width:90%;
+    /* border-radius:15px */
+    margin-top: 10px;
 }
 
 
@@ -90,7 +93,7 @@ padding:5px
 
 .booking_more_options {
     position:absolute;
-    top:-30px;
+    top:-60px;
     right:15px;
     /* color: red; */
 }
@@ -168,13 +171,7 @@ padding:5px
 
 
 
-.Booking_Section {
-  background-color:lightblue;
 
-}
-.Booking_Section:hover {
-   background-color:lightgreen;
-}
 
 @media (max-width:550px){
 .Booking_Section_top_img_dev_showing button {
@@ -196,3 +193,25 @@ bottom: 5px;
 
 } */
 }
+
+
+/* Doing like MUi */
+.Booking_Section_top div:nth-child(1){
+    background-color: #3e5060;
+    background-color: #2c4678;
+    height: 75px;
+    color: #66b2ff;
+    border-radius: 4px;
+
+}
+.Booking_Section {
+    /* background-color:lightblue; */
+    background-color: #102041;
+    color: white;
+  
+  }
+
+  /* .Booking_Section:hover { */
+    /* background-color:lightgreen; */
+ /* } */
+ 

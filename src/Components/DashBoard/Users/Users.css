@@ -231,3 +231,7 @@ table,th,td{
 .UserData_forphones {
     display: none;
 }
+
+.Users h3 {
+    color: white;
+}
