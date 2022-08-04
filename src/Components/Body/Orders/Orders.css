@@ -355,7 +355,7 @@ select {
 
 }
 
-@media (max-width:550px){
+@media (max-width:700px){
 
    
   
@@ -521,6 +521,21 @@ margin-top:3px;
     padding-left: 5px !important;
 
    }
+
+.OrderItems_inside div:nth-child(4) span{
+    /* color: red !important; */
+  margin-right: 5px;
+
+}
+
+.OrderItems_inside div:nth-last-child(3) span{
+    /* color: green; */
+  margin-right: 5px;
+    
+
+}
+
+
 }
 
 .mic_part_mic_same {

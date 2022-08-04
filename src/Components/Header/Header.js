@@ -85,7 +85,11 @@ useEffect(()=>{
      <div className='Header_inside_left'>
         <div>
             <img className='restarent_img'  
-            src='https://img.freepik.com/premium-vector/initial-dr-letter-logo-with-script-typography-vector-template-creative-script-letter-dr-logo-design_616200-715.jpg' alt='Devi restarent'/>
+            src='https://img.freepik.com/premium-vector/initial-dr-letter-logo-with-script-typography-vector-template-creative-script-letter-dr-logo-design_616200-715.jpg' alt='Devi restarent'
+              onClick={()=>{
+                navigate('/')
+              }}
+               />
         </div>
         <div>
    <h2 className='Header_Login_name'>  Welcome to the Devi Residencies 
