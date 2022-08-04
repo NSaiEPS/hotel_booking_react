@@ -129,7 +129,7 @@ table,th,td{
     display: none;
 }
 
-@media (max-width:550px){
+@media (max-width:600px){
     .usersData_inside .UserData_table {
         display: none;
 
