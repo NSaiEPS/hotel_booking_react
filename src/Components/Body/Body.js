@@ -6,6 +6,7 @@ import { Selecttablenumber, SelectTheme, Selectunbookedtables, unbookedtable } f
 import './Body.css'
 import Bookingsection_Mui from './Bookingsection_Mui'
 import Booking_Section from './Booking_Section'
+import Footer from './Footer'
 import FuaturedItems from './FuaturedItems'
 
 const Body = () => {
@@ -112,7 +113,7 @@ useEffect(()=>{
           {/* Booking section */}
 
        <p> <span>We have </span> <b>{selecttablenumber? selecttablenumber:'...'}</b> tables in which
-        <b> {(selecttablenumber-selectunbookedtables)}</b> tables are booked, remaing <b>{selectunbookedtables}</b> tables are are avilable for booking </p>
+        <b> {(selecttablenumber-selectunbookedtables)}</b> tables are booked, remaing <b>{selectunbookedtables}</b> tables are are avilable for booking. </p>
          
         <div className='Body_Booking_Section_inside'>
          
@@ -138,6 +139,13 @@ useEffect(()=>{
          </div>
          
          {/* <Booking_Section /> */}
+        </div>
+        
+
+        <div className='Footer'>
+
+          <Footer />
+
         </div>
 
       </div>

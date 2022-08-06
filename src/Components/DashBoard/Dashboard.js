@@ -90,6 +90,14 @@ let contentsupplier=()=>{
   )
 }
 
+// let p=[]
+// p.push(1,5,15)
+// console.log(p)
+// p=[]
+// console.log(p)
+
+// p.pop()
+
 // console.log(contents.users,contents.suppliers,contents.table)
 
   return (

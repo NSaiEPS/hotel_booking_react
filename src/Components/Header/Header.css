@@ -13,13 +13,20 @@
     box-sizing: border-box;
     padding: 10px;
     /* z-index: 3 !important; */
-    z-index: 3 !important;
+    z-index: 1 !important;
 }
 
 .Header_inside_left img {
     width: 50px;
     border-radius: 50%;
 }
+
+.Boostrapheader img {
+    width: 50px;
+    border-radius: 50%;
+}
+
+
 
 .Header_inside {
     display: flex;
@@ -651,4 +658,34 @@ position: absolute;
 
 .Header_inside_dashboard span {
   color: salmon ;
+}
+
+/* 
+.boostrphesader {
+    position: sticky;
+    top: 0px !important;
+} */
+
+/* .Boostrapheader {
+    z-index: 1 !important;
+} */
+
+@media (min-width:991px){
+    .Logo_name {
+        margin-left: 30px;
+    }
+  .Signin_option {
+    margin-left: 25px;
+  }
+  .logout_option {
+    margin-top: 5px ;
+    margin-left: 25px;
+
+  }
+  .Themes_option {
+    margin-left: 25px;
+    margin-top: 7px ;
+
+
+  }
 }

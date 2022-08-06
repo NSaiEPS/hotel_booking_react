@@ -1,8 +1,37 @@
 import React from 'react'
 import './Users.css'
+import { db } from '../../../Firebase';
+
 
 const UsersData = ({id,name,table,active,email,index,survedby}) => {
   let survedname=survedby.split('@')
+
+
+  let handledeleteUser=()=>{
+    alert(' are you sure to delete this User !')
+    db.collection('user').doc(id).delete()
+
+   
+
+    // db.collection('users').doc(bookeduserid).update({
+    //   ['survedby']: '',
+    //   ['table']:'',
+    //   ['active']:'',
+
+    // })
+
+    // db.collection('suppliers').doc(survedid).update({
+    //   ['survingTable']:``,
+    // })
+db.collection('tables').doc(id).update({
+          ['active']: '',
+          ['bookedby']:'',
+          ['bookeduserid']:'',
+          ['bookeremail']:'',
+        })
+
+       
+  }
   return (
     <div className='UsersData'>
         <div className='usersData_inside'>
@@ -75,6 +104,10 @@ const UsersData = ({id,name,table,active,email,index,survedby}) => {
               <td className='UserData_email'>{email}</td>
 
             </div>
+            
+{/* <div>
+  <button onClick={handledeleteUser}>Delete this User</button>
+</div> */}
           </tr>
 
         </table>

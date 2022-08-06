@@ -351,6 +351,12 @@ select {
         top: 45px;
 
     }
+
+    /* After boostrap header */
+    .Orders_goback_div {
+        top: 105px !important;
+
+    }
     .Orders_goback_div button{
         font-size: small !important;
     }
@@ -404,6 +410,13 @@ select {
 
      .Orders_goback_div {
         top: 57px;
+
+    }
+
+    /* After boostrap header */
+
+    .Orders_goback_div {
+        top: 105px;
 
     }
     .Orders {
@@ -536,6 +549,10 @@ margin-top:3px;
     
 
 }
+/* .Orders_goback_div {
+    top: 90px;
+
+} */
 
 
 }
@@ -546,4 +563,49 @@ margin-top:3px;
 
 .Orders h3 {
     color: white;
+}
+
+/* After boostrap navbar */
+
+
+.Orders >h3 {
+   
+    padding-top: 75px;
+}
+
+  /* After boostrap header */
+
+  .Orders_goback_div {
+    top: 75px;
+
+}
+     /* After boostrap header */
+
+@media (max-width:300px){
+    .Orders >h3 {
+   
+        padding-top: 115px;
+    }
+
+     .Orders_goback_div {
+        top: 150px !important;
+
+    }
+    
+}
+
+@media (max-width:900px) and (min-width:590px){
+    
+    .Orders_goback_div {
+        top: 90px ;
+
+    }
+    
+}
+
+@media (max-width:590px){
+    .Orders_goback_div {
+        top: 108px ;
+
+    }
 }

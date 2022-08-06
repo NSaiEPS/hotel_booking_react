@@ -93,7 +93,7 @@ padding:5px
 
 .booking_more_options {
     position:absolute;
-    top:-60px;
+    top:-55px;
     right:15px;
     /* color: red; */
 }
@@ -103,7 +103,7 @@ padding:5px
 }
 
 .Booking_Section_top h4 {
-    padding-top: 15px;
+    padding-top: 22px;
 
 }
 
@@ -115,17 +115,28 @@ padding:5px
     position: absolute;
     display: flex;
     flex-direction: column;
-    top: 25px;
+    align-items:center ;
+    top: 35px;
     right: 20px;
     width: 150px;
     /* background-color: red; */
     /* height: 100px; */
-    background-color:black;
-    border-radius: 10px;
-
+    background-color:rgb(232, 230, 243);
+    /* border-radius: 10px; */
+   height: 125px;
 
 
 }
+
+/* .booking_more_options_btn::after {
+    content: '>';
+    color: red;
+    position: absolute;
+    right: -4px;
+    top: -15px;
+    transform:translateY(30);
+
+} */
 
 .booking_more_options_btn button{
     /* background-color: white; */
@@ -133,11 +144,12 @@ padding:5px
     background-color: black;
     color: white;
     border: 2px solid white;
-    margin-top: 5px;
+    margin-top: 10px;
     margin-bottom: 5px;
     width: 90%;
     margin-left: auto;
     margin-right: auto;
+    padding: 7px;
 
 }
 

@@ -41,6 +41,7 @@ const Login = ({name}) => {
       dispatch(
         insidesign(null)
       )
+      // window.location.reload()
     }
 
 
@@ -70,14 +71,7 @@ let [signinagin,setSigninagain]=useState(false)
           window.location.reload()}
 
 
-    const [userss,loading]=useAuthState(auth)
-  // console.log(userss?.email)
 
-  if (userss) {
-    dispatch(userinfo(
-      userss
-    ))
-  }
 
   return (
     <div className='Login'>

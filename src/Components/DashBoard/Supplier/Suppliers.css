@@ -248,3 +248,12 @@ width: 60%;
     }
     }
     
+
+    .Supliersdata_phones div:nth-last-child(1) button{
+        background-color: #f65353;
+        color: white;
+        border: 2px solid white;
+        border-radius: 5px;
+        padding: 2px;
+  
+  }

@@ -128,6 +128,24 @@ useEffect(()=>{
       ['survingTable']:``,
     })
   }
+
+  let handledeleteTable=()=>{
+    alert(' are you sure to delete this Table !')
+    db.collection('tables').doc(id).delete()
+   
+
+    db.collection('users').doc(bookeduserid).update({
+      ['survedby']: '',
+      ['table']:'',
+      ['active']:'',
+
+    })
+
+    db.collection('suppliers').doc(survedid).update({
+      ['survingTable']:``,
+    })
+
+  }
   return (
     <div>
   
@@ -287,7 +305,7 @@ useEffect(()=>{
                 }  
       <span className='email_deleteicon'>
 
-      <Delete onClick={handlemialdelete} />
+         { survedby && <Delete onClick={handlemialdelete} />}
       </span>
                 
                  </div>
@@ -295,6 +313,11 @@ useEffect(()=>{
 :'--'   }</td>
 
 
+</div>
+
+
+<div>
+  <button onClick={handledeleteTable}>Delete this Table</button>
 </div>
     </tr>
     </table>

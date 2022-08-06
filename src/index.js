@@ -11,7 +11,7 @@ import {BrowserRouter as Router, Route, Link, Routes, useNavigate} from 'react-r
 import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap.bundle.min";
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
+const root = ReactDOM.createRoot(document.getElementById('roots'));
 root.render(
   <React.StrictMode>
     <Provider store={store}>

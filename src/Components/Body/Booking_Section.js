@@ -234,8 +234,18 @@ let onclickingOrders=()=>{
 
 }
 
+// let a=101;
+
+// let a1=()=>{
+//   console.log(this.a)
+// }
+
+// a1()
+
+
 
 let handlesaynobook=()=>{
+  // console.log(this.a)
   if((selectuser?.useemail)==='deviresidencies@admin.com')
   alert(`Admin can't book the table! , u can login with different mail & book the table!`)
   else {
@@ -291,7 +301,8 @@ let handlesaynobook=()=>{
         }
     
     
-    {((bookerid===selectbookeduserid) || (survedby===selectuser?.useemail)) && moreoption && <div className='booking_more_options_btn'>
+    {((bookerid===selectbookeduserid) || (survedby===selectuser?.useemail)) && moreoption &&
+     <div className='booking_more_options_btn'>
       
     <button  onClick={onclickingOrders}>
       <Link to={`/userorders`} > Orders  </Link>

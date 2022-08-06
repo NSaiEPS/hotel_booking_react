@@ -8,7 +8,7 @@
     /* left: 0px; */
     position: absolute;
     left: 0px;
-    top: 0px;
+    top:75px;
     /* animation: off; */
     /* width: 100%; */
     animation: offers 12s linear infinite  ;
@@ -28,6 +28,7 @@
     color: red;
     animation:offerspan  1s linear infinite alternate-reverse;
 font-size: xx-large;
+
 
 
 }
@@ -52,8 +53,8 @@ font-size: xx-large;
 }
 
 .fuatereditems_dev {
-    margin-top: 25px;
-    padding-top: 35px;
+    /* margin-top: 25px; */
+    padding-top: 150px;
 }
 
 .FuaturedItems {
@@ -93,7 +94,7 @@ font-size: xx-large;
        /* box-shadow:0px 0px 2px 2px white; */
        margin-bottom:15px;
        /* display:flex; */
-       border-radius:15px
+       border-radius:4px
     
 }
 
@@ -266,7 +267,24 @@ font-size: xx-large;
             100% {
                 left: 55%;
             }
- }}
+ }
+
+ .Offers_dev {
+  
+    top:85px
+    ;}
+
+
+    .Body_Booking_Section p  {
+        padding-top: 25px;
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    
+    }
+
+
+}
 
  @media (max-width:480px){
 .Offers_dev,.Offers_dev span {
@@ -393,4 +411,55 @@ font-size: xx-large;
     background-color: red;
     color: red;
 
+}
+
+.Footer_inside {
+    background-color: rgb(9, 53, 77);
+    color: white;
+    /* background-color: #051b30; */
+    /* z-index: 1050; */
+}
+
+/* .Footer_inside:hover {
+  cursor: pointer;
+
+} */
+
+.text-reset:hover{
+    color: #0eecd2 !important;
+    cursor: pointer;
+   
+}
+
+.Frooter_Icons a{
+    color: #0b010c !important;
+
+}
+
+@media (min-width:650px){
+    .Footer_top {
+        margin-left: 25px !important;
+    }
+}
+
+@media (min-width:900px){
+    .Footer_top {
+        margin-left: 50px !important;
+    }
+    .FooterTop_left {
+        width: 50% !important;
+        /* margin-right: auto !important; */
+        /* background-color: red ; */
+    }
+    .FooterTop_right {
+        width: 50% !important;
+        /* margin-right: auto !important; */
+        /* background-color: green ; */
+    }
+}
+
+@media (min-width:1250px){
+    .Footer_email {
+        margin-left: -50px !important;
+    }
 }

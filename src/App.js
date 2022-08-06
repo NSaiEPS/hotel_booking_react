@@ -14,6 +14,8 @@ import Spinner from 'react-spinkit'
 import Body from './Components/Body/Body';
 import {useDispatch} from 'react-redux'
 import Orders from './Components/Body/Orders/Orders';
+import BoostrapHeader from './Components/Header/BoostrapHeader';
+import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 
 
 
@@ -100,6 +102,30 @@ if(Array.isArray(user)){
   })
 }
 
+let [topmovedis,setTopMoveDis]=useState(false)
+let handleMovetopscroll=()=>{
+
+  window.scrollTo(0,0)
+
+}
+
+
+// useEffect(()=>{
+
+
+
+window.addEventListener('scroll',()=>{
+  if(window.scrollY>=135){
+    return setTopMoveDis(true)}
+
+ return setTopMoveDis(false)
+
+
+})
+
+
+// },[]
+// )
 
 
 
@@ -139,7 +165,8 @@ if(Array.isArray(user)){
 
        {Userinfo? '':  (seletlogin==='signup')  ? <Signup/> :<Login/> } 
        {Selectinsidesign ? <Login name={Selectinsidesign}/>:''}
-      <Header/> 
+      {/* <Header/>  */}
+      <BoostrapHeader/> 
        
 
        
@@ -152,7 +179,12 @@ if(Array.isArray(user)){
 
 
       </div>
-    </div>
+      {topmovedis &&
+       <div className='Move_top_icon' onClick={handleMovetopscroll}>
+       <ArrowBackIosNewIcon  className='Move_top_icon_icon' /></div>
+ }
+ 
+  </div>     
   );
 }
 

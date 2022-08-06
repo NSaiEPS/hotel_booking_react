@@ -1,6 +1,25 @@
 import React from 'react'
+import { db } from '../../../Firebase';
 
 const SuppliersData = ({id,index,name,email,password,active,survingTable}) => {
+
+  let handledeleteSuplier=()=>{
+    alert(' are you sure to delete this Table !')
+    db.collection('suppliers').doc(id).delete()
+   
+
+    // db.collection('users').doc(bookeduserid).update({
+    //   ['survedby']: '',
+    //   ['table']:'',
+    //   ['active']:'',
+
+    // })
+
+    // db.collection('suppliers').doc(survedid).update({
+    //   ['survingTable']:``,
+    // })
+
+  }
   return (
     <div>
        <table className='SuppliersData'>
@@ -55,6 +74,11 @@ const SuppliersData = ({id,index,name,email,password,active,survingTable}) => {
     <td className='Supliers_tablenumb'> {survingTable? survingTable: '--'}</td>
 
   </div>
+  
+
+  <div>
+  <button onClick={handledeleteSuplier}>Delete this Suplier</button>
+</div>
   </tr>
 </table>
 

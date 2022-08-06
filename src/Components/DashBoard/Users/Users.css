@@ -164,7 +164,7 @@ table,th,td{
         /* background-color: blue; */
         /* width: 80% !important; */
         background-color: white;
-        margin-top: 1px;
+        /* margin-top: 1px; */
     
      }
     .UserData_forphones div td{
@@ -234,4 +234,13 @@ table,th,td{
 
 .Users h3 {
     color: white;
+}
+
+.UserData_forphones div:nth-last-child(1) button{
+    background-color: #f65353;
+    color: white;
+    border: 2px solid white;
+    border-radius: 5px;
+    padding: 2px;
+
 }
