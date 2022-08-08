@@ -160,7 +160,7 @@ let clickednavicon=()=>{
 
                  
                   {(selectuser)&& (selectuser?.useemail===`deviresidencies@admin.com`) && 
-          (<div >
+          (<div className='Boostrapheader_Admindashboard'>
            <button onClick={handlegotodashboard} type="button" className="btn btn-primary bg-white">
            {window.location.pathname==='/admindashboard'? 
        <Link to={`/`} > Go back  </Link>:
