@@ -252,7 +252,7 @@ const Orders = () => {
 
       <h3>Hello {supliername ?
         <span>Suplier {supliername} </span>
-        : bookername ? bookername : 'user'} this is your
+        : bookername ? `'${bookername}'`: 'user'} this is your
         {supliername ? ` supliying  ${tablenumb} ` : ` order booking page ${tablenumb}`} </h3>
       <div className={(!tableid) ? 'Orders_goback_div_message' : 'Orders_goback_div'}>
         <button> <Link to='/'>Go back</Link></button></div>
