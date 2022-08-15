@@ -6,6 +6,7 @@ import './Tables.css'
 import TablesData from './TablesData';
 import {useDispatch} from 'react-redux'
 import { tablenumber } from '../../Redux/Redux_Slice';
+import { toast } from 'react-toastify';
 
 
 const Tables = ({id,name,val,index}) => {
@@ -85,7 +86,20 @@ let addnewtable=()=>{
     bookeremail:''
     
 
-  })}
+  })
+
+  toast.success('Succesfully sent the feedback', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    // pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
+
+
+}
 
 
   let [tables,settables]=useState({

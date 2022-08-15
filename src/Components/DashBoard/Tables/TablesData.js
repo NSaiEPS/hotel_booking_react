@@ -6,6 +6,7 @@ import { db } from '../../../Firebase';
 import { Delete } from '@material-ui/icons'
 import { SelectbookeduserID } from '../../Redux/Redux_Slice';
 import { useSelector } from 'react-redux';
+import { toast } from 'react-toastify';
 
 
 const TablesData = ({name,active,survedby,id,bookedby,index,bookeremail,survedid,bookeduserid}) => {
@@ -103,7 +104,15 @@ useEffect(()=>{
       })
         
       
-      
+      toast.success('Succesfully edited the suplier', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
 
 
     }
@@ -127,6 +136,21 @@ useEffect(()=>{
     db.collection('suppliers').doc(survedid).update({
       ['survingTable']:``,
     })
+
+
+
+    toast.info('Succesfully deleted the email', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      // pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+
+
+
   }
 
   let handledeleteTable=()=>{
@@ -144,6 +168,20 @@ useEffect(()=>{
     db.collection('suppliers').doc(survedid).update({
       ['survingTable']:``,
     })
+
+
+
+    toast.info('Deleted the Table ', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      // pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
+
+
 
   }
   return (
