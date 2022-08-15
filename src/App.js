@@ -16,6 +16,7 @@ import {useDispatch} from 'react-redux'
 import Orders from './Components/Body/Orders/Orders';
 import BoostrapHeader from './Components/Header/BoostrapHeader';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
+import { ToastContainer, toast } from 'react-toastify';
 
 
 
@@ -184,6 +185,11 @@ window.addEventListener('scroll',()=>{
        <ArrowBackIosNewIcon  className='Move_top_icon_icon' /></div>
  }
  
+
+ <ToastContainer
+
+/>
+
   </div>     
   );
 }

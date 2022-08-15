@@ -4,6 +4,7 @@ import {useDispatch} from 'react-redux'
 import { insidesign, signings, userinfo } from '../Redux/Redux_Slice'
 import { auth } from '../../Firebase'
 import { useAuthState } from 'react-firebase-hooks/auth'
+import { toast } from 'react-toastify'
 
 const Login = ({name}) => {
     let dispatch=useDispatch()
@@ -14,6 +15,20 @@ const Login = ({name}) => {
         'signup'
     )
    )
+
+   toast('Welcome back ! enjoy the journey', {
+    position: "top-right",
+    autoClose: 5000,
+    hideProgressBar: false,
+    closeOnClick: true,
+    // pauseOnHover: true,
+    draggable: true,
+    progress: undefined,
+    });
+
+
+
+
     }
 
     let [users,setUsers]=useState([{

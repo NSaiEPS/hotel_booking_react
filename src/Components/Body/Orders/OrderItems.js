@@ -6,6 +6,7 @@ import UpgradeIcon from '@mui/icons-material/Upgrade';
 import EditIcon from '@mui/icons-material/Edit';
 import { useDispatch, useSelector } from 'react-redux';
 import { Selectloginsuplier, totalorderprice } from '../../Redux/Redux_Slice';
+import { toast } from 'react-toastify';
 
 
 const OrderItems = ({orderid,ordername,noofitems,price,index,tableid}) => {
@@ -66,7 +67,20 @@ let onordereditask=()=>{
         ['noofitems']:input.ordersvalue
 
       })
-      alert('editted successfully')
+      // alert('editted successfully')
+
+      toast.success('Succesfully eddited', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+
+
+
       setUpdate(false)
 
 
@@ -149,6 +163,18 @@ let handleprice=(e)=>{
     let handleorderdelete=()=>{
       alert(`Are you sure to delete! ${ordername}`)
       db.collection('tables').doc(tableid).collection('orders').doc(orderid).delete()
+
+      toast.info('Succesfully deleted', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+
+
   }
 
 

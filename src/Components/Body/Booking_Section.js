@@ -11,6 +11,7 @@ import { Message } from '@material-ui/icons'
 import Alert from '@material-ui/lab/Alert';
 
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { toast } from 'react-toastify'
 // <MoreVertIcon /> 
 // import UpgradeIcon from '@mui/icons-material/Upgrade';
 // import EditIcon from '@mui/icons-material/Edit';
@@ -87,7 +88,15 @@ db.collection('tables').doc(id).update({
           ['active']: true,
            ['table']:(index+1)
         })
-
+        toast.success('Succesfully booked the Table enjoy!', {
+          position: "top-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          // pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+          });
   // dispatch(usernoofbooking(1))
   
   
@@ -115,7 +124,16 @@ db.collection('tables').doc(id).update({
        ['table']:''
     })
     dispatch(usernoofbooking(''))
-
+    
+    toast.info('Succesfully cancelled the table!', {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      // pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      });
    
   
 

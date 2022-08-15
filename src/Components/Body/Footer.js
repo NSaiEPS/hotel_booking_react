@@ -6,7 +6,48 @@ import MailOutlineRoundedIcon from '@mui/icons-material/MailOutlineRounded';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import GitHubIcon from '@mui/icons-material/GitHub';
+import emailjs  from 'emailjs-com';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 const Footer = () => {
+
+  // service_c6rtlnl is the Service id
+
+  let submitFeedbackForm=(e)=>{
+   
+    e.preventDefault()
+    // console.log(e.target)
+    emailjs.sendForm(
+      'service_c6rtlnl',
+      'template_clb60op',
+      e.target,
+      'ETKJU0rLS80i_ct2M'
+    ).then(res=>{
+      console.log(res)
+      toast.success('Succesfully sent the feedback', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+      // alert('Succesfully sent the feedback')
+      
+    }).catch(error=>{
+      console.log(error)
+      toast.warn('Oops some thing went wrong', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    })
+  }
   return (
     
     
@@ -14,8 +55,8 @@ const Footer = () => {
     
     <div className='Footer_inside'>
 
-{/* <footer className="text-center text-lg-start"> */}
-<footer class="text-center ">
+{/* <footer classNameName="text-center text-lg-start"> */}
+<footer className="text-center ">
 
 
   <section className="d-flex justify-content-center justify-content-lg-between p-3 border-bottom">
@@ -92,16 +133,16 @@ const Footer = () => {
             Useful links
           </h6>
           <p>
-            <span href="#!" class="text-reset">Pricing</span>
+            <span href="#!" className="text-reset">Pricing</span>
           </p>
           <p>
-            <span href="#!" class="text-reset">Settings</span>
+            <span href="#!" className="text-reset">Settings</span>
           </p>
           <p>
-            <span href="#!" class="text-reset">Orders</span>
+            <span href="#!" className="text-reset">Orders</span>
           </p>
           <p>
-            <span href="#!" class="text-reset">Help</span>
+            <span href="#!" className="text-reset">Help</span>
           </p>
         </div> */}
         
@@ -111,7 +152,9 @@ const Footer = () => {
 
           <h6 className="text-uppercase fw-bold mb-4">Contact</h6>
           <p className='text-reset'><i className="fas fa-home me-1"></i> India , AP </p>
-          <p className='text-reset'>
+          <p className='text-reset' 
+          
+          >
             <i className="fas fa-envelope me-1"></i>
             info@deviresidencies.com
           </p>
@@ -146,22 +189,9 @@ const Footer = () => {
     
     
     
-  
-  <div class="container p-4">
+{/*   
+  <div className="container p-4">
    
-{/* <section class="mb-4">
-      <span class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-facebook-f"></i></span>
-
-      <span class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-twitter"></i></span>
-
-      <span class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-google"></i></span>
-
-      <span class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-instagram"></i></span>
-
-      <span class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-linkedin-in"></i></span>
-
-      <span class="btn btn-outline-light btn-floating m-1" href="#!" role="button"><i class="fab fa-github"></i></span>
- </section> */}
 
 
 
@@ -191,17 +221,56 @@ const Footer = () => {
       </form>
     </section>
 
+  </div> */}
+
+<h3 
+>For any Queries or Feedbacks please fill the form</h3>
+  <form
+  onSubmit={submitFeedbackForm}
+    style={{maxWidth:'500px', marginLeft:'auto',marginRight:'auto', width:'95%'}}
+  >
+  <div className="form-group m-2">
+    <label for="exampleFormControlInput1">Your Name</label>
+    <input type="name" className="form-control col-md-5 col-12" id="exampleFormControlInput1"
+     placeholder="write your name here" required name='user_name'/>
+  </div>
+  <div className="form-group m-2">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" className="form-control" id="exampleFormControlInput1" 
+    placeholder="write your email address here" required name='user_email'/>
   </div>
 
+  {/* <div className="form-group">
+    <label for="exampleFormControlSelect2">Example multiple select</label>
+    <select multiple className="form-control" id="exampleFormControlSelect2">
+      <option>1</option>
+      <option>2</option>
+      <option>3</option>
+      <option>4</option>
+      <option>5</option>
+    </select>
+  </div> */}
+  <div className="form-group m-2">
+    <label for="exampleFormControlTextarea1">Message</label>
+    <textarea className="form-control" id="exampleFormControlTextarea1" rows="4"
+     required name='message'/>
+  </div>
+  <button type='submit' className='btn btn-primary m-2'>Submit</button>
+</form>
+
   
-  <div class="text-center p-4" >
+  <div className="text-center p-4" >
     © 2022 Copyright:
-    <span class="text-reset fw-bold" > Devi Residencies</span>
+    <span className="text-reset fw-bold" > Devi Residencies</span>
   </div>
 </footer>
+
+
 </div>
 
   )
 }
 
 export default Footer
+
+

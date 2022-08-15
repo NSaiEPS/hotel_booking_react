@@ -9,6 +9,7 @@ import OrderItems from './OrderItems'
 import SpeechRecognition, { useSpeechRecognition } from 'react-speech-recognition';
 import MicOutlinedIcon from '@mui/icons-material/MicOutlined';
 import MicOffIcon from '@mui/icons-material/MicOff';
+import { toast } from 'react-toastify'
 
 const Orders = () => {
   let orderdetails = useSelector(Selectbookingorderdetails)
@@ -190,6 +191,19 @@ const Orders = () => {
 
 
       })
+
+      toast.success('Succesfully added the order', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+
+
+
       SpeechRecognition.stopListening()
       setMicopen(true)
 
@@ -274,6 +288,7 @@ const Orders = () => {
             <input placeholder='no.of items' type='number' value={input.ordervalue} name='ordervalue' onChange={handleinput} />
             {((input.ordername || transcript) && input.ordervalue > 0) && (tableid) &&
               <button type='submit'
+
               >Add</button>
 
             }
