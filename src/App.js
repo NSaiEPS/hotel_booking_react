@@ -17,12 +17,13 @@ import Orders from './Components/Body/Orders/Orders';
 import BoostrapHeader from './Components/Header/BoostrapHeader';
 import ArrowBackIosNewIcon from '@mui/icons-material/ArrowBackIosNew';
 import { ToastContainer, toast } from 'react-toastify';
+import emailjs  from 'emailjs-com';
 
 
 
 
 function App() {
-  let [login,setlogin]=useState(false)
+  // let [login,setlogin]=useState(false)
   let Userinfo=useSelector(SelectUser)
   const [userss,loading]=useAuthState(auth)
 // let selectorderprice=useSelector(Selectorderprice)
@@ -33,7 +34,7 @@ function App() {
   let selecttheme=useSelector(SelectTheme)
   // console.log(seletlogin)
 
-  let selecttablenumber=useSelector(Selecttablenumber)
+  // let selecttablenumber=useSelector(Selecttablenumber)
 
   // console.log(selecttablenumber)
   let dispatch=useDispatch()
@@ -66,7 +67,7 @@ let len=tables.length;
 // const [userss,loading]=useAuthState(auth)
 // let dispatch=useDispatch()
 
-  let [user,setUser]=useState({})
+  let [user,setUser]=useState([])
 
 useEffect(()=>{
   db.collection('users').onSnapshot((snapshot)=>{
@@ -81,6 +82,7 @@ useEffect(()=>{
 },[])
 
 let requerid;
+let userblock=false;
 if(Array.isArray(user)){
 
   user?.map((userinformation)=>{
@@ -99,7 +101,28 @@ if(Array.isArray(user)){
           )
       )
 
-     }
+         if(userinformation?.data?.block){
+          userblock=true;
+         }
+        
+      }
+
+      // if(!requerid){
+      //   if(userss?.email==='deviresidencies@admin.com'){
+      //     console.log('admin')
+      //   }
+      //   let emailsuply=userss?.email.split('@')
+      //   if(emailsuply[1]==='deviresidenciessupliers.com'){
+      //     console.log()
+      //   }
+      
+
+      // }
+
+
+
+
+
   })
 }
 
@@ -152,9 +175,84 @@ window.addEventListener('scroll',()=>{
     )
   }
 
+  let submitFeedbackForm=(e)=>{
+   
+    e.preventDefault()
+    // console.log(e.target)
+    emailjs.sendForm(
+      'service_c6rtlnl',
+      'template_clb60op',
+      e.target,
+      'ETKJU0rLS80i_ct2M'
+    ).then(res=>{
+      console.log(res)
+      toast.success('Succesfully sent the feedback', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        // pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+      // alert('Succesfully sent the feedback')
+      
+    }).catch(error=>{
+      console.log(error)
+      toast.warn('Oops some thing went wrong', {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        });
+    })
+  }
 
 
 
+
+if(userblock){
+
+
+  return(
+    <div className='Blockuser'>
+      <div className='Blockuser_inside'>
+        <div>We are extreamly sorry to inform that you are blocked by the Admin.</div>
+        <div><div>It's not by your fault! Mail him </div>
+        <div>
+ <form
+  onSubmit={submitFeedbackForm}
+    style={{maxWidth:'500px', marginLeft:'auto',marginRight:'auto', width:'95%'}}
+  >
+  <div className="form-group m-2">
+    <label for="exampleFormControlInput1">Your Name</label>
+    <input type="name" className="form-control col-md-5 col-12" id="exampleFormControlInput1"
+     placeholder="write your name here" required name='user_name' value={userss?.displayName}/>
+  </div>
+  <div className="form-group m-2">
+    <label for="exampleFormControlInput1">Email address</label>
+    <input type="email" className="form-control" id="exampleFormControlInput1" 
+    placeholder="write your email address here" required name='user_email' value={userss?.email}/>
+  </div>
+
+
+  <div className="form-group m-2">
+    <label for="exampleFormControlTextarea1">Message</label>
+    <textarea className="form-control" id="exampleFormControlTextarea1" rows="4"
+     required name='message'/>
+  </div>
+  <button type='submit' className='btn btn-primary m-2'>Submit</button>
+</form>
+        </div>
+
+        </div>
+      </div>
+    </div>
+  )
+}
 
 
 

@@ -53,7 +53,7 @@ let len=user.length;
             <div key={Math.random()}>
               <UsersData  id={data.id}  name={data.data.name} email={data.data.email}
                table={data.data.table}  active={data.data.active} index={indx}
-               survedby={data.data.survedby}/>
+               survedby={data.data.survedby} block={data.data.block} />
 
             </div>
           )

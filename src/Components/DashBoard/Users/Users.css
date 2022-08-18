@@ -244,3 +244,48 @@ table,th,td{
     padding: 2px;
 
 }
+
+.UserData_Moreinfo {
+    display: flex;
+    flex-direction: column;
+}
+
+.UserData_Moreinfo_table {
+    display: flex;
+    flex-direction: column;
+}
+
+.UserData_Moreinfo_table_data {
+    display: flex;
+    flex-direction: column;
+}
+
+.UserData_Moreinfo_table_data >div {
+    border-top: 1px solid lightgray;
+
+}
+
+.UserData_Moreinfo_table_data >div>span {
+width: 50%;
+text-align: start;
+}
+
+.UserData_Moreinfo_info div:nth-last-child(2) span{
+    color: green !important;
+    /* align-items: center; */
+}
+
+/* .UserData_Moreinfo_info { */
+/* display: flex; */
+/* justify-content: space-around; */
+/* } */
+
+
+.UserData_Moreinfo_info div:nth-child(2) span:nth-child(1){
+    color: red;
+}
+
+.Userdata_userunblock {
+    color: green;
+    font-weight: 500;
+}

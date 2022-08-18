@@ -240,16 +240,7 @@ const Footer = () => {
     placeholder="write your email address here" required name='user_email'/>
   </div>
 
-  {/* <div className="form-group">
-    <label for="exampleFormControlSelect2">Example multiple select</label>
-    <select multiple className="form-control" id="exampleFormControlSelect2">
-      <option>1</option>
-      <option>2</option>
-      <option>3</option>
-      <option>4</option>
-      <option>5</option>
-    </select>
-  </div> */}
+
   <div className="form-group m-2">
     <label for="exampleFormControlTextarea1">Message</label>
     <textarea className="form-control" id="exampleFormControlTextarea1" rows="4"

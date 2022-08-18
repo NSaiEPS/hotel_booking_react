@@ -1,15 +1,21 @@
 import React, { useEffect, useState } from 'react'
 import './Users.css'
 import { db } from '../../../Firebase';
+import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
+import ArrowDropUpIcon from '@mui/icons-material/ArrowDropUp';
+import { Delete } from '@material-ui/icons'
+import BlockIcon from '@mui/icons-material/Block';
+import DoneIcon from '@mui/icons-material/Done';
 
-
-const UsersData = ({id,name,table,active,email,index,survedby}) => {
+const UsersData = ({id,name,table,active,email,index,survedby,block}) => {
   let survedname=survedby.split('@')
 
 
-  let handledeleteUser=()=>{
-    alert(' are you sure to delete this User !')
-    db.collection('user').doc(id).delete()
+  let handleblockuser=()=>{
+    alert(' are you sure to block this User !')
+    db.collection('users').doc(id).update({
+      block:true
+    })
 
    
 
@@ -23,28 +29,32 @@ const UsersData = ({id,name,table,active,email,index,survedby}) => {
     // db.collection('suppliers').doc(survedid).update({
     //   ['survingTable']:``,
     // })
-db.collection('tables').doc(id).update({
-          ['active']: '',
-          ['bookedby']:'',
-          ['bookeduserid']:'',
-          ['bookeremail']:'',
-        })
+// db.collection('tables').doc(id).update({
+//           ['active']: '',
+//           ['bookedby']:'',
+//           ['bookeduserid']:'',
+//           ['bookeremail']:'',
+//         })
 
        
- 
 
 
   }
+let handleunblockuser=()=>{
+  db.collection('users').doc(id).update({
+    block:false
+  })
+}
 
 
 
 
 
-
-  let [userinfo,setUserinfo]=useState({})
+  let [userinfo,setUserinfo]=useState([])
 
         useEffect(()=>{
-          db.collection('users').doc(id).collection('history') .onSnapshot((snapshot)=>{
+          // db.collection('users').doc(id).collection('history').orderBy('timestamp','') .onSnapshot((snapshot)=>{
+            db.collection('users').doc(id).collection('history') .onSnapshot((snapshot)=>{
             setUserinfo(snapshot.docs.map((doc)=>({
                 
                 id:doc.id,
@@ -58,7 +68,13 @@ db.collection('tables').doc(id).update({
       
       },[id])
 
-      
+
+      let [moreinfoon,setMoreinfo]=useState(false)
+
+      let handlemoreinfo=()=>{
+        setMoreinfo(!moreinfoon)
+      }
+
   return (
     <div className='UsersData'>
         <div className='usersData_inside'>
@@ -83,7 +99,7 @@ db.collection('tables').doc(id).update({
                 </div>
                 
                 
-                :'Yet to be decided by you'}</td>
+                :'Yet to be decided by you' }</td>
                 <td className='UserData_email'>{email}</td>
 
                 </tr>
@@ -138,17 +154,69 @@ db.collection('tables').doc(id).update({
           </tr>
 
         </table>
-        <div>
-          More info
-          {  Array.isArray(userinfo) && userinfo?.map((item)=>{
+        <div className='UserData_Moreinfo'>
+          <div className='UserData_Moreinfo_info'>
+            <div>
+          {userinfo.length >0 && <span >More info</span> }
+          {userinfo.length >0 && <div>
+          {moreinfoon? 
+          <span onClick={handlemoreinfo}
+          ><ArrowDropUpIcon/></span> :
+          <span onClick={handlemoreinfo}
+          >
+            <ArrowDropDownIcon/>
+          </span>}
+          
+          </div>
+           }
+
+</div>
+{block? <span className='Userdata_userunblock'>  <DoneIcon onClick={handleunblockuser}/> unblock the user!</span>:<div> 
+            <span><BlockIcon onClick={handleblockuser}/> </span>
+           <span>  Block the user</span>
+            </div>}
+          
+           </div>
+
+           <div className='UserData_Moreinfo_table'>
+         
+          {  Array.isArray(userinfo) && moreinfoon && userinfo?.map((item)=>{
             return(
-              <div>
+              <div key={Math.random()} className='UserData_Moreinfo_table_data' >
+                <div>
+                  <span><b>Table</b></span>
+                  <span>
+                {item.data.table}
+
+                  </span>
+                  </div>
+                  <div>
+                  <span><b>booking status</b></span>
+                  <span>
                 {item.data.status}
+
+                  </span>
+                    </div>
+
+                    <div>
+                  <span><b>Time</b></span>
+                  <span>
+                  {/* timestamp:timestamp,
+    showtime:showtime */}
+                {item.data.showtime ?item.data.showtime: ':' }
+          {/* stamp */}
+
+                  </span>
+                    </div>
                 </div>
             )
           })
 
           }
+
+</div>
+
+
         </div>
         </div>
         </div>

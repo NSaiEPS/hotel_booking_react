@@ -59,7 +59,39 @@ let handlemoreOption=()=>{
 
 // }
 
+let functiondatecheck=()=>{
+  let today = new Date();
+  let date = today.getFullYear()+' '+(today.getMonth()+1)+' '+today.getDate();
+  let time = today.getHours() + ' ' + today.getMinutes() + ' ' + today.getSeconds();
+    let dateTime = date+' '+time;
+    // let timechecktimenow=dateTime;
+  // let timedis=timechecktimenow.split(' ')
 
+    return dateTime
+}
+
+
+
+let functiondate=()=>{
+
+  let date=new Date()
+  let newdate=`${date}`
+
+
+  let dateformat=newdate.split(' ')
+  let hrestime=dateformat[4].split(':')
+ 
+  
+  let reqsendtime;
+  if(hrestime[0]>12){
+    reqsendtime=(`${hrestime[0]-12}:${hrestime[1]}:${hrestime[2]} pm`)
+  }
+  else  reqsendtime=(`${hrestime[0]} :${hrestime[1]}:${hrestime[2]} am`)
+  
+  return `${dateformat[1]} ${dateformat[2]} ${dateformat[3]} ${reqsendtime}`
+
+
+}
 
 
 let handlebookbtn=()=>{
@@ -86,7 +118,8 @@ db.collection('tables').doc(id).update({
 
         db.collection('users').doc(selectbookeduserid).update({
           ['active']: true,
-           ['table']:(index+1)
+           ['table']:(index+1),
+
         })
         toast.success('Succesfully booked the Table enjoy!', {
           position: "top-right",
@@ -102,10 +135,14 @@ db.collection('tables').doc(id).update({
   
 
   // Message('Booked successfully!')
+  let timestamp=functiondatecheck()
+  let showtime=functiondate()
 
 db.collection('users').doc(selectbookeduserid).collection('history').add({
   table:(index+1),
-  status:'Booked'
+  status:'Booked',
+  timestamp:timestamp,
+  showtime:showtime
 })
 
 }
@@ -149,10 +186,15 @@ db.collection('users').doc(selectbookeduserid).collection('history').add({
       element.ref.delete();
     });
   });
+  let timestamp=functiondatecheck()
+  let showtime=functiondate()
+
 
   db.collection('users').doc(selectbookeduserid).collection('history').add({
     table:(index+1),
-    status:'Cancelled'
+    status:'Cancelled',
+    timestamp:timestamp,
+    showtime:showtime
   })
   
   }

@@ -127,3 +127,13 @@
   margin-left: 10px;
 
   }
+
+
+  .Blockuser {
+    background-color: black;
+    color: white;
+    text-align: center;
+    display: grid;
+    align-items: center;
+    height: 100vh;
+  }
