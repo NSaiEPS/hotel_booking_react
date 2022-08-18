@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './Users.css'
 import { db } from '../../../Firebase';
 
@@ -31,7 +31,34 @@ db.collection('tables').doc(id).update({
         })
 
        
+ 
+
+
   }
+
+
+
+
+
+
+  let [userinfo,setUserinfo]=useState({})
+
+        useEffect(()=>{
+          db.collection('users').doc(id).collection('history') .onSnapshot((snapshot)=>{
+            setUserinfo(snapshot.docs.map((doc)=>({
+                
+                id:doc.id,
+                data:doc.data(),
+              
+            })))
+          }) ;
+     
+        
+      
+      
+      },[id])
+
+      
   return (
     <div className='UsersData'>
         <div className='usersData_inside'>
@@ -111,6 +138,18 @@ db.collection('tables').doc(id).update({
           </tr>
 
         </table>
+        <div>
+          More info
+          {  Array.isArray(userinfo) && userinfo?.map((item)=>{
+            return(
+              <div>
+                {item.data.status}
+                </div>
+            )
+          })
+
+          }
+        </div>
         </div>
         </div>
       

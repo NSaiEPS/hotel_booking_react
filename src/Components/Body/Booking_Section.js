@@ -103,6 +103,11 @@ db.collection('tables').doc(id).update({
 
   // Message('Booked successfully!')
 
+db.collection('users').doc(selectbookeduserid).collection('history').add({
+  table:(index+1),
+  status:'Booked'
+})
+
 }
 
   }
@@ -144,6 +149,11 @@ db.collection('tables').doc(id).update({
       element.ref.delete();
     });
   });
+
+  db.collection('users').doc(selectbookeduserid).collection('history').add({
+    table:(index+1),
+    status:'Cancelled'
+  })
   
   }
 
@@ -246,8 +256,11 @@ let onclickingOrders=()=>{
     )
 
   )
-
-
+// Must delete this 
+  // db.collection('users').doc(selectbookeduserid).collection('history').add({
+  //   table:(index+1),
+  //   status:'Booked'
+  // })
 
 
 }
