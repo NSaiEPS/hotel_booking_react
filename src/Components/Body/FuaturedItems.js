@@ -14,7 +14,7 @@ const FuaturedItems = () => {
   <div className="carousel-inner">
     <div className="carousel-item active" data-bs-interval="10000">
       <img  
-       src="https://foodfinger.in/wp-content/uploads/2021/04/Tandoori-Chicken-Biryani-scaled.jpg"  className="d-block w-100 Body_carousel_imgs" alt="..."/>
+       src="https://www.iwmbuzz.com/wp-content/uploads/2021/02/prepare-this-delicious-chicken-tandoor-biryani-at-home-with-these-simple-recipes-5-920x518.jpg"  className="d-block w-100 Body_carousel_imgs" alt="..."/>
       <div className="carousel-caption d-none d-md-block">
         <h5 className="bg-primary">Tandoori chicken biryani</h5>
         <p className="bg-success">Special Tandoori chicken biryani with extra spicy</p>
